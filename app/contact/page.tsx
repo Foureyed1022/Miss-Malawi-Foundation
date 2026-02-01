@@ -56,7 +56,7 @@ export default function ContactPage() {
             <ContactCard
               icon={<MapPin className="h-8 w-8 text-gold" />}
               title="Our Location"
-              details={["Miss Malawi crown office", "P.O Box X407", "Crossroads, Lilongwe", "Malawi"]}
+              details={["HewKam House, Area 43, Plot 43/1314", "Miss Malawi, P.O Box 143", "Capital City, Malawi"]}
             />
             <ContactCard
               icon={<Phone className="h-8 w-8 text-gold" />}
@@ -66,7 +66,7 @@ export default function ContactPage() {
             <ContactCard
               icon={<Mail className="h-8 w-8 text-gold" />}
               title="Email Address"
-              details={["info@missmalawi.com", "support@missmalawi.com"]}
+              details={["info@missmw.org"]}
             />
           </div>
         </div>

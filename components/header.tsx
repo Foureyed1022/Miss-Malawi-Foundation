@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Menu, X, ChevronDown, ChevronRight } from "lucide-react"
@@ -35,14 +36,19 @@ export default function Header() {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center">
-            <span className={`font-playfair text-2xl font-bold ${isScrolled ? "text-[#212224]" : "text-white"}`}>
-              Miss Malawi
-            </span>
+            <Image 
+              src="/logo.png" 
+              alt="Miss Malawi Logo"
+              width={70}
+              height={23}
+              className={`h-auto ${isScrolled ? "text-[#212224]" : "text-white"}`}
+            />
           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-6">
             <NavLink href="/" label="Home" isScrolled={isScrolled} />
+            <NavLink href="/events" label="Events" isScrolled={isScrolled} />
 
             {/* About Dropdown */}
             <DesktopDropdown
@@ -106,7 +112,13 @@ export default function Header() {
             <SheetContent side="right" className="w-[300px] sm:w-[350px] bg-white">
               <div className="flex flex-col h-full">
                 <div className="flex items-center justify-between py-4 border-b">
-                  <span className="font-playfair text-xl font-bold text-[#212224]">Miss Malawi</span>
+                  <Image 
+                    src="/logo.png" 
+                    alt="Miss Malawi Logo"
+                    width={80}
+                    height={27}
+                    className="h-auto"
+                  />
                   <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(false)}>
                     <X className="h-5 w-5" />
                     <span className="sr-only">Close menu</span>
@@ -114,6 +126,7 @@ export default function Header() {
                 </div>
                 <nav className="flex flex-col py-6">
                   <MobileNavLink href="/" label="Home" setIsOpen={setIsMobileMenuOpen} />
+                  <MobileNavLink href="/events" label="Events" setIsOpen={setIsMobileMenuOpen} />
 
                   {/* Mobile Dropdowns */}
                   <MobileDropdown

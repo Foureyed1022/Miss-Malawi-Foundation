@@ -16,7 +16,7 @@ export default function Home() {
       <section className="relative h-[90vh] w-full overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-[#212224]/70 to-black/50 z-10" />
         <Image
-          src="/placeholder.svg?height=1080&width=1920"
+          src="/Miss Nyasa.png"
           alt="Miss Malawi contestants"
           fill
           priority
@@ -24,6 +24,7 @@ export default function Home() {
         />
         <div className="relative z-20 container mx-auto h-full flex flex-col justify-center px-4 md:px-6">
           <div className="max-w-3xl space-y-4">
+            {/*
             <h1 className="font-playfair text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight">
               <span className="text-gold">Empowering</span> Malawian Women
             </h1>
@@ -31,7 +32,6 @@ export default function Home() {
               A cultural and empowerment platform showcasing beauty, intelligence, and advocacy while promoting national
               development.
             </p>
-            {/* Update the "Get Involved" button in the hero section */}
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Link href="/donate">
                 <Button size="lg" className="bg-gold hover:bg-gold/90 text-black">
@@ -44,6 +44,7 @@ export default function Home() {
                 </Button>
               </Link>
             </div>
+            */}
           </div>
         </div>
       </section>
@@ -82,7 +83,7 @@ export default function Home() {
       </section>
 
       {/* Parallax Section */}
-      <ParallaxSection imageUrl="/placeholder.svg?height=1080&width=1920" height="500px">
+      <ParallaxSection imageUrl="/nyauziyambo.png" height="500px">
         <h2 className="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold mb-4">Beauty with Purpose</h2>
         <p className="max-w-2xl mx-auto text-lg md:text-xl">
           Celebrating Malawian women who combine beauty with intelligence and a passion for positive change.
@@ -144,17 +145,17 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <EventCard
-              date="May 15, 2025"
+              date="May 15, 2026"
               title="Miss Malawi Auditions - Northern Region"
               location="Mzuzu University Auditorium"
             />
             <EventCard
-              date="June 2, 2025"
+              date="June 2, 2026"
               title="Miss Malawi Auditions - Central Region"
               location="Bingu International Convention Centre"
             />
             <EventCard
-              date="June 20, 2025"
+              date="June 20, 2026"
               title="Miss Malawi Auditions - Southern Region"
               location="Mount Soche Hotel, Blantyre"
             />

@@ -1,5 +1,6 @@
 import type React from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Facebook, Instagram, Twitter, Youtube } from "lucide-react"
@@ -10,7 +11,13 @@ export default function Footer() {
       <div className="container mx-auto px-4 md:px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
-            <h3 className="font-playfair text-2xl font-bold mb-4">Miss Malawi</h3>
+            <Image 
+              src="/logo.png" 
+              alt="Miss Malawi Logo"
+              width={100}
+              height={33}
+              className="h-auto mb-4"
+            />
             <p className="text-white/80 mb-6">
               Empowering young Malawian women through beauty, intelligence, and advocacy since 1968.
             </p>
@@ -61,11 +68,11 @@ export default function Footer() {
           <div>
             <h4 className="font-bold text-lg mb-4">Contact Information</h4>
             <address className="not-italic text-white/80 space-y-3">
-              <p>Miss Malawi Foundation</p>
-              <p>P.O. Box 1234</p>
-              <p>Lilongwe, Malawi</p>
-              <p className="pt-2">Phone: +265 1 234 5678</p>
-              <p>Email: info@missmalawi.org</p>
+              <p>HewKam House, Area 43, Plot 43/1314</p>
+              <p>Miss Malawi, P.O Box 143</p>
+              <p>Capital City, Malawi</p>
+              <p className="pt-2">Phone: +265 996 263 843 / +265 882 922 062</p>
+              <p>Email: info@missmw.org</p>
             </address>
           </div>
 

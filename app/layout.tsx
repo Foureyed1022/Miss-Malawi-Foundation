@@ -17,7 +17,7 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
-  title: "Miss Malawi Foundation",
+  title: "Miss Malawi",
   description: "Cultural and empowerment platform supporting young Malawian women",
     generator: 'v0.dev'
 }
