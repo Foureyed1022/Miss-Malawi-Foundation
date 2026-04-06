@@ -1,56 +1,32 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { X } from "lucide-react"
 import PageHeader from "@/components/page-header"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
-// Sample gallery data
-const galleryData = {
-  events: [
-    { id: 1, title: "Miss Malawi 2022 Grand Finale", src: "/placeholder.svg?height=600&width=800" },
-    { id: 2, title: "Regional Auditions - Northern Region", src: "/placeholder.svg?height=600&width=800" },
-    { id: 3, title: "Boot Camp Training Session", src: "/placeholder.svg?height=600&width=800" },
-    { id: 4, title: "Charity Gala Dinner", src: "/placeholder.svg?height=600&width=800" },
-    { id: 5, title: "Miss Malawi at Independence Day Celebrations", src: "/placeholder.svg?height=600&width=800" },
-    { id: 6, title: "Cultural Showcase Evening", src: "/placeholder.svg?height=600&width=800" },
-    { id: 7, title: "Press Conference", src: "/placeholder.svg?height=600&width=800" },
-    { id: 8, title: "Contestants Visit to Children's Hospital", src: "/placeholder.svg?height=600&width=800" },
-  ],
-  queens: [
-    { id: 9, title: "Jescar Mponda - Miss Malawi 2022", src: "/placeholder.svg?height=800&width=600" },
-    { id: 10, title: "Tiwonge Munthali - Miss Malawi 2018", src: "/placeholder.svg?height=800&width=600" },
-    { id: 11, title: "Cecelia Khofi - Miss Malawi 2017", src: "/placeholder.svg?height=800&width=600" },
-    { id: 12, title: "Faith Chibale - Miss Malawi 2012", src: "/placeholder.svg?height=800&width=600" },
-    { id: 13, title: "Ella Kabambe - Miss Malawi 2012", src: "/placeholder.svg?height=800&width=600" },
-    { id: 14, title: "Susan Mtegha - Miss Malawi 2011", src: "/placeholder.svg?height=800&width=600" },
-  ],
-  programs: [
-    { id: 15, title: "Girls Education Initiative Launch", src: "/placeholder.svg?height=600&width=800" },
-    { id: 16, title: "Women's Health Awareness Campaign", src: "/placeholder.svg?height=600&width=800" },
-    { id: 17, title: "Cultural Heritage Preservation Workshop", src: "/placeholder.svg?height=600&width=800" },
-    { id: 18, title: "Tree Planting Initiative", src: "/placeholder.svg?height=600&width=800" },
-    { id: 19, title: "Leadership Training for Young Women", src: "/placeholder.svg?height=600&width=800" },
-    { id: 20, title: "Community Outreach Program", src: "/placeholder.svg?height=600&width=800" },
-  ],
-  international: [
-    { id: 21, title: "Miss World 2012 - Ella Kabambe", src: "/placeholder.svg?height=600&width=800" },
-    { id: 22, title: "Miss World 2011 - Susan Mtegha", src: "/placeholder.svg?height=600&width=800" },
-    { id: 23, title: "Miss World 2001 - Elizabeth Pulu", src: "/placeholder.svg?height=600&width=800" },
-    { id: 24, title: "International Cultural Exchange Program", src: "/placeholder.svg?height=600&width=800" },
-    { id: 25, title: "Pan-African Beauty Pageant Summit", src: "/placeholder.svg?height=600&width=800" },
-    { id: 26, title: "Global Youth Leadership Conference", src: "/placeholder.svg?height=600&width=800" },
-  ],
+type GalleryItemType = { id: number; title: string; src: string }
+type GalleryData = {
+  events: GalleryItemType[]
+  queens: GalleryItemType[]
+  programs: GalleryItemType[]
+  international: GalleryItemType[]
 }
 
 export default function GalleryPage() {
-  const [selectedImage, setSelectedImage] = useState<{
-    id: number
-    title: string
-    src: string
-  } | null>(null)
+  const [selectedImage, setSelectedImage] = useState<GalleryItemType | null>(null)
+  const [galleryData, setGalleryData] = useState<GalleryData | null>(null)
+
+  useEffect(() => {
+    const load = async () => {
+      const res = await fetch("/api/gallery")
+      const data = (await res.json()) as GalleryData
+      setGalleryData(data)
+    }
+    load()
+  }, [])
 
   const openLightbox = (image: { id: number; title: string; src: string }) => {
     setSelectedImage(image)
@@ -69,6 +45,9 @@ export default function GalleryPage() {
       {/* Gallery Tabs */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4 md:px-6">
+          {!galleryData ? (
+            <p className="text-center text-gray-500">Loading gallery...</p>
+          ) : (
           <Tabs defaultValue="all" className="w-full">
             <div className="text-center mb-8">
               <TabsList className="inline-flex">
@@ -122,6 +101,7 @@ export default function GalleryPage() {
               </div>
             </TabsContent>
           </Tabs>
+          )}
 
           <div className="text-center mt-12">
             <Button className="bg-emerald-800 hover:bg-emerald-700">Load More Photos</Button>
@@ -137,7 +117,7 @@ export default function GalleryPage() {
             <p className="text-gray-600 max-w-3xl mx-auto">
               Watch highlights from our pageants, programs, and special events
             </p>
-            <div className="w-24 h-1 bg-gold mx-auto mt-4"></div>
+            <div className="w-24 h-1 bg-purple mx-auto mt-4"></div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -262,7 +242,7 @@ function VideoItem({ title, thumbnail, duration }: VideoItemProps) {
         <Image src={thumbnail || "/placeholder.svg"} alt={title} fill className="object-cover" />
         <div className="absolute inset-0 bg-black/30 flex items-center justify-center group-hover:bg-black/50 transition-all duration-300">
           <div className="h-16 w-16 rounded-full bg-white/30 flex items-center justify-center">
-            <div className="h-12 w-12 rounded-full bg-gold flex items-center justify-center">
+            <div className="h-12 w-12 rounded-full bg-purple flex items-center justify-center">
               <div className="w-0 h-0 border-y-8 border-y-transparent border-l-12 border-l-white ml-1"></div>
             </div>
           </div>

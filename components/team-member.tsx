@@ -25,7 +25,7 @@ export default function TeamMember({ image, name, position }: TeamMemberProps) {
       </div>
       <div className="p-4 text-center">
         <h3 className="text-xl font-bold text-gray-900">{name}</h3>
-        <p className="text-gold">{position}</p>
+        <p className="text-purple">{position}</p>
       </div>
     </div>
   )
@@ -40,7 +40,7 @@ function SocialIcon({ href, icon }: SocialIconProps) {
   return (
     <Link
       href={href}
-      className="h-8 w-8 rounded-full bg-white flex items-center justify-center text-[#212224] hover:bg-gold hover:text-white transition-colors"
+      className="h-8 w-8 rounded-full bg-white flex items-center justify-center text-[#212224] hover:bg-purple hover:text-white transition-colors"
     >
       {icon}
     </Link>

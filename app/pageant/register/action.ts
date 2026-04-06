@@ -94,6 +94,7 @@ export async function submitRegistration(formData: FormData) {
     region,
   }
 
+  let redirectUrl = ""
   try {
     const result = await processRegistration(registrationData)
 
@@ -104,13 +105,17 @@ export async function submitRegistration(formData: FormData) {
         name: `${firstName} ${lastName}`,
       })
 
-      redirect(`/pageant/register/success?${params.toString()}`)
+      redirectUrl = `/pageant/register/success?${params.toString()}`
     } else {
-      // Redirect to error page with error message
-      redirect(`/pageant/register/error?message=${encodeURIComponent(result.error || "Registration failed")}`)
+      // Set error redirect URL
+      redirectUrl = `/pageant/register/error?message=${encodeURIComponent(result.error || "Registration failed")}`
     }
   } catch (error) {
     console.error("Registration processing error:", error)
-    redirect("/pageant/register/error?message=An unexpected error occurred")
+    redirectUrl = "/pageant/register/error?message=An unexpected error occurred"
+  }
+
+  if (redirectUrl) {
+    redirect(redirectUrl)
   }
 }

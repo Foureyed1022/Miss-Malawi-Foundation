@@ -66,14 +66,14 @@
   font-family: var(--font-inter);
 }
 
-.text-gold {
-  color: #d4af37;
+.text-purple {
+  color: #8329B7;
 }
 
-.bg-gold {
-  background-color: #d4af37;
+.bg-purple {
+  background-color: #8329B7;
 }
 
-.border-gold {
-  border-color: #d4af37;
+.border-purple {
+  border-color: #8329B7;
 }

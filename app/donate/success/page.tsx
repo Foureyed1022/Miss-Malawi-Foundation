@@ -1,17 +1,34 @@
+"use client"
+
 import Link from "next/link"
+import { useEffect, use } from "react"
 import { CheckCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import PageHeader from "@/components/page-header"
+import { trackEvent } from "@/lib/analytics"
 
 export default function DonationSuccessPage({
   searchParams,
 }: {
-  searchParams: { [key: string]: string | string[] | undefined }
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }) {
-  const transactionId = (searchParams.transactionId as string) || "TX-UNKNOWN"
-  const amount = (searchParams.amount as string) || "0"
-  const name = (searchParams.name as string) || "Donor"
-  const isMonthly = searchParams.isMonthly === "true"
+  const resolvedParams = use(searchParams)
+  const transactionId = (resolvedParams.transactionId as string) || "TX-UNKNOWN"
+  const amount = (resolvedParams.amount as string) || "0"
+  const name = (resolvedParams.name as string) || "Donor"
+  const isMonthly = resolvedParams.isMonthly === "true"
+
+  useEffect(() => {
+    trackEvent({
+      name: "donation_completed",
+      source: "donate_success_page",
+      metadata: {
+        transactionId,
+        amount,
+        isMonthly,
+      },
+    })
+  }, [transactionId, amount, isMonthly])
 
   return (
     <div className="flex flex-col w-full">

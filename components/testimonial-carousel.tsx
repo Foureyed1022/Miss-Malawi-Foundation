@@ -2,8 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Image from "next/image"
-import { ChevronLeft, ChevronRight, Quote } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { Quote } from "lucide-react"
 
 const testimonials = [
   {
@@ -35,13 +34,6 @@ const testimonials = [
 export default function TestimonialCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)
-
-  const goToPrevious = () => {
-    if (isAnimating) return
-
-    setIsAnimating(true)
-    setCurrentIndex((prevIndex) => (prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1))
-  }
 
   const goToNext = () => {
     if (isAnimating) return
@@ -75,12 +67,12 @@ export default function TestimonialCarousel() {
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12">
           <h2 className="font-playfair text-3xl md:text-4xl font-bold text-[#212224] mb-4">Testimonials</h2>
-          <div className="w-24 h-1 bg-gold mx-auto"></div>
+          <div className="w-24 h-1 bg-purple mx-auto"></div>
         </div>
 
         <div className="max-w-4xl mx-auto relative">
           <div className="relative bg-white rounded-lg shadow-lg p-8 md:p-12">
-            <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-gold rounded-full p-3">
+            <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-purple rounded-full p-3">
               <Quote className="h-6 w-6 text-white" />
             </div>
 
@@ -100,34 +92,12 @@ export default function TestimonialCarousel() {
                 </div>
                 <div className="text-center">
                   <h4 className="font-bold text-lg text-gray-900">{currentTestimonial.name}</h4>
-                  <p className="text-gold">{currentTestimonial.title}</p>
+                  <p className="text-purple">{currentTestimonial.title}</p>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="flex justify-center mt-8 space-x-4">
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={goToPrevious}
-              disabled={isAnimating}
-              className="rounded-full border-[#212224] text-[#212224] hover:bg-[#212224]/5"
-            >
-              <ChevronLeft className="h-5 w-5" />
-              <span className="sr-only">Previous</span>
-            </Button>
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={goToNext}
-              disabled={isAnimating}
-              className="rounded-full border-[#212224] text-[#212224] hover:bg-[#212224]/5"
-            >
-              <ChevronRight className="h-5 w-5" />
-              <span className="sr-only">Next</span>
-            </Button>
-          </div>
         </div>
       </div>
     </section>

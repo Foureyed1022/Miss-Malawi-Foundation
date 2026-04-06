@@ -16,7 +16,7 @@ export default function StrategyPage() {
               A commitment to nurturing a new generation of influential Malawian female leaders who will leave a lasting
               legacy.
             </h2>
-            <div className="w-24 h-1 bg-gold mx-auto mb-8"></div>
+            <div className="w-24 h-1 bg-purple mx-auto mb-8"></div>
 
             <div className="text-left space-y-6">
               <div>
@@ -51,7 +51,7 @@ export default function StrategyPage() {
           <div className="text-center mb-12">
             <h2 className="font-playfair text-3xl md:text-4xl font-bold text-emerald-800 mb-4">Strategic Focus</h2>
             <p className="text-gray-600 max-w-3xl mx-auto">Crowning the future will focus on four strategic areas:</p>
-            <div className="w-24 h-1 bg-gold mx-auto mt-4"></div>
+            <div className="w-24 h-1 bg-purple mx-auto mt-4"></div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -117,7 +117,7 @@ export default function StrategyPage() {
             <p className="text-lg mb-8">
               Join us in shaping the future of Miss Malawi and empowering the next generation of Malawian women leaders.
             </p>
-            <Button className="bg-gold hover:bg-gold/90 text-black">
+            <Button className="bg-purple hover:bg-purple/90 text-black">
               Get Involved <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </div>
@@ -157,7 +157,7 @@ function StrategyCard({ number, title, icon, description, points }: StrategyCard
       <div className="flex items-center mb-4">
         <div className="h-12 w-12 rounded-full bg-emerald-50 flex items-center justify-center mr-4">{icon}</div>
         <div>
-          <div className="text-gold font-bold text-lg">{number}</div>
+          <div className="text-purple font-bold text-lg">{number}</div>
           <h3 className="text-xl font-bold text-gray-900">{title}</h3>
         </div>
       </div>

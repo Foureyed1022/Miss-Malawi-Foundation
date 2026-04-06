@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "name": "Grace Mwambi",
+    "role": "Executive Director",
+    "photo": "/placeholder.svg?height=400&width=400",
+    "bio": "Grace has over 15 years of experience in non-profit management and women's advocacy in Malawi.",
+    "department": "Leadership",
+    "hierarchy": 1
+  },
+  {
+    "id": 2,
+    "name": "Chimwemwe Banda",
+    "role": "Programs Coordinator",
+    "photo": "/placeholder.svg?height=400&width=400",
+    "bio": "Chimwemwe leads our educational and health initiatives across the country.",
+    "department": "Programs",
+    "hierarchy": 2
+  },
+  {
+    "id": 3,
+    "name": "Thokozani Nyirenda",
+    "role": "Events Manager",
+    "photo": "/placeholder.svg?height=400&width=400",
+    "bio": "Thokozani is the creative mind behind our annual pageant and regional auditions.",
+    "department": "Events",
+    "hierarchy": 2
+  },
+  {
+    "id": 4,
+    "name": "Mphatso Kamanga",
+    "role": "Communications Director",
+    "photo": "/placeholder.svg?height=400&width=400",
+    "bio": "Mphatso manages our public relations and digital presence.",
+    "department": "Communications",
+    "hierarchy": 2
+  },
+  {
+    "id": 5,
+    "name": "Limbani Phiri",
+    "role": "Finance Officer",
+    "photo": "/placeholder.svg?height=400&width=400",
+    "bio": "Limbani ensures fiscal responsibility and transparency within the foundation.",
+    "department": "Finance",
+    "hierarchy": 2
+  }
+]

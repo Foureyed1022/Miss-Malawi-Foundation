@@ -1,15 +1,31 @@
+"use client"
+
 import Link from "next/link"
+import { useEffect, use } from "react"
 import { CheckCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import PageHeader from "@/components/page-header"
+import { trackEvent } from "@/lib/analytics"
 
 export default function RegistrationSuccessPage({
   searchParams,
 }: {
-  searchParams: { [key: string]: string | string[] | undefined }
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }) {
-  const registrationId = (searchParams.registrationId as string) || "REG-UNKNOWN"
-  const name = (searchParams.name as string) || "Contestant"
+  const resolvedParams = use(searchParams)
+  const registrationId = (resolvedParams.registrationId as string) || "REG-UNKNOWN"
+  const name = (resolvedParams.name as string) || "Contestant"
+
+  useEffect(() => {
+    trackEvent({
+      name: "pageant_registration_completed",
+      source: "pageant_registration_success_page",
+      metadata: {
+        registrationId,
+        name,
+      },
+    })
+  }, [registrationId, name])
 
   return (
     <div className="flex flex-col w-full">

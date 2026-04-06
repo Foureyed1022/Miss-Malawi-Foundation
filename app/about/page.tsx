@@ -1,3 +1,6 @@
+"use client"
+
+import { useEffect, useState } from "react"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
@@ -7,7 +10,28 @@ import ParallaxSection from "@/components/parallax-section"
 import ParallaxText from "@/components/parallax-text"
 import ParallaxImage from "@/components/parallax-image"
 
+type TeamMemberData = {
+  id: number
+  name: string
+  role: string
+  photo: string
+  bio: string
+  department: string
+  hierarchy: number
+}
+
 export default function AboutPage() {
+  const [team, setTeam] = useState<TeamMemberData[]>([])
+
+  useEffect(() => {
+    const fetchTeam = async () => {
+      const res = await fetch("/api/team")
+      const data = await res.json()
+      setTeam(data)
+    }
+    fetchTeam()
+  }, [])
+
   return (
     <div className="flex flex-col w-full">
       <PageHeader
@@ -53,13 +77,13 @@ export default function AboutPage() {
         <div className="container mx-auto px-4 md:px-6">
           <ParallaxText className="text-center mb-12">
             <h2 className="font-playfair text-3xl md:text-4xl font-bold text-emerald-800 mb-4">Our History</h2>
-            <div className="w-24 h-1 bg-gold mx-auto"></div>
+            <div className="w-24 h-1 bg-purple mx-auto"></div>
           </ParallaxText>
 
           <div className="max-w-4xl mx-auto">
             <div className="space-y-8">
               <div className="bg-white p-8 rounded-lg shadow-sm">
-                <h3 className="text-xl font-bold mb-3 text-gold">The Beginning (1998)</h3>
+                <h3 className="text-xl font-bold mb-3 text-purple">The Beginning (1998)</h3>
                 <p className="text-gray-700">
                   Miss Malawi was established in 1998 as a platform for young Malawian women to showcase their beauty,
                   intelligence, and professional talents, while advocating for social causes. Since its founding, it has
@@ -68,7 +92,7 @@ export default function AboutPage() {
               </div>
 
               <div className="bg-white p-8 rounded-lg shadow-sm">
-                <h3 className="text-xl font-bold mb-3 text-gold">Evolution & Growth (1980s-2000s)</h3>
+                <h3 className="text-xl font-bold mb-3 text-purple">Evolution & Growth (1980s-2000s)</h3>
                 <p className="text-gray-700">
                   Throughout the decades, the pageant evolved from a simple beauty contest to a comprehensive program
                   focused on intelligence, talent, and advocacy. During this period, Miss Malawi began participating in
@@ -78,7 +102,7 @@ export default function AboutPage() {
               </div>
 
               <div className="bg-white p-8 rounded-lg shadow-sm">
-                <h3 className="text-xl font-bold mb-3 text-gold">Foundation Establishment (2010)</h3>
+                <h3 className="text-xl font-bold mb-3 text-purple">Foundation Establishment (2010)</h3>
                 <p className="text-gray-700">
                   In 2010, the Miss Malawi Foundation was officially established to oversee the pageant and expand its
                   impact through various community programs and initiatives. This marked a significant shift toward
@@ -87,7 +111,7 @@ export default function AboutPage() {
               </div>
 
               <div className="bg-white p-8 rounded-lg shadow-sm">
-                <h3 className="text-xl font-bold mb-3 text-gold">Present Day</h3>
+                <h3 className="text-xl font-bold mb-3 text-purple">Present Day</h3>
                 <p className="text-gray-700">
                   Today, the Miss Malawi Foundation stands as a premier organization for female empowerment in the
                   country. Beyond the annual pageant, we run educational programs, health initiatives, and cultural
@@ -115,7 +139,7 @@ export default function AboutPage() {
           <p className="text-2xl md:text-3xl font-playfair italic">
             "Beauty with a purpose is about using your platform to create positive change in society."
           </p>
-          <p className="mt-4 text-gold font-medium">Miss Malawi Foundation</p>
+          <p className="mt-4 text-purple font-medium">Miss Malawi Foundation</p>
         </div>
       </ParallaxSection>
 
@@ -128,30 +152,23 @@ export default function AboutPage() {
               The dedicated individuals who work tirelessly to uphold our mission and create opportunities for young
               Malawian women.
             </p>
-            <div className="w-24 h-1 bg-gold mx-auto mt-4"></div>
+            <div className="w-24 h-1 bg-purple mx-auto mt-4"></div>
           </ParallaxText>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <TeamMember
-              image="/placeholder.svg?height=400&width=400"
-              name="Grace Mwambi"
-              position="Executive Director"
-            />
-            <TeamMember
-              image="/placeholder.svg?height=400&width=400"
-              name="Chimwemwe Banda"
-              position="Programs Coordinator"
-            />
-            <TeamMember
-              image="/placeholder.svg?height=400&width=400"
-              name="Thokozani Nyirenda"
-              position="Events Manager"
-            />
-            <TeamMember
-              image="/placeholder.svg?height=400&width=400"
-              name="Mphatso Kamanga"
-              position="Communications Director"
-            />
+            {team.sort((a, b) => a.hierarchy - b.hierarchy).map((member) => (
+              <TeamMember
+                key={member.id}
+                image={member.photo}
+                name={member.name}
+                position={member.role}
+              />
+            ))}
+            {team.length === 0 && (
+              <div className="col-span-full text-center py-12 text-gray-500">
+                Loading team members...
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -165,7 +182,7 @@ export default function AboutPage() {
               We collaborate with organizations that share our vision for empowering Malawian women and promoting
               national development.
             </p>
-            <div className="w-24 h-1 bg-gold mx-auto mt-4"></div>
+            <div className="w-24 h-1 bg-purple mx-auto mt-4"></div>
           </ParallaxText>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">

@@ -13,7 +13,7 @@ export default function EventsPage() {
 
             <div className="space-y-10">
               {/* March 2026 */}
-              <div className="border-l-4 border-gold pl-6 py-2">
+              <div className="border-l-4 border-purple pl-6 py-2">
                 <h3 className="font-playfair text-xl font-bold text-emerald-800">MARCH 2026 – PROGRAMME LAUNCH & RECRUITMENT</h3>
                 <p className="font-semibold mt-2">Theme: Launch & Awareness</p>
                 <ul className="mt-3 space-y-2 list-disc list-inside text-gray-700">
@@ -25,7 +25,7 @@ export default function EventsPage() {
               </div>
 
               {/* April 2026 */}
-              <div className="border-l-4 border-gold pl-6 py-2">
+              <div className="border-l-4 border-purple pl-6 py-2">
                 <h3 className="font-playfair text-xl font-bold text-emerald-800">APRIL 2026 – AUDITIONS & REGIONAL SELECTIONS</h3>
                 <p className="font-semibold mt-2">Theme: Discovering Malawi's Queens</p>
                 <ul className="mt-3 space-y-2 list-disc list-inside text-gray-700">
@@ -43,7 +43,7 @@ export default function EventsPage() {
               </div>
 
               {/* June 2026 */}
-              <div className="border-l-4 border-gold pl-6 py-2">
+              <div className="border-l-4 border-purple pl-6 py-2">
                 <h3 className="font-playfair text-xl font-bold text-emerald-800">JUNE 2026 – TRAINING & CAPACITY BUILDING</h3>
                 <p className="font-semibold mt-2">Theme: Building Confident Leaders</p>
                 <ul className="mt-3 space-y-2 list-disc list-inside text-gray-700">
@@ -52,7 +52,7 @@ export default function EventsPage() {
               </div>
 
               {/* July 2026 */}
-              <div className="border-l-4 border-gold pl-6 py-2">
+              <div className="border-l-4 border-purple pl-6 py-2">
                 <h3 className="font-playfair text-xl font-bold text-emerald-800">JULY 2026 – ADVOCACY & COMMUNITY ENGAGEMENT</h3>
                 <p className="font-semibold mt-2">Theme: Beauty with Purpose</p>
                 <ul className="mt-3 space-y-2 list-disc list-inside text-gray-700">
@@ -71,7 +71,7 @@ export default function EventsPage() {
               </div>
 
               {/* August 2026 */}
-              <div className="border-l-4 border-gold pl-6 py-2">
+              <div className="border-l-4 border-purple pl-6 py-2">
                 <h3 className="font-playfair text-xl font-bold text-emerald-800">AUGUST 2026 – BRANDING, TOURISM & VISIBILITY</h3>
                 <p className="font-semibold mt-2">Theme: Showcasing Malawi</p>
                 <ul className="mt-3 space-y-2 list-disc list-inside text-gray-700">
@@ -83,7 +83,7 @@ export default function EventsPage() {
               </div>
 
               {/* September 2026 */}
-              <div className="border-l-4 border-gold pl-6 py-2">
+              <div className="border-l-4 border-purple pl-6 py-2">
                 <h3 className="font-playfair text-xl font-bold text-emerald-800">SEPTEMBER 2026 – MEDIA & PUBLIC ENGAGEMENT</h3>
                 <p className="font-semibold mt-2">Theme: National Spotlight</p>
                 <ul className="mt-3 space-y-2 list-disc list-inside text-gray-700">
@@ -96,7 +96,7 @@ export default function EventsPage() {
               </div>
 
               {/* October 2026 */}
-              <div className="border-l-4 border-gold pl-6 py-2">
+              <div className="border-l-4 border-purple pl-6 py-2">
                 <h3 className="font-playfair text-xl font-bold text-emerald-800">OCTOBER 2026 – PRE-FINALE PREPARATIONS</h3>
                 <p className="font-semibold mt-2">Theme: Excellence & Refinement</p>
                 <ul className="mt-3 space-y-2 list-disc list-inside text-gray-700">
@@ -110,7 +110,7 @@ export default function EventsPage() {
               </div>
 
               {/* November 2026 */}
-              <div className="border-l-4 border-gold pl-6 py-2">
+              <div className="border-l-4 border-purple pl-6 py-2">
                 <h3 className="font-playfair text-xl font-bold text-emerald-800">NOVEMBER 2026 – COUNTDOWN TO THE CROWN</h3>
                 <p className="font-semibold mt-2">Theme: The Road to the Crown</p>
                 <ul className="mt-3 space-y-2 list-disc list-inside text-gray-700">
@@ -123,7 +123,7 @@ export default function EventsPage() {
               </div>
 
               {/* December 2026 */}
-              <div className="border-l-4 border-gold pl-6 py-2">
+              <div className="border-l-4 border-purple pl-6 py-2">
                 <h3 className="font-playfair text-xl font-bold text-emerald-800">DECEMBER 2026 – GRAND FINALE & CORONATION</h3>
                 <p className="font-semibold mt-2">5 DECEMBER 2026 – MISS MALAWI GRAND FINALE</p>
                 <ul className="mt-3 space-y-2 list-disc list-inside text-gray-700">

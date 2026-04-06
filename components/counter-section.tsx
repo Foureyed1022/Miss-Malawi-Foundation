@@ -10,11 +10,11 @@ export default function CounterSection() {
     <section className="py-16 bg-[#212224] text-white">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <Counter icon={<Users className="h-10 w-10 text-gold" />} label="Contestants" endValue={500} suffix="+" />
-          <Counter icon={<Award className="h-10 w-10 text-gold" />} label="Queens Crowned" endValue={54} />
-          <Counter icon={<Calendar className="h-10 w-10 text-gold" />} label="Years of Legacy" endValue={27} />
+          <Counter icon={<Users className="h-10 w-10 text-purple" />} label="Contestants" endValue={500} suffix="+" />
+          <Counter icon={<Award className="h-10 w-10 text-purple" />} label="Queens Crowned" endValue={54} />
+          <Counter icon={<Calendar className="h-10 w-10 text-purple" />} label="Years of Legacy" endValue={27} />
           <Counter
-            icon={<Heart className="h-10 w-10 text-gold" />}
+            icon={<Heart className="h-10 w-10 text-purple" />}
             label="Lives Impacted"
             endValue={25000}
             suffix="+"

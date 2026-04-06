@@ -1,11 +1,21 @@
+"use client"
+
 import type React from "react"
 import Link from "next/link"
 import Image from "next/image"
+import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Facebook, Instagram, Twitter, Youtube } from "lucide-react"
 
 export default function Footer() {
+  const pathname = usePathname()
+  
+  // Hide footer on dashboard routes
+  if (pathname?.startsWith("/dashboard")) {
+    return null
+  }
+
   return (
     <footer className="bg-[#212224] text-white">
       <div className="container mx-auto px-4 md:px-6 py-12">
@@ -14,8 +24,8 @@ export default function Footer() {
             <Image 
               src="/logo.png" 
               alt="Miss Malawi Logo"
-              width={100}
-              height={33}
+              width={80}
+              height={26}
               className="h-auto mb-4"
             />
             <p className="text-white/80 mb-6">
@@ -33,32 +43,32 @@ export default function Footer() {
             <h4 className="font-bold text-lg mb-4">Quick Links</h4>
             <ul className="space-y-3">
               <li>
-                <Link href="/about" className="text-white/80 hover:text-gold transition-colors">
+                <Link href="/about" className="text-white/80 hover:text-purple transition-colors">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link href="/programs" className="text-white/80 hover:text-gold transition-colors">
+                <Link href="/programs" className="text-white/80 hover:text-purple transition-colors">
                   Programs & Projects
                 </Link>
               </li>
               <li>
-                <Link href="/pageant" className="text-white/80 hover:text-gold transition-colors">
+                <Link href="/pageant" className="text-white/80 hover:text-purple transition-colors">
                   Pageant Information
                 </Link>
               </li>
               <li>
-                <Link href="/gallery" className="text-white/80 hover:text-gold transition-colors">
+                <Link href="/gallery" className="text-white/80 hover:text-purple transition-colors">
                   Gallery
                 </Link>
               </li>
               <li>
-                <Link href="/news" className="text-white/80 hover:text-gold transition-colors">
+                <Link href="/news" className="text-white/80 hover:text-purple transition-colors">
                   News & Blog
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-white/80 hover:text-gold transition-colors">
+                <Link href="/contact" className="text-white/80 hover:text-purple transition-colors">
                   Contact Us
                 </Link>
               </li>
@@ -87,7 +97,7 @@ export default function Footer() {
                 placeholder="Your email address"
                 className="bg-white/10 border-white/20 text-white placeholder:text-white/60"
               />
-              <Button className="w-full bg-gold hover:bg-gold/90 text-black">Subscribe</Button>
+              <Button className="w-full bg-purple hover:bg-purple/90 text-black">Subscribe</Button>
             </div>
           </div>
         </div>
@@ -119,7 +129,7 @@ function SocialLink({ href, icon }: SocialLinkProps) {
   return (
     <Link
       href={href}
-      className="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-gold hover:text-black transition-colors"
+      className="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-purple hover:text-black transition-colors"
     >
       {icon}
     </Link>

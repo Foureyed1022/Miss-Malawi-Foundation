@@ -27,7 +27,7 @@ export default function DonatePage() {
               Your generous donation directly supports our programs and initiatives, creating meaningful change in the
               lives of young Malawian women and communities.
             </p>
-            <div className="w-24 h-1 bg-gold mx-auto mt-4"></div>
+            <div className="w-24 h-1 bg-purple mx-auto mt-4"></div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -473,7 +473,7 @@ export default function DonatePage() {
             <p className="text-gray-600 max-w-3xl mx-auto">
               Beyond online donations, there are several other ways you can support Miss Malawi Foundation
             </p>
-            <div className="w-24 h-1 bg-gold mx-auto mt-4"></div>
+            <div className="w-24 h-1 bg-purple mx-auto mt-4"></div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -521,7 +521,7 @@ export default function DonatePage() {
             <p className="text-gray-600 max-w-3xl mx-auto">
               We are grateful to our generous donors who make our work possible
             </p>
-            <div className="w-24 h-1 bg-gold mx-auto mt-4"></div>
+            <div className="w-24 h-1 bg-purple mx-auto mt-4"></div>
           </div>
 
           <div className="space-y-8">
@@ -587,7 +587,7 @@ export default function DonatePage() {
             <p className="text-gray-600 max-w-3xl mx-auto">
               Hear from our donors about why they choose to support Miss Malawi Foundation
             </p>
-            <div className="w-24 h-1 bg-gold mx-auto mt-4"></div>
+            <div className="w-24 h-1 bg-purple mx-auto mt-4"></div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -620,7 +620,7 @@ export default function DonatePage() {
             <h2 className="font-playfair text-3xl md:text-4xl font-bold text-[#212224] mb-4">
               Frequently Asked Questions
             </h2>
-            <div className="w-24 h-1 bg-gold mx-auto"></div>
+            <div className="w-24 h-1 bg-purple mx-auto"></div>
           </div>
 
           <div className="max-w-3xl mx-auto">
@@ -659,7 +659,7 @@ export default function DonatePage() {
               Your support empowers young Malawian women and creates lasting change in communities across the country.
               Join us in our mission to promote beauty, intelligence, and advocacy.
             </p>
-            <Button className="bg-gold hover:bg-gold/90 text-black text-lg px-8 py-6">
+            <Button className="bg-purple hover:bg-purple/90 text-black text-lg px-8 py-6">
               Donate Now <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </div>
@@ -712,7 +712,7 @@ function DonorStory({ image, name, title, quote }: DonorStoryProps) {
         </div>
         <div>
           <h3 className="text-lg font-bold text-gray-900">{name}</h3>
-          <p className="text-gold">{title}</p>
+          <p className="text-purple">{title}</p>
         </div>
       </div>
       <p className="text-gray-700 italic">"{quote}"</p>

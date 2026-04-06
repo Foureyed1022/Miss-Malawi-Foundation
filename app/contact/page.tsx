@@ -54,17 +54,17 @@ export default function ContactPage() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <ContactCard
-              icon={<MapPin className="h-8 w-8 text-gold" />}
+              icon={<MapPin className="h-8 w-8 text-purple" />}
               title="Our Location"
               details={["HewKam House, Area 43, Plot 43/1314", "Miss Malawi, P.O Box 143", "Capital City, Malawi"]}
             />
             <ContactCard
-              icon={<Phone className="h-8 w-8 text-gold" />}
+              icon={<Phone className="h-8 w-8 text-purple" />}
               title="Phone Numbers"
               details={["+265 996 263 843", "+265 882 922 062"]}
             />
             <ContactCard
-              icon={<Mail className="h-8 w-8 text-gold" />}
+              icon={<Mail className="h-8 w-8 text-purple" />}
               title="Email Address"
               details={["info@missmw.org"]}
             />
@@ -207,7 +207,7 @@ export default function ContactPage() {
             <p className="text-gray-600 max-w-3xl mx-auto">
               Find answers to common questions about contacting and working with Miss Malawi Foundation
             </p>
-            <div className="w-24 h-1 bg-gold mx-auto mt-4"></div>
+            <div className="w-24 h-1 bg-purple mx-auto mt-4"></div>
           </div>
 
           <div className="max-w-3xl mx-auto">

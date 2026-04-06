@@ -6,6 +6,7 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { CheckCircle } from "lucide-react"
+import { trackEvent } from "@/lib/analytics"
 
 export default function NewsletterForm() {
   const [email, setEmail] = useState("")
@@ -30,6 +31,13 @@ export default function NewsletterForm() {
     setTimeout(() => {
       setIsSubmitting(false)
       setIsSubscribed(true)
+
+      trackEvent({
+        name: "newsletter_subscribed",
+        source: "homepage_newsletter",
+        metadata: { email },
+      })
+
       setEmail("")
     }, 1500)
   }
@@ -38,7 +46,7 @@ export default function NewsletterForm() {
     <div>
       {isSubscribed ? (
         <div className="flex flex-col items-center space-y-2">
-          <CheckCircle className="h-12 w-12 text-gold" />
+          <CheckCircle className="h-12 w-12 text-purple" />
           <p className="text-center">
             Thank you for subscribing! You'll now receive updates about our programs, events, and success stories.
           </p>
@@ -56,7 +64,7 @@ export default function NewsletterForm() {
             />
             <Button
               type="submit"
-              className="bg-gold hover:bg-gold/90 text-black whitespace-nowrap"
+              className="bg-purple hover:bg-purple/90 text-black whitespace-nowrap"
               disabled={isSubmitting}
             >
               {isSubmitting ? "Subscribing..." : "Subscribe"}

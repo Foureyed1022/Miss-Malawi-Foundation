@@ -67,6 +67,7 @@ export async function submitDonation(formData: FormData) {
     isMonthly,
   }
 
+  let redirectUrl = ""
   try {
     const result = await processPayment(paymentData)
 
@@ -79,13 +80,17 @@ export async function submitDonation(formData: FormData) {
         isMonthly: isMonthly.toString(),
       })
 
-      redirect(`/donate/success?${params.toString()}`)
+      redirectUrl = `/donate/success?${params.toString()}`
     } else {
-      // Redirect to error page with error message
-      redirect(`/donate/error?message=${encodeURIComponent(result.error || "Payment failed")}`)
+      // Set error redirect URL
+      redirectUrl = `/donate/error?message=${encodeURIComponent(result.error || "Payment failed")}`
     }
   } catch (error) {
     console.error("Payment processing error:", error)
-    redirect("/donate/error?message=An unexpected error occurred")
+    redirectUrl = "/donate/error?message=An unexpected error occurred"
+  }
+
+  if (redirectUrl) {
+    redirect(redirectUrl)
   }
 }

@@ -3,12 +3,13 @@ import { AlertCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import PageHeader from "@/components/page-header"
 
-export default function DonationErrorPage({
+export default async function DonationErrorPage({
   searchParams,
 }: {
-  searchParams: { [key: string]: string | string[] | undefined }
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }) {
-  const errorMessage = (searchParams.message as string) || "An error occurred while processing your donation."
+  const resolvedParams = await searchParams
+  const errorMessage = (resolvedParams.message as string) || "An error occurred while processing your donation."
 
   return (
     <div className="flex flex-col w-full">

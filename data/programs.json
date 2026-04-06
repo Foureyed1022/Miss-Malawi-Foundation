@@ -1,0 +1,102 @@
+[
+  {
+    "id": "sustainable-fashion-sfwe",
+    "title": "Sustainable Fashion (SFWE)",
+    "description": "Driving social and economic transformation through sustainable fashion and entrepreneurship.",
+    "fullDescription": "Sustainable Fashion and Women Empowerment (SFWE) is a social enterprise founded by Thandie Chisi, Miss Malawi 2025. The initiative uses the creative power of fashion to drive socio-economic change for Malawian women and girls. By combining vocational training with sustainable practices, SFWE creates a pathway for financial independence and environmental conservation.",
+    "image": "/placeholder.svg?height=800&width=1200",
+    "mission": "To empower Malawian women and girls through sustainable fashion, fostering economic independence and environmental awareness.",
+    "impact": [
+      "Over 600 women and girls trained in vocational skills",
+      "Partnership with TEVETA for certified vocational training",
+      "Establishment of a sustainable fashion hub in Lilongwe"
+    ],
+    "activities": [
+      "Vocational training in tailoring and fashion design",
+      "Life skills and mentorship programs",
+      "Workshops on sustainable textiles and eco-friendly production",
+      "Youth Business Fair participation to showcase local creativity"
+    ],
+    "category": "Leadership"
+  },
+  {
+    "id": "keep-a-girl-in-school",
+    "title": "Keep a Girl in School",
+    "description": "Addressing menstrual poverty and ensuring girls stay in school with dignity.",
+    "fullDescription": "The 'Keep a Girl in School' project is a cornerstone initiative of the Miss Malawi Foundation under Thandie Chisi's reign. It addresses one of the primary reasons for school absenteeism among girls: the lack of access to menstrual hygiene products and education. The project promotes dignity, health, and education as fundamental rights.",
+    "image": "/placeholder.svg?height=800&width=1200",
+    "mission": "To eliminate menstrual poverty as a barrier to education for Malawian girls through sustainable products and comprehensive education.",
+    "impact": [
+      "Thousands of reusable sanitary pads distributed across rural Malawi",
+      "Menstrual hygiene education integrated into school outreach programs",
+      "Increased school attendance rates among participating girls"
+    ],
+    "activities": [
+      "Distribution of reusable sanitary pad kits",
+      "Menstrual hygiene and sexual reproductive health workshops",
+      "Human rights and legal awareness training for adolescent girls",
+      "Advocacy for improved sanitation facilities in rural schools"
+    ],
+    "category": "Education"
+  },
+  {
+    "id": "empower-her-now",
+    "title": "Empower Her Now",
+    "description": "Tailoring and sustainable livelihood project equipping women with vocational skills.",
+    "fullDescription": "'Empower Her Now' is a flagship vocational training project that targets vulnerable women and girls in underserved communities. By equipping them with high-demand tailoring skills and providing them with the tools and mentorship needed to start businesses, the project creates sustainable livelihoods and breaks the cycle of poverty.",
+    "image": "/placeholder.svg?height=800&width=1200",
+    "mission": "To provide vulnerable women with the technical skills and economic tools necessary to build sustainable livelihoods and achieve self-reliance.",
+    "impact": [
+      "Successful training of multiple cohorts of women across different regions",
+      "Over 60 sewing machines donated to graduates to start their businesses",
+      "Collaboration with NBS Bank for financial services access"
+    ],
+    "activities": [
+      "Intensive 6-month tailoring and garment construction course",
+      "Business management and entrepreneurship workshops",
+      "Mentorship from established Malawian fashion entrepreneurs",
+      "Graduation programs providing 'startup kits' (sewing machines and materials)"
+    ],
+    "category": "Community"
+  },
+  {
+    "id": "clean-energy-solutions",
+    "title": "Clean Energy Solutions",
+    "description": "Promoting sustainable cooking and energy alternatives for Malawian households.",
+    "fullDescription": "Recognizing the impact of deforestation and indoor air pollution, Miss Malawi 2025 Thandie Chisi champions the transition to clean energy. This initiative focuses on promoting accessible, sustainable alternatives to charcoal and firewood, protecting both the environment and the health of Malawian families.",
+    "image": "/placeholder.svg?height=800&width=1200",
+    "mission": "To protect Malawi's forests and improve family health by promoting the adoption of clean and sustainable energy solutions.",
+    "impact": [
+      "Demonstration projects for briquette production and usage",
+      "Awareness campaigns on the benefits of clean cooking reached thousands",
+      "Partnership with local environmental NGOs for community outreach"
+    ],
+    "activities": [
+      "Community workshops on producing and using biomass briquettes",
+      "Distribution and demonstration of solar energy lighting solutions",
+      "Advocacy for clean energy policies at the national level",
+      "Environmental conservation education in schools and communities"
+    ],
+    "category": "Community"
+  },
+  {
+    "id": "financial-literacy",
+    "title": "Financial Literacy Training",
+    "description": "Equipping young women with essential business skills and financial management knowledge.",
+    "fullDescription": "True empowerment requires both technical competence and economic intelligence. The Financial Literacy Training program is integrated into all Miss Malawi Foundation initiatives to ensure that participants can effectively manage the income they generate from their new skills, leading to long-term prosperity and independence.",
+    "image": "/placeholder.svg?height=800&width=1200",
+    "mission": "To bridge the gap between vocational skill acquisition and financial independence through comprehensive economic education.",
+    "impact": [
+      "Creation of several successful women-led small businesses",
+      "Improved household financial management among program graduates",
+      "Increased participation in formal banking and savings programs"
+    ],
+    "activities": [
+      "Workshops on bookkeeping and basic business accounting",
+      "Training on savings, investments, and credit management",
+      "Digital finance education to promote mobile money usage",
+      "Exposure to formal banking systems and loan opportunities"
+    ],
+    "category": "Leadership"
+  }
+]

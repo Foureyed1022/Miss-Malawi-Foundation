@@ -32,7 +32,7 @@ export default function PageantPage() {
 
               <div className="space-y-4 mb-8">
                 <div className="flex items-start">
-                  <Calendar className="h-5 w-5 text-gold mr-3 mt-0.5" />
+                  <Calendar className="h-5 w-5 text-purple mr-3 mt-0.5" />
                   <div>
                     <h3 className="font-bold text-gray-900">Key Dates</h3>
                     <p className="text-gray-700">Applications: April 1 - May 30, 2025</p>
@@ -43,7 +43,7 @@ export default function PageantPage() {
                 </div>
 
                 <div className="flex items-start">
-                  <MapPin className="h-5 w-5 text-gold mr-3 mt-0.5" />
+                  <MapPin className="h-5 w-5 text-purple mr-3 mt-0.5" />
                   <div>
                     <h3 className="font-bold text-gray-900">Venue</h3>
                     <p className="text-gray-700">Bingu International Convention Centre, Lilongwe</p>
@@ -51,7 +51,7 @@ export default function PageantPage() {
                 </div>
 
                 <div className="flex items-start">
-                  <Trophy className="h-5 w-5 text-gold mr-3 mt-0.5" />
+                  <Trophy className="h-5 w-5 text-purple mr-3 mt-0.5" />
                   <div>
                     <h3 className="font-bold text-gray-900">Prizes</h3>
                     <p className="text-gray-700">
@@ -63,7 +63,7 @@ export default function PageantPage() {
               </div>
 
               <Link href="/pageant/register">
-                <Button className="bg-gold hover:bg-gold/90 text-black">
+                <Button className="bg-purple hover:bg-purple/90 text-black">
                   Apply Now <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
@@ -259,7 +259,7 @@ export default function PageantPage() {
               Celebrating the legacy of exceptional women who have worn the Miss Malawi crown and their contributions to
               our nation.
             </p>
-            <div className="w-24 h-1 bg-gold mx-auto mt-4"></div>
+            <div className="w-24 h-1 bg-purple mx-auto mt-4"></div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -318,7 +318,7 @@ export default function PageantPage() {
               Miss Malawi has fronted some of its winners to shape a lasting legacy by representing Malawi at the Miss
               World beauty pageant.
             </p>
-            <div className="w-24 h-1 bg-gold mx-auto mt-4"></div>
+            <div className="w-24 h-1 bg-purple mx-auto mt-4"></div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -327,7 +327,7 @@ export default function PageantPage() {
                 <Image src="/placeholder.svg?height=600&width=400" alt="Elizabeth Pulu" fill className="object-cover" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-1">Elizabeth Pulu</h3>
-              <p className="text-gold font-medium mb-3">Miss Malawi 2001</p>
+              <p className="text-purple font-medium mb-3">Miss Malawi 2001</p>
               <p className="text-gray-700">
                 She made history as the first Miss Malawi to represent the country at the Miss World pageant, paving the
                 way for future queens to compete on international platforms.
@@ -339,7 +339,7 @@ export default function PageantPage() {
                 <Image src="/placeholder.svg?height=600&width=400" alt="Susan Mtegha" fill className="object-cover" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-1">Susan Mtegha</h3>
-              <p className="text-gold font-medium mb-3">Miss Malawi 2011</p>
+              <p className="text-purple font-medium mb-3">Miss Malawi 2011</p>
               <p className="text-gray-700">
                 Her participation in the Miss World pageant not only showcased Malawian beauty, culture, and talent on
                 an international platform but also demonstrated the potential for local pageantry to serve as a gateway
@@ -352,7 +352,7 @@ export default function PageantPage() {
                 <Image src="/placeholder.svg?height=600&width=400" alt="Ella Kabambe" fill className="object-cover" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-1">Ella Kabambe</h3>
-              <p className="text-gold font-medium mb-3">Miss Malawi 2012</p>
+              <p className="text-purple font-medium mb-3">Miss Malawi 2012</p>
               <p className="text-gray-700">
                 Followed in Elizabeth Pulu's footsteps by representing Malawi at the Miss World pageant, bringing
                 international recognition to the country's beauty industry.
@@ -369,7 +369,7 @@ export default function PageantPage() {
             <h2 className="font-playfair text-3xl md:text-4xl font-bold text-emerald-800 mb-4">
               Frequently Asked Questions
             </h2>
-            <div className="w-24 h-1 bg-gold mx-auto"></div>
+            <div className="w-24 h-1 bg-purple mx-auto"></div>
           </div>
 
           <div className="max-w-3xl mx-auto">
@@ -456,7 +456,7 @@ function QueenCard({ image, name, year, achievement }: QueenCardProps) {
       </div>
       <div className="p-4 text-center">
         <h3 className="text-xl font-bold text-gray-900">{name}</h3>
-        <p className="text-gold font-medium">Miss Malawi {year}</p>
+        <p className="text-purple font-medium">Miss Malawi {year}</p>
       </div>
     </div>
   )

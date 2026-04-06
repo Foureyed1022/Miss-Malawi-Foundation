@@ -143,12 +143,12 @@ function TimelineItem({ year, name, image, isLeft }: TimelineItemProps) {
               />
             </div>
             <h3 className="text-xl font-bold text-gray-900">{name}</h3>
-            <p className="text-gold font-medium">Miss Malawi {year}</p>
+            <p className="text-purple font-medium">Miss Malawi {year}</p>
           </div>
         </div>
 
         <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center">
-          <div className="h-8 w-8 rounded-full bg-gold border-4 border-white shadow"></div>
+          <div className="h-8 w-8 rounded-full bg-purple border-4 border-white shadow"></div>
         </div>
 
         <div className={`w-5/12 ${isLeft ? "text-left pl-8" : "text-right pr-8"}`}>

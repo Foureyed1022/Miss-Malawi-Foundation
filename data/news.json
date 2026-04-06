@@ -1,0 +1,47 @@
+{
+  "featured": {
+    "image": "/placeholder.svg?height=1000&width=800",
+    "title": "Thandie Chisi Crowned Miss Malawi 2025",
+    "date": "March 15, 2025",
+    "author": "Admin",
+    "paragraphs": [
+      "In a spectacular display of elegance and vision, Thandie Chisi has been crowned Miss Malawi 2025. Chisi, a sustainable fashion advocate and entrepreneur, stood out among the finalists for her clear commitment to women's empowerment and environmental conservation.",
+      "As part of her reign, Chisi plans to expand her Sustainable Fashion and Women Empowerment (SFWE) initiative, focusing on providing vocational skills to young women while promoting eco-friendly practices in Malawi's fashion industry."
+    ]
+  },
+  "articles": [
+    {
+      "id": 1,
+      "image": "/placeholder.svg?height=400&width=600",
+      "title": "SFWE Launches 'Keep a Girl in School' Project",
+      "excerpt": "The Sustainable Fashion and Women Empowerment initiative, led by Miss Malawi 2025 Thandie Chisi, has launched a nationwide campaign to address menstrual poverty and ensure girls stay in school with dignity.",
+      "date": "March 18, 2025",
+      "author": "SFWE Media Team"
+    },
+    {
+      "id": 2,
+      "image": "/placeholder.svg?height=400&width=600",
+      "title": "Miss Malawi Foundation Announces New Strategic Partnerships",
+      "excerpt": "Thandie Chisi has established key partnerships with the National Economic Empowerment Fund (NEEF) and other organizations to support her 'Empower Her Now' tailoring project.",
+      "date": "March 10, 2025",
+      "author": "Communications Team"
+    },
+    {
+      "id": 3,
+      "image": "/placeholder.svg?height=400&width=600",
+      "title": "Jescar Mponda Completes Impactful Reign",
+      "excerpt": "Jescar Mponda, Miss Malawi 2022, has officially handed over the crown, leaving behind a legacy of girls' education advocacy and rural community support.",
+      "date": "March 1, 2025",
+      "author": "Admin"
+    },
+    {
+      "id": 4,
+      "image": "/placeholder.svg?height=400&width=600",
+      "title": "Youth Business Fair Showcases Sustainable Innovation",
+      "excerpt": "Miss Malawi 2025 participated in the recent Youth Business Fair, highlighting how sustainable fashion can drive climate resilience and economic growth.",
+      "date": "February 25, 2025",
+      "author": "Events Coordinator"
+    }
+  ]
+}
+

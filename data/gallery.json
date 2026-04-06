@@ -1,0 +1,57 @@
+{
+  "events": [
+    { "id": 1, "title": "Miss Malawi 2022 Grand Finale", "src": "/placeholder.svg?height=600&width=800" },
+    { "id": 2, "title": "Regional Auditions - Northern Region", "src": "/placeholder.svg?height=600&width=800" },
+    { "id": 3, "title": "Boot Camp Training Session", "src": "/placeholder.svg?height=600&width=800" },
+    { "id": 4, "title": "Charity Gala Dinner", "src": "/placeholder.svg?height=600&width=800" },
+    {
+      "id": 5,
+      "title": "Miss Malawi at Independence Day Celebrations",
+      "src": "/placeholder.svg?height=600&width=800"
+    },
+    { "id": 6, "title": "Cultural Showcase Evening", "src": "/placeholder.svg?height=600&width=800" },
+    { "id": 7, "title": "Press Conference", "src": "/placeholder.svg?height=600&width=800" },
+    {
+      "id": 8,
+      "title": "Contestants Visit to Children's Hospital",
+      "src": "/placeholder.svg?height=600&width=800"
+    }
+  ],
+  "queens": [
+    { "id": 9, "title": "Jescar Mponda - Miss Malawi 2022", "src": "/placeholder.svg?height=800&width=600" },
+    { "id": 10, "title": "Tiwonge Munthali - Miss Malawi 2018", "src": "/placeholder.svg?height=800&width=600" },
+    { "id": 11, "title": "Cecelia Khofi - Miss Malawi 2017", "src": "/placeholder.svg?height=800&width=600" },
+    { "id": 12, "title": "Faith Chibale - Miss Malawi 2012", "src": "/placeholder.svg?height=800&width=600" },
+    { "id": 13, "title": "Ella Kabambe - Miss Malawi 2012", "src": "/placeholder.svg?height=800&width=600" },
+    { "id": 14, "title": "Susan Mtegha - Miss Malawi 2011", "src": "/placeholder.svg?height=800&width=600" }
+  ],
+  "programs": [
+    { "id": 15, "title": "Girls Education Initiative Launch", "src": "/placeholder.svg?height=600&width=800" },
+    { "id": 16, "title": "Women's Health Awareness Campaign", "src": "/placeholder.svg?height=600&width=800" },
+    {
+      "id": 17,
+      "title": "Cultural Heritage Preservation Workshop",
+      "src": "/placeholder.svg?height=600&width=800"
+    },
+    { "id": 18, "title": "Tree Planting Initiative", "src": "/placeholder.svg?height=600&width=800" },
+    {
+      "id": 19,
+      "title": "Leadership Training for Young Women",
+      "src": "/placeholder.svg?height=600&width=800"
+    },
+    { "id": 20, "title": "Community Outreach Program", "src": "/placeholder.svg?height=600&width=800" }
+  ],
+  "international": [
+    { "id": 21, "title": "Miss World 2012 - Ella Kabambe", "src": "/placeholder.svg?height=600&width=800" },
+    { "id": 22, "title": "Miss World 2011 - Susan Mtegha", "src": "/placeholder.svg?height=600&width=800" },
+    { "id": 23, "title": "Miss World 2001 - Elizabeth Pulu", "src": "/placeholder.svg?height=600&width=800" },
+    {
+      "id": 24,
+      "title": "International Cultural Exchange Program",
+      "src": "/placeholder.svg?height=600&width=800"
+    },
+    { "id": 25, "title": "Pan-African Beauty Pageant Summit", "src": "/placeholder.svg?height=600&width=800" },
+    { "id": 26, "title": "Global Youth Leadership Conference", "src": "/placeholder.svg?height=600&width=800" }
+  ]
+}
+

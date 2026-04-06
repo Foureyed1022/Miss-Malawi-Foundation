@@ -63,7 +63,7 @@ export default function ProgramsPage() {
             "Our programs are designed to create lasting impact and empower the next generation of Malawian women
             leaders."
           </p>
-          <p className="mt-4 text-gold font-medium">Miss Malawi Foundation</p>
+          <p className="mt-4 text-purple font-medium">Miss Malawi Foundation</p>
         </div>
       </ParallaxSection>
 
@@ -75,26 +75,29 @@ export default function ProgramsPage() {
             <p className="text-gray-600 max-w-3xl mx-auto">
               Our signature initiatives that create meaningful impact across Malawi
             </p>
-            <div className="w-24 h-1 bg-gold mx-auto mt-4"></div>
+            <div className="w-24 h-1 bg-purple mx-auto mt-4"></div>
           </ParallaxText>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <ProgramCard
+              id="keep-a-girl-in-school"
               icon={<GraduationCap className="h-8 w-8" />}
-              title="Girls Education Initiative"
-              description="Providing scholarships, mentorship, and resources to support girls' education across Malawi, with a focus on rural communities."
+              title="Keep a Girl in School"
+              description="Addressing menstrual poverty and ensuring girls stay in school with dignity."
               image="/placeholder.svg?height=400&width=600"
             />
             <ProgramCard
+              id="sustainable-fashion-sfwe"
               icon={<Heart className="h-8 w-8" />}
-              title="Women's Health Awareness"
-              description="Campaigns and outreach programs focused on reproductive health, maternal care, and general wellness for women of all ages."
+              title="Sustainable Fashion (SFWE)"
+              description="Driving social and economic transformation through sustainable fashion and entrepreneurship."
               image="/placeholder.svg?height=400&width=600"
             />
             <ProgramCard
+              id="empower-her-now"
               icon={<BookOpen className="h-8 w-8" />}
-              title="Cultural Heritage Preservation"
-              description="Projects dedicated to celebrating and preserving Malawian cultural traditions, arts, and practices for future generations."
+              title="Empower Her Now"
+              description="Tailoring and sustainable livelihood project equipping women with vocational skills."
               image="/placeholder.svg?height=400&width=600"
             />
           </div>
@@ -136,16 +139,16 @@ export default function ProgramsPage() {
                     </p>
                     <div className="space-y-4">
                       <ProgramItem
+                        title="Keep a Girl in School Project"
+                        description="Addressing menstrual poverty by distributing reusable sanitary pads and promoting menstrual hygiene education."
+                      />
+                      <ProgramItem
                         title="Miss Malawi Scholarship Fund"
                         description="Providing financial support to young women pursuing higher education in various fields."
                       />
                       <ProgramItem
                         title="Rural Schools Outreach"
                         description="Improving educational resources and infrastructure in underserved rural communities."
-                      />
-                      <ProgramItem
-                        title="Literacy Campaign"
-                        description="Promoting reading and writing skills through book donations and reading clubs."
                       />
                       <ProgramItem
                         title="STEM for Girls"
@@ -220,20 +223,20 @@ export default function ProgramsPage() {
                     </p>
                     <div className="space-y-4">
                       <ProgramItem
+                        title="SFWE Initiative"
+                        description="Sustainable Fashion and Women Empowerment: Driving social and economic transformation through fashion entrepreneurship."
+                      />
+                      <ProgramItem
+                        title="Financial Literacy Training"
+                        description="Equipping young women with essential business skills and financial management knowledge."
+                      />
+                      <ProgramItem
                         title="Young Leaders Mentorship"
                         description="Connecting aspiring young leaders with established professionals for guidance and support."
                       />
                       <ProgramItem
                         title="Public Speaking Workshop"
                         description="Building confidence and communication skills through structured training sessions."
-                      />
-                      <ProgramItem
-                        title="Entrepreneurship Training"
-                        description="Equipping young women with business skills and knowledge to start their own ventures."
-                      />
-                      <ProgramItem
-                        title="Civic Engagement Initiative"
-                        description="Encouraging participation in community decision-making and governance processes."
                       />
                     </div>
                   </ParallaxText>
@@ -304,20 +307,20 @@ export default function ProgramsPage() {
                     </p>
                     <div className="space-y-4">
                       <ProgramItem
+                        title="Empower Her Now"
+                        description="Tailoring and sustainable livelihood project equipping women with vocational skills."
+                      />
+                      <ProgramItem
+                        title="Clean Energy Solutions"
+                        description="Promoting sustainable cooking solutions like briquettes and solar energy for environmental conservation."
+                      />
+                      <ProgramItem
                         title="Clean Water Projects"
                         description="Improving access to clean water in rural communities through well construction and maintenance."
                       />
                       <ProgramItem
-                        title="Environmental Conservation"
-                        description="Tree planting and environmental education to combat deforestation and climate change."
-                      />
-                      <ProgramItem
                         title="Food Security Initiative"
                         description="Supporting sustainable agriculture and nutrition education in vulnerable communities."
-                      />
-                      <ProgramItem
-                        title="Community Infrastructure"
-                        description="Building and renovating community facilities such as schools, clinics, and markets."
                       />
                     </div>
                   </ParallaxText>
@@ -336,7 +339,7 @@ export default function ProgramsPage() {
             <p className="text-gray-600 max-w-3xl mx-auto">
               Real stories of transformation and empowerment through our programs
             </p>
-            <div className="w-24 h-1 bg-gold mx-auto mt-4"></div>
+            <div className="w-24 h-1 bg-purple mx-auto mt-4"></div>
           </ParallaxText>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -383,7 +386,7 @@ export default function ProgramsPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 text-center">
             <div className="bg-white/10 p-6 rounded-lg">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gold text-black mb-4">
+              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-purple text-black mb-4">
                 <Heart className="h-6 w-6" />
               </div>
               <h3 className="text-xl font-bold mb-2">Donate</h3>
@@ -396,7 +399,7 @@ export default function ProgramsPage() {
             </div>
 
             <div className="bg-white/10 p-6 rounded-lg">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gold text-black mb-4">
+              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-purple text-black mb-4">
                 <Users className="h-6 w-6" />
               </div>
               <h3 className="text-xl font-bold mb-2">Volunteer</h3>
@@ -409,7 +412,7 @@ export default function ProgramsPage() {
             </div>
 
             <div className="bg-white/10 p-6 rounded-lg">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gold text-black mb-4">
+              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-purple text-black mb-4">
                 <Lightbulb className="h-6 w-6" />
               </div>
               <h3 className="text-xl font-bold mb-2">Partner</h3>
@@ -428,20 +431,22 @@ export default function ProgramsPage() {
 }
 
 interface ProgramCardProps {
+  id?: string
   icon: React.ReactNode
   title: string
   description: string
   image: string
 }
 
-function ProgramCard({ icon, title, description, image }: ProgramCardProps) {
+function ProgramCard({ id, icon, title, description, image }: ProgramCardProps) {
+  const href = id ? `/programs/${id}` : "#"
   return (
     <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
       <div className="relative h-48">
         <Image src={image || "/placeholder.svg"} alt={title} fill className="object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
           <div className="p-4">
-            <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gold text-black mb-2">
+            <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-purple text-black mb-2">
               {icon}
             </div>
             <h3 className="text-xl font-bold text-white">{title}</h3>
@@ -449,8 +454,8 @@ function ProgramCard({ icon, title, description, image }: ProgramCardProps) {
         </div>
       </div>
       <div className="p-6">
-        <p className="text-gray-700 mb-4">{description}</p>
-        <Link href="#" className="text-emerald-800 font-medium inline-flex items-center hover:text-emerald-700">
+        <p className="text-gray-700 mb-4 h-20 line-clamp-3">{description}</p>
+        <Link href={href} className="text-emerald-800 font-medium inline-flex items-center hover:text-emerald-700">
           Learn more <ArrowRight className="ml-1 h-4 w-4" />
         </Link>
       </div>
@@ -465,7 +470,7 @@ interface ProgramItemProps {
 
 function ProgramItem({ title, description }: ProgramItemProps) {
   return (
-    <div className="border-l-4 border-gold pl-4 py-2">
+    <div className="border-l-4 border-purple pl-4 py-2">
       <h4 className="text-lg font-bold text-gray-900">{title}</h4>
       <p className="text-gray-700">{description}</p>
     </div>
@@ -488,7 +493,7 @@ function ImpactStory({ image, name, title, story }: ImpactStoryProps) {
         </div>
         <div>
           <h3 className="text-lg font-bold text-gray-900">{name}</h3>
-          <p className="text-gold">{title}</p>
+          <p className="text-purple">{title}</p>
         </div>
       </div>
       <div className="relative">

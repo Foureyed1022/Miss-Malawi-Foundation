@@ -3,9 +3,10 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
+import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { Menu, X, ChevronDown, ChevronRight } from "lucide-react"
+import { Menu, X, ChevronDown, ChevronRight, User } from "lucide-react"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 
 // Replace the entire Header component with this updated version
@@ -13,6 +14,7 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
+  const pathname = usePathname()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,6 +29,11 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  // Hide header entirely on dashboard routes
+  if (pathname?.startsWith("/dashboard")) {
+    return null
+  }
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -39,8 +46,8 @@ export default function Header() {
             <Image 
               src="/logo.png" 
               alt="Miss Malawi Logo"
-              width={70}
-              height={23}
+              width={56}
+              height={18}
               className={`h-auto ${isScrolled ? "text-[#212224]" : "text-white"}`}
             />
           </Link>
@@ -91,9 +98,19 @@ export default function Header() {
             <NavLink href="/contact" label="Contact" isScrolled={isScrolled} />
           </nav>
 
-          <div className="hidden md:block">
+          <div className="hidden md:flex items-center gap-3">
+            <Link href="/dashboard">
+              <Button
+                variant="ghost"
+                size="icon"
+                className={isScrolled ? "text-[#212224] hover:bg-gray-100" : "text-white hover:bg-white/10"}
+                aria-label="Dashboard"
+              >
+                <User className="h-4 w-4" />
+              </Button>
+            </Link>
             <Link href="/donate">
-              <Button className="bg-gold hover:bg-gold/90 text-black">Donate</Button>
+              <Button className="bg-purple hover:bg-purple/90 text-black">Donate</Button>
             </Link>
           </div>
 
@@ -115,8 +132,8 @@ export default function Header() {
                   <Image 
                     src="/logo.png" 
                     alt="Miss Malawi Logo"
-                    width={80}
-                    height={27}
+                    width={64}
+                    height={22}
                     className="h-auto"
                   />
                   <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(false)}>
@@ -127,6 +144,7 @@ export default function Header() {
                 <nav className="flex flex-col py-6">
                   <MobileNavLink href="/" label="Home" setIsOpen={setIsMobileMenuOpen} />
                   <MobileNavLink href="/events" label="Events" setIsOpen={setIsMobileMenuOpen} />
+                  <MobileNavLink href="/dashboard" label="Dashboard" setIsOpen={setIsMobileMenuOpen} />
 
                   {/* Mobile Dropdowns */}
                   <MobileDropdown
@@ -171,7 +189,7 @@ export default function Header() {
                 </nav>
                 <div className="mt-auto py-6 border-t">
                   <Link href="/donate" onClick={() => setIsMobileMenuOpen(false)}>
-                    <Button className="w-full bg-gold hover:bg-gold/90 text-black">Donate</Button>
+                    <Button className="w-full bg-purple hover:bg-purple/90 text-black">Donate</Button>
                   </Link>
                 </div>
               </div>
@@ -193,7 +211,7 @@ function NavLink({ href, label, isScrolled }: NavLinkProps) {
   return (
     <Link
       href={href}
-      className={`font-medium hover:text-gold transition-colors ${isScrolled ? "text-gray-800" : "text-white"}`}
+      className={`font-medium hover:text-purple transition-colors ${isScrolled ? "text-gray-800" : "text-white"}`}
     >
       {label}
     </Link>
@@ -211,7 +229,7 @@ function DesktopDropdown({ label, isScrolled, items }: DesktopDropdownProps) {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <button
-          className={`flex items-center font-medium hover:text-gold transition-colors ${isScrolled ? "text-gray-800" : "text-white"}`}
+          className={`flex items-center font-medium hover:text-purple transition-colors ${isScrolled ? "text-gray-800" : "text-white"}`}
         >
           {label} <ChevronDown className="ml-1 h-4 w-4" />
         </button>
@@ -239,7 +257,7 @@ function MobileNavLink({ href, label, setIsOpen }: MobileNavLinkProps) {
   return (
     <Link
       href={href}
-      className="text-lg font-medium text-gray-800 hover:text-gold transition-colors py-3 px-4"
+      className="text-lg font-medium text-gray-800 hover:text-purple transition-colors py-3 px-4"
       onClick={() => setIsOpen(false)}
     >
       {label}
@@ -258,7 +276,7 @@ function MobileDropdown({ label, isActive, setActive, items }: MobileDropdownPro
   return (
     <div className="border-b border-gray-100">
       <button
-        className="flex items-center justify-between w-full text-lg font-medium text-gray-800 hover:text-gold transition-colors py-3 px-4"
+        className="flex items-center justify-between w-full text-lg font-medium text-gray-800 hover:text-purple transition-colors py-3 px-4"
         onClick={setActive}
       >
         {label}
@@ -271,7 +289,7 @@ function MobileDropdown({ label, isActive, setActive, items }: MobileDropdownPro
             <Link
               key={item.href}
               href={item.href}
-              className="block text-gray-700 hover:text-gold py-2 px-4 text-base"
+              className="block text-gray-700 hover:text-purple py-2 px-4 text-base"
               onClick={() => item.setIsOpen(false)}
             >
               {item.label}
