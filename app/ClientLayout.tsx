@@ -3,7 +3,7 @@
 import { usePathname } from 'next/navigation'
 import Header from '@/components/header'
 import Image from "next/image"
-import logo from "@/public/missmalawi-logo.png";
+import logo from "@/public/logo.png";
 import { ChevronRight, Facebook, Instagram } from "lucide-react"
 import Link from "next/link"
 
