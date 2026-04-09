@@ -19,7 +19,9 @@ import {
   BadgeDollarSign,
   Target,
   Crown,
-  FolderOpen
+  FolderOpen,
+  ClipboardList,
+  MessageSquare
 } from "lucide-react"
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
@@ -36,6 +38,8 @@ const navItems = [
   { href: "/dashboard/team", label: "Team", icon: Users },
   { href: "/dashboard/finances", label: "Finances", icon: BadgeDollarSign },
   { href: "/dashboard/strategy", label: "Strategy", icon: Target },
+  { href: "/dashboard/applicants", label: "Applicants", icon: ClipboardList },
+  { href: "/dashboard/messages", label: "Messages", icon: MessageSquare },
   { href: "/dashboard/settings", label: "Settings", icon: Settings },
 ]
 
