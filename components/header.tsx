@@ -55,7 +55,6 @@ export default function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-6">
             <NavLink href="/" label="Home" isScrolled={isScrolled} />
-            <NavLink href="/events" label="Events" isScrolled={isScrolled} />
 
             {/* About Dropdown */}
             <DesktopDropdown
@@ -95,6 +94,7 @@ export default function Header() {
               ]}
             />
 
+            <NavLink href="/events" label="Events" isScrolled={isScrolled} />
             <NavLink href="/contact" label="Contact" isScrolled={isScrolled} />
           </nav>
 
@@ -143,7 +143,6 @@ export default function Header() {
                 </div>
                 <nav className="flex flex-col py-6">
                   <MobileNavLink href="/" label="Home" setIsOpen={setIsMobileMenuOpen} />
-                  <MobileNavLink href="/events" label="Events" setIsOpen={setIsMobileMenuOpen} />
                   <MobileNavLink href="/dashboard" label="Dashboard" setIsOpen={setIsMobileMenuOpen} />
 
                   {/* Mobile Dropdowns */}
@@ -185,6 +184,7 @@ export default function Header() {
                     ]}
                   />
 
+                  <MobileNavLink href="/events" label="Events" setIsOpen={setIsMobileMenuOpen} />
                   <MobileNavLink href="/contact" label="Contact" setIsOpen={setIsMobileMenuOpen} />
                 </nav>
                 <div className="mt-auto py-6 border-t">

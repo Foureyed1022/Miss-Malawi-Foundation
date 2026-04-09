@@ -44,9 +44,11 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 interface ApplicantsViewProps {
   applicants: Applicant[];
+  onUpdateStatus: (id: string, status: Applicant['applicationStatus']) => void;
+  onDelete: (id: string) => void;
 }
 
-export default function ApplicantsView({ applicants }: ApplicantsViewProps) {
+export default function ApplicantsView({ applicants, onUpdateStatus, onDelete }: ApplicantsViewProps) {
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
   const [selectedApplicant, setSelectedApplicant] = useState<Applicant | null>(null);
@@ -158,11 +160,23 @@ export default function ApplicantsView({ applicants }: ApplicantsViewProps) {
                           <DropdownMenuItem className="flex gap-2" onClick={() => setSelectedApplicant(applicant)}>
                             <Eye className="h-4 w-4" /> View Details
                           </DropdownMenuItem>
-                          <DropdownMenuItem className="flex gap-2 text-green-600 focus:text-green-600">
+                           <DropdownMenuItem 
+                            className="flex gap-2 text-green-600 focus:text-green-600"
+                            onClick={() => onUpdateStatus(applicant.id, 'approved')}
+                          >
                             <CheckCircle className="h-4 w-4" /> Approve
                           </DropdownMenuItem>
-                          <DropdownMenuItem className="flex gap-2 text-red-600 focus:text-red-600">
+                          <DropdownMenuItem 
+                            className="flex gap-2 text-red-600 focus:text-red-600"
+                            onClick={() => onUpdateStatus(applicant.id, 'rejected')}
+                          >
                             <XCircle className="h-4 w-4" /> Reject
+                          </DropdownMenuItem>
+                          <DropdownMenuItem 
+                            className="flex gap-2 text-red-500 focus:text-red-500"
+                            onClick={() => onDelete(applicant.id)}
+                          >
+                            <Users className="h-4 w-4" /> Delete Applicant
                           </DropdownMenuItem>
                         </DropdownMenuContent>
                       </DropdownMenu>
@@ -208,8 +222,25 @@ export default function ApplicantsView({ applicants }: ApplicantsViewProps) {
                   </div>
                 </div>
                 <div className="flex flex-col gap-2">
-                  <Button className="bg-[#9C8653] hover:bg-[#8A7542] text-white">Approve Application</Button>
-                  <Button variant="outline" className="text-red-600 hover:text-red-700 border-red-200">Reject Application</Button>
+                  <Button 
+                    className="bg-[#9C8653] hover:bg-[#8A7542] text-white"
+                    onClick={() => {
+                      onUpdateStatus(selectedApplicant.id, 'approved');
+                      setSelectedApplicant({...selectedApplicant, applicationStatus: 'approved'});
+                    }}
+                  >
+                    Approve Application
+                  </Button>
+                  <Button 
+                    variant="outline" 
+                    className="text-red-600 hover:text-red-700 border-red-200"
+                    onClick={() => {
+                      onUpdateStatus(selectedApplicant.id, 'rejected');
+                      setSelectedApplicant({...selectedApplicant, applicationStatus: 'rejected'});
+                    }}
+                  >
+                    Reject Application
+                  </Button>
                 </div>
               </div>
 

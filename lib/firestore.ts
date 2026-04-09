@@ -187,6 +187,31 @@ export const getApplicant = async (id: string): Promise<Applicant | null> => {
   }
 };
 
+export const updateApplicantStatus = async (id: string, status: Applicant['applicationStatus']): Promise<boolean> => {
+  try {
+    const applicantRef = doc(db, 'applicant', id);
+    await updateDoc(applicantRef, { 
+      applicationStatus: status,
+      updatedAt: Timestamp.now()
+    });
+    return true;
+  } catch (error) {
+    console.error('Error updating applicant status:', error);
+    return false;
+  }
+};
+
+export const deleteApplicant = async (id: string): Promise<boolean> => {
+  try {
+    const applicantRef = doc(db, 'applicant', id);
+    await deleteDoc(applicantRef);
+    return true;
+  } catch (error) {
+    console.error('Error deleting applicant:', error);
+    return false;
+  }
+};
+
 // Contact Messages
 export const getContactMessages = async (): Promise<ContactMessage[]> => {
   if (!auth.currentUser) return [];

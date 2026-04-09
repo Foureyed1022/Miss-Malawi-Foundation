@@ -19,29 +19,23 @@ export default function Footer() {
   return (
     <footer className="bg-[#212224] text-white">
       <div className="container mx-auto px-4 md:px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           <div>
             <Image 
               src="/logo.png" 
               alt="Miss Malawi Logo"
-              width={80}
-              height={26}
-              className="h-auto mb-4"
+              width={100}
+              height={32}
+              className="h-auto mb-6"
             />
-            <p className="text-white/80 mb-6">
-              Empowering young Malawian women through beauty, intelligence, and advocacy since 1968.
+            <p className="text-white/80 mb-6 leading-relaxed max-w-sm">
+              Empowering young Malawian women through beauty, intelligence, and advocacy since 1968. Our mission is to promote cultural heritage and social impact throughout the Warm Heart of Africa.
             </p>
-            <div className="flex space-x-4">
-              <SocialLink href="#" icon={<Facebook className="h-5 w-5" />} />
-              <SocialLink href="#" icon={<Instagram className="h-5 w-5" />} />
-              <SocialLink href="#" icon={<Twitter className="h-5 w-5" />} />
-              <SocialLink href="#" icon={<Youtube className="h-5 w-5" />} />
-            </div>
           </div>
 
           <div>
-            <h4 className="font-bold text-lg mb-4">Quick Links</h4>
-            <ul className="space-y-3">
+            <h4 className="font-bold text-lg mb-6 uppercase tracking-wider">Navigation</h4>
+            <ul className="grid grid-cols-1 gap-3">
               <li>
                 <Link href="/about" className="text-white/80 hover:text-purple transition-colors">
                   About Us
@@ -76,28 +70,21 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-bold text-lg mb-4">Contact Information</h4>
-            <address className="not-italic text-white/80 space-y-3">
+            <h4 className="font-bold text-lg mb-6 uppercase tracking-wider">Contact Details</h4>
+            <address className="not-italic text-white/80 space-y-4 mb-8">
               <p>HewKam House, Area 43, Plot 43/1314</p>
               <p>Miss Malawi, P.O Box 143</p>
               <p>Capital City, Malawi</p>
-              <p className="pt-2">Phone: +265 996 263 843 / +265 882 922 062</p>
-              <p>Email: info@missmw.org</p>
+              <div className="pt-2">
+                <p>Phone: +265 996 263 843 / +265 882 922 062</p>
+                <p>Email: info@missmw.org</p>
+              </div>
             </address>
-          </div>
-
-          <div>
-            <h4 className="font-bold text-lg mb-4">Newsletter</h4>
-            <p className="text-white/80 mb-4">
-              Subscribe to our newsletter for updates on events, programs, and success stories.
-            </p>
-            <div className="space-y-3">
-              <Input
-                type="email"
-                placeholder="Your email address"
-                className="bg-white/10 border-white/20 text-white placeholder:text-white/60"
-              />
-              <Button className="w-full bg-purple hover:bg-purple/90 text-black">Subscribe</Button>
+            <div className="flex space-x-4">
+              <SocialLink href="#" icon={<Facebook className="h-5 w-5" />} />
+              <SocialLink href="#" icon={<Instagram className="h-5 w-5" />} />
+              <SocialLink href="#" icon={<Twitter className="h-5 w-5" />} />
+              <SocialLink href="#" icon={<Youtube className="h-5 w-5" />} />
             </div>
           </div>
         </div>

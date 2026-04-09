@@ -16,6 +16,7 @@ import CounterSection, { Counter } from "@/components/counter-section"
 import TestimonialCarousel from "@/components/testimonial-carousel"
 import ParallaxText from "@/components/parallax-text"
 import NewsletterForm from "@/components/newsletter-form"
+import UpcomingEventsCarousel from "@/components/upcoming-events-carousel"
 
 export default function Home() {
   return (
@@ -154,28 +155,14 @@ export default function Home() {
             <div className="w-24 h-1 bg-purple mx-auto"></div>
           </ParallaxText>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <EventCard
-              date="May 15, 2026"
-              title="Miss Malawi Auditions - Northern Region"
-              location="Mzuzu University Auditorium"
-            />
-            <EventCard
-              date="June 2, 2026"
-              title="Miss Malawi Auditions - Central Region"
-              location="Bingu International Convention Centre"
-            />
-            <EventCard
-              date="June 20, 2026"
-              title="Miss Malawi Auditions - Southern Region"
-              location="Mount Soche Hotel, Blantyre"
-            />
-          </div>
+          <UpcomingEventsCarousel />
 
           <div className="text-center mt-12">
-            <Button variant="outline" className="border-[#212224] text-[#212224] hover:bg-[#212224]/5">
-              View Full Calendar <Calendar className="ml-2 h-4 w-4" />
-            </Button>
+            <Link href="/events">
+              <Button className="bg-purple hover:bg-purple/90 text-black shadow-lg">
+                View Full Calendar <Calendar className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
