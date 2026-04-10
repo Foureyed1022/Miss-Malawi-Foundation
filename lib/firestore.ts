@@ -1,21 +1,22 @@
-import { 
-  collection, 
-  doc, 
-  getDocs, 
-  getDoc, 
-  addDoc, 
-  updateDoc, 
-  deleteDoc, 
-  query, 
-  orderBy, 
-  where, 
+import {
+  collection,
+  doc,
+  getDocs,
+  getDoc,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+  setDoc,
+  query,
+  orderBy,
+  where,
   limit,
   Timestamp,
   DocumentData,
   QuerySnapshot
 } from 'firebase/firestore';
 import { auth, db } from './firebase';
-import { NewsArticle, Applicant, ContactMessage, Donation, Subscriber, AnalyticsEvent } from '@/types';
+import { NewsArticle, Applicant, ContactMessage, Donation, Subscriber, AnalyticsEvent, UserProfile, SiteStats } from '@/types';
 import toast from 'react-hot-toast';
 
 // Categories Management
@@ -23,12 +24,12 @@ export const getCategories = async (): Promise<string[]> => {
   try {
     const categoriesRef = collection(db, 'categories');
     const snapshot = await getDocs(categoriesRef);
-    
+
     if (snapshot.empty) {
       // Return default categories if none exist
       return ['Pageant', 'Community', 'Fashion', 'Events', 'Winners'];
     }
-    
+
     return snapshot.docs.map(doc => doc.data().name);
   } catch (error) {
     console.error('Error fetching categories:', error);
@@ -57,7 +58,7 @@ export const deleteCategory = async (categoryName: string): Promise<boolean> => 
     const categoriesRef = collection(db, 'categories');
     const q = query(categoriesRef, where('name', '==', categoryName));
     const snapshot = await getDocs(q);
-    
+
     if (!snapshot.empty) {
       await deleteDoc(snapshot.docs[0].ref);
       toast.success('Category deleted successfully');
@@ -77,7 +78,7 @@ export const getNewsArticles = async (): Promise<NewsArticle[]> => {
     const articlesRef = collection(db, 'articles');
     const q = query(articlesRef, orderBy('createdAt', 'desc'));
     const snapshot = await getDocs(q);
-    
+
     return snapshot.docs.map(doc => ({
       id: doc.id,
       ...doc.data(),
@@ -139,7 +140,7 @@ export const getApplicants = async (): Promise<Applicant[]> => {
     const applicantsRef = collection(db, 'applicant');
     const q = query(applicantsRef, orderBy('createdAt', 'desc'));
     const snapshot = await getDocs(q);
-    
+
     return snapshot.docs.map(doc => ({
       id: doc.id,
       ...doc.data(),
@@ -171,7 +172,7 @@ export const getApplicant = async (id: string): Promise<Applicant | null> => {
   try {
     const applicantRef = doc(db, 'applicant', id);
     const snapshot = await getDoc(applicantRef);
-    
+
     if (snapshot.exists()) {
       return {
         id: snapshot.id,
@@ -187,6 +188,33 @@ export const getApplicant = async (id: string): Promise<Applicant | null> => {
   }
 };
 
+export const updateApplicantStatus = async (id: string, status: Applicant['applicationStatus']): Promise<boolean> => {
+  try {
+    const applicantRef = doc(db, 'applicant', id);
+    await updateDoc(applicantRef, {
+      applicationStatus: status,
+      updatedAt: Timestamp.now(),
+    });
+    return true;
+  } catch (error) {
+    console.error('Error updating applicant status:', error);
+    toast.error('Failed to update applicant status');
+    return false;
+  }
+};
+
+export const deleteApplicant = async (id: string): Promise<boolean> => {
+  try {
+    const applicantRef = doc(db, 'applicant', id);
+    await deleteDoc(applicantRef);
+    return true;
+  } catch (error) {
+    console.error('Error deleting applicant:', error);
+    return false;
+  }
+};
+
+
 // Contact Messages
 export const getContactMessages = async (): Promise<ContactMessage[]> => {
   if (!auth.currentUser) return [];
@@ -195,7 +223,7 @@ export const getContactMessages = async (): Promise<ContactMessage[]> => {
     const messagesRef = collection(db, 'contact_messages');
     const q = query(messagesRef, orderBy('createdAt', 'desc'));
     const snapshot = await getDocs(q);
-    
+
     return snapshot.docs.map(doc => {
       const data = doc.data();
       let createdAt: string;
@@ -274,7 +302,7 @@ export const getDonations = async (): Promise<Donation[]> => {
     const donationsRef = collection(db, 'donations');
     const q = query(donationsRef, orderBy('createdAt', 'desc'));
     const snapshot = await getDocs(q);
-    
+
     return snapshot.docs.map(doc => ({
       id: doc.id,
       ...doc.data(),
@@ -303,6 +331,34 @@ export const saveSubscriber = async (email: string, source: string): Promise<boo
     return true;
   } catch (error) {
     console.error('Error saving subscriber:', error);
+    throw error;
+  }
+};
+
+export const getSubscribers = async (): Promise<Subscriber[]> => {
+  try {
+    const subscribersRef = collection(db, 'subscribers');
+    const q = query(subscribersRef, orderBy('createdAt', 'desc'));
+    const snapshot = await getDocs(q);
+
+    return snapshot.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data(),
+      createdAt: doc.data().createdAt?.toDate() || new Date(),
+    })) as Subscriber[];
+  } catch (error) {
+    console.error('Error fetching subscribers:', error);
+    return [];
+  }
+};
+
+export const deleteSubscriber = async (id: string): Promise<boolean> => {
+  try {
+    const subscriberRef = doc(db, 'subscribers', id);
+    await deleteDoc(subscriberRef);
+    return true;
+  } catch (error) {
+    console.error('Error deleting subscriber:', error);
     return false;
   }
 };
@@ -313,6 +369,7 @@ export const saveAnalyticsEvent = async (event: Omit<AnalyticsEvent, 'id' | 'tim
     const eventsRef = collection(db, 'analytics_events');
     await addDoc(eventsRef, {
       ...event,
+      metadata: event.metadata || {},
       timestamp: Timestamp.now(),
     });
   } catch (error) {
@@ -405,7 +462,7 @@ export const getDailyVisits = async (days = 7) => {
   try {
     const cutoff = new Date();
     cutoff.setDate(cutoff.getDate() - days);
-    
+
     const q = query(
       collection(db, 'analytics_events'),
       where('name', '==', 'page_view'),
@@ -413,10 +470,10 @@ export const getDailyVisits = async (days = 7) => {
       orderBy('timestamp', 'asc')
     );
     const snapshot = await getDocs(q);
-    
+
     const visitsByDay: Record<string, number> = {};
     const labels = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-    
+
     // Initialize last 7 days
     for (let i = 0; i < days; i++) {
       const d = new Date();
@@ -424,7 +481,7 @@ export const getDailyVisits = async (days = 7) => {
       const label = labels[d.getDay()];
       visitsByDay[label] = 0;
     }
-    
+
     snapshot.docs.forEach(doc => {
       const date = doc.data().timestamp.toDate() as Date;
       const label = labels[date.getDay()];
@@ -432,7 +489,7 @@ export const getDailyVisits = async (days = 7) => {
         visitsByDay[label]++;
       }
     });
-    
+
     // Convert back to sorted array (matching trafficData format)
     const today = new Date().getDay();
     const result = [];
@@ -453,18 +510,18 @@ export const getMonthlyDonations = async () => {
   try {
     const q = query(collection(db, 'donations'), orderBy('createdAt', 'asc'));
     const snapshot = await getDocs(q);
-    
+
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     const donationsByMonth: Record<string, number> = {};
-    
+
     months.forEach(m => donationsByMonth[m] = 0);
-    
+
     snapshot.docs.forEach(doc => {
       const date = doc.data().createdAt.toDate() as Date;
       const month = months[date.getMonth()];
       donationsByMonth[month] += Number(doc.data().amount || 0);
     });
-    
+
     return months.map(label => ({ label, amount: donationsByMonth[label] }));
   } catch (error) {
     console.error('Error fetching monthly donations:', error);
@@ -490,8 +547,8 @@ export const getStatistics = async () => {
 
   try {
     const [
-      articlesSnapshot, 
-      applicantsSnapshot, 
+      articlesSnapshot,
+      applicantsSnapshot,
       messagesSnapshot,
       donationsSnapshot,
       subscribersSnapshot,
@@ -506,7 +563,7 @@ export const getStatistics = async () => {
     ]);
 
     const newMessagesQuery = query(
-      collection(db, 'contact_messages'), 
+      collection(db, 'contact_messages'),
       where('status', '==', 'new')
     );
     const newMessagesSnapshot = await getDocs(newMessagesQuery);
@@ -525,3 +582,130 @@ export const getStatistics = async () => {
     throw new Error('Failed to fetch statistics');
   }
 };
+
+// User Profile Management
+export const getUserProfile = async (uid: string): Promise<UserProfile | null> => {
+  try {
+    const userRef = doc(db, 'users', uid);
+    const snapshot = await getDoc(userRef);
+
+    if (snapshot.exists()) {
+      const data = snapshot.data();
+      return {
+        uid: snapshot.id,
+        ...data,
+        createdAt: data.createdAt?.toDate() || new Date(),
+        updatedAt: data.updatedAt?.toDate() || new Date(),
+      } as UserProfile;
+    }
+    return null;
+  } catch (error) {
+    console.error('Error fetching user profile:', error);
+    return null;
+  }
+};
+
+export const updateUserProfile = async (uid: string, profile: Partial<UserProfile>): Promise<void> => {
+  try {
+    const userRef = doc(db, 'users', uid);
+    await updateDoc(userRef, {
+      ...profile,
+      updatedAt: Timestamp.now(),
+    });
+  } catch (error) {
+    console.error('Error updating user profile:', error);
+    throw new Error('Failed to update profile');
+  }
+};
+
+export const createUserProfile = async (uid: string, profile: Omit<UserProfile, 'uid' | 'createdAt' | 'updatedAt'>): Promise<void> => {
+  try {
+    const userRef = doc(db, 'users', uid);
+    const snapshot = await getDoc(userRef);
+
+    if (!snapshot.exists()) {
+      await setDoc(userRef, {
+        ...profile,
+        createdAt: Timestamp.now(),
+        updatedAt: Timestamp.now(),
+      });
+    }
+  } catch (error) {
+    console.error('Error creating user profile:', error);
+    throw new Error('Failed to create user profile');
+  }
+};
+
+export const getAllUsers = async (): Promise<UserProfile[]> => {
+  try {
+    const usersRef = collection(db, 'users');
+    const q = query(usersRef, orderBy('createdAt', 'desc'));
+    const snapshot = await getDocs(q);
+
+    return snapshot.docs.map(doc => ({
+      uid: doc.id,
+      ...doc.data(),
+      createdAt: doc.data().createdAt?.toDate() || new Date(),
+      updatedAt: doc.data().updatedAt?.toDate() || new Date(),
+    })) as UserProfile[];
+  } catch (error) {
+    console.error('Error fetching all users:', error);
+    return [];
+  }
+};
+
+// Default stats fallback
+const DEFAULT_STATS: SiteStats = {
+  contestants: 0,
+  queensCrowned: 0,
+  yearsOfLegacy: 0,
+  livesImpacted: 0,
+};
+
+// Site Statistics (Impact Counters)
+export const getSiteStats = async (): Promise<SiteStats> => {
+  try {
+    const statsRef = doc(db, 'settings', 'site_stats');
+    const snapshot = await getDoc(statsRef);
+
+    if (snapshot.exists()) {
+      const data = snapshot.data();
+      return {
+        ...DEFAULT_STATS,
+        ...data,
+        updatedAt: data.updatedAt?.toDate() || undefined,
+      } as SiteStats;
+    }
+    // If doc doesn't exist yet, seed it with defaults
+    await setDoc(statsRef, {
+      ...DEFAULT_STATS,
+      updatedAt: Timestamp.now(),
+    });
+    return DEFAULT_STATS;
+  } catch (error) {
+    console.error('Error fetching site stats:', error);
+    return DEFAULT_STATS;
+  }
+};
+
+export const updateSiteStats = async (stats: Partial<SiteStats>): Promise<boolean> => {
+  try {
+    const statsRef = doc(db, 'settings', 'site_stats');
+    await setDoc(
+      statsRef,
+      {
+        ...stats,
+        updatedAt: Timestamp.now(),
+      },
+      { merge: true }
+    );
+    toast.success('Impact statistics updated successfully!');
+    return true;
+  } catch (error) {
+    console.error('Error updating site stats:', error);
+    toast.error('Failed to update statistics.');
+    return false;
+  }
+};
+
+

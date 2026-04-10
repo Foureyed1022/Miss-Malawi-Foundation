@@ -1,19 +1,58 @@
 "use client"
 
 import type React from "react"
+import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Facebook, Instagram, Twitter, Youtube } from "lucide-react"
+import { Facebook, Instagram, Youtube } from "lucide-react"
+import toast from "react-hot-toast"
 
 export default function Footer() {
   const pathname = usePathname()
-  
+  const [email, setEmail] = useState("")
+  const [isLoading, setIsLoading] = useState(false)
+
   // Hide footer on dashboard routes
   if (pathname?.startsWith("/dashboard")) {
     return null
+  }
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault()
+
+    if (!email) {
+      toast.error("Please enter your email address")
+      return
+    }
+
+    setIsLoading(true)
+
+    try {
+      const response = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, source: "footer" }),
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        toast.success("Successfully subscribed to newsletter!")
+        setEmail("")
+      } else {
+        toast.error(data.error || "Failed to subscribe. Please try again.")
+      }
+    } catch (error) {
+      console.error("Subscription error:", error)
+      toast.error("An error occurred. Please try again later.")
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -21,8 +60,8 @@ export default function Footer() {
       <div className="container mx-auto px-4 md:px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
-            <Image 
-              src="/logo.png" 
+            <Image
+              src="/logo.png"
               alt="Miss Malawi Logo"
               width={80}
               height={26}
@@ -32,10 +71,33 @@ export default function Footer() {
               Empowering young Malawian women through beauty, intelligence, and advocacy since 1968.
             </p>
             <div className="flex space-x-4">
-              <SocialLink href="#" icon={<Facebook className="h-5 w-5" />} />
-              <SocialLink href="#" icon={<Instagram className="h-5 w-5" />} />
-              <SocialLink href="#" icon={<Twitter className="h-5 w-5" />} />
-              <SocialLink href="#" icon={<Youtube className="h-5 w-5" />} />
+              <SocialLink href="https://web.facebook.com/mismalawi" icon={<Facebook className="h-5 w-5" />} />
+              <SocialLink href="https://www.instagram.com/miss_malawi_org/" icon={<Instagram className="h-5 w-5" />} />
+              <SocialLink
+                href="https://x.com/MissMwOrg"
+                icon={
+                  <Image
+                    src="/X_white.png"
+                    alt="X"
+                    width={20}
+                    height={20}
+                    className="w-5 h-5 object-contain"
+                  />
+                }
+              />
+              <SocialLink
+                href="https://www.tiktok.com/@missmw25?is_from_webapp=1&sender_device=pc"
+                icon={
+                  <Image
+                    src="/tictoc.png"
+                    alt="TikTok"
+                    width={20}
+                    height={20}
+                    className="w-5 h-5 object-contain"
+                  />
+                }
+              />
+              <SocialLink href="https://www.youtube.com/@MissMalawiOfficial" icon={<Youtube className="h-5 w-5" />} />
             </div>
           </div>
 
@@ -91,28 +153,40 @@ export default function Footer() {
             <p className="text-white/80 mb-4">
               Subscribe to our newsletter for updates on events, programs, and success stories.
             </p>
-            <div className="space-y-3">
+            <form onSubmit={handleSubscribe} className="space-y-3">
               <Input
                 type="email"
                 placeholder="Your email address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="bg-white/10 border-white/20 text-white placeholder:text-white/60"
+                disabled={isLoading}
+                required
               />
-              <Button className="w-full bg-purple hover:bg-purple/90 text-black">Subscribe</Button>
-            </div>
+              <Button
+                type="submit"
+                className="w-full bg-purple hover:bg-purple/90 text-black"
+                disabled={isLoading}
+              >
+                {isLoading ? "Subscribing..." : "Subscribe"}
+              </Button>
+            </form>
           </div>
         </div>
 
-        <div className="border-t border-white/20 mt-12 pt-6 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-white/60 text-sm">
-            &copy; {new Date().getFullYear()} Miss Malawi Foundation. All rights reserved.
+        {/* Bottom Bar */}
+        <div className="border-t border-white/5 mt-16 pt-8 text-center flex flex-col md:flex-row justify-between items-center text-sm text-white/40">
+          <p className="mb-4 md:mb-0">
+            © {new Date().getFullYear()} <span className="text-[#8329B7] font-bold">MISS MALAWI.</span> All Rights Reserved.
           </p>
-          <div className="flex space-x-6 mt-4 md:mt-0">
-            <Link href="/privacy" className="text-white/60 text-sm hover:text-white transition-colors">
-              Privacy Policy
-            </Link>
-            <Link href="/terms" className="text-white/60 text-sm hover:text-white transition-colors">
-              Terms of Service
-            </Link>
+          <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4">
+            <Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
+            <span className="hidden md:block">|</span>
+            <Link href="/terms-and-conditions" className="hover:text-white transition-colors">Terms of Service</Link>
+            <span className="hidden md:block ml-4">|</span>
+            <p className="md:ml-4">
+              Developed by <Link href="https://senlainsystems.com" className="hover:text-white transition-colors">SenLain Systems</Link>
+            </p>
           </div>
         </div>
       </div>

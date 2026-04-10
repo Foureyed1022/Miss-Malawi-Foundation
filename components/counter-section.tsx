@@ -1,24 +1,100 @@
 "use client"
 
 import type React from "react"
-
 import { useState, useEffect, useRef } from "react"
 import { Award, Calendar, Heart, Users } from "lucide-react"
 
+interface SiteStats {
+  contestants: number
+  queensCrowned: number
+  yearsOfLegacy: number
+  livesImpacted: number
+}
+
+const DEFAULT_STATS: SiteStats = {
+  contestants: 0,
+  queensCrowned: 0,
+  yearsOfLegacy: 0,
+  livesImpacted: 0,
+}
+
 export default function CounterSection() {
+  const [stats, setStats] = useState<SiteStats>(DEFAULT_STATS)
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    const load = async () => {
+      try {
+        const res = await fetch('/api/site-stats')
+        if (res.ok) {
+          const data = await res.json()
+          setStats(data)
+        }
+      } catch {
+        // fall back to defaults already set
+      } finally {
+        setIsLoading(false)
+      }
+    }
+    load()
+  }, [])
+
+  const counters = [
+    {
+      icon: <Users className="h-8 w-8" />,
+      label: "Contestants",
+      endValue: stats.contestants,
+      suffix: "+",
+    },
+    {
+      icon: <Award className="h-8 w-8" />,
+      label: "Queens Crowned",
+      endValue: stats.queensCrowned,
+      suffix: "",
+    },
+    {
+      icon: <Calendar className="h-8 w-8" />,
+      label: "Years of Legacy",
+      endValue: stats.yearsOfLegacy,
+      suffix: "",
+    },
+    {
+      icon: <Heart className="h-8 w-8" />,
+      label: "Lives Impacted",
+      endValue: stats.livesImpacted,
+      suffix: "+",
+    },
+  ]
+
   return (
-    <section className="py-16 bg-[#212224] text-white">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <Counter icon={<Users className="h-10 w-10 text-purple" />} label="Contestants" endValue={500} suffix="+" />
-          <Counter icon={<Award className="h-10 w-10 text-purple" />} label="Queens Crowned" endValue={54} />
-          <Counter icon={<Calendar className="h-10 w-10 text-purple" />} label="Years of Legacy" endValue={27} />
-          <Counter
-            icon={<Heart className="h-10 w-10 text-purple" />}
-            label="Lives Impacted"
-            endValue={25000}
-            suffix="+"
-          />
+    <section className="relative py-20 bg-[#212224] text-white overflow-hidden">
+      {/* Subtle decorative background */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-purple/5 blur-3xl" />
+        <div className="absolute -bottom-24 -right-24 w-96 h-96 rounded-full bg-purple/5 blur-3xl" />
+      </div>
+
+      <div className="relative container mx-auto px-4 md:px-6">
+        {/* Section heading */}
+        <div className="text-center mb-14">
+          <p className="text-purple uppercase tracking-widest text-xs font-semibold mb-2">Our Impact</p>
+          <h2 className="font-playfair text-3xl md:text-4xl font-bold text-white">
+            Numbers That Tell Our Story
+          </h2>
+          <div className="w-16 h-0.5 bg-purple mx-auto mt-4 opacity-80" />
+        </div>
+
+        {/* Counter grid */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
+          {counters.map((c, i) => (
+            <Counter
+              key={i}
+              icon={c.icon}
+              label={c.label}
+              endValue={isLoading ? 0 : c.endValue}
+              suffix={c.suffix}
+            />
+          ))}
         </div>
       </div>
     </section>
@@ -37,15 +113,21 @@ export function Counter({ icon, label, endValue, suffix = "" }: CounterProps) {
   const counterRef = useRef<HTMLDivElement>(null)
   const countedRef = useRef(false)
 
+  // Reset animation when endValue changes (e.g. after data loads)
+  useEffect(() => {
+    countedRef.current = false
+    setCount(0)
+  }, [endValue])
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         const [entry] = entries
-        if (entry.isIntersecting && !countedRef.current) {
+        if (entry.isIntersecting && !countedRef.current && endValue > 0) {
           countedRef.current = true
 
-          const duration = 2000 // ms
-          const frameDuration = 1000 / 60 // 60fps
+          const duration = 2000
+          const frameDuration = 1000 / 60
           const totalFrames = Math.round(duration / frameDuration)
           const increment = endValue / totalFrames
 
@@ -64,7 +146,7 @@ export function Counter({ icon, label, endValue, suffix = "" }: CounterProps) {
           }, frameDuration)
         }
       },
-      { threshold: 0.5 },
+      { threshold: 0.4 },
     )
 
     if (counterRef.current) {
@@ -79,13 +161,28 @@ export function Counter({ icon, label, endValue, suffix = "" }: CounterProps) {
   }, [endValue])
 
   return (
-    <div ref={counterRef} className="text-center">
-      <div className="flex justify-center mb-4">{icon}</div>
-      <div className="text-4xl md:text-5xl font-bold mb-2 font-playfair">
-        {count.toLocaleString()}
-        {suffix}
+    <div
+      ref={counterRef}
+      className="flex flex-col items-center text-center group"
+    >
+      {/* Icon ring */}
+      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-white/5 border border-purple/20 text-purple mb-5 group-hover:bg-purple/10 group-hover:border-purple/50 transition-all duration-300">
+        {icon}
       </div>
-      <div className="text-white/80">{label}</div>
+
+      {/* Number */}
+      <div className="text-4xl md:text-5xl font-bold font-playfair text-white leading-none mb-2 tabular-nums">
+        {count.toLocaleString()}
+        {suffix && <span className="text-purple">{suffix}</span>}
+      </div>
+
+      {/* Divider */}
+      <div className="w-8 h-px bg-purple/40 my-3" />
+
+      {/* Label */}
+      <div className="text-sm md:text-base text-white/60 font-medium tracking-wide uppercase">
+        {label}
+      </div>
     </div>
   )
 }

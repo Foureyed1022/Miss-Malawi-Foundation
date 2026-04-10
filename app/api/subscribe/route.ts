@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server"
-import { saveSubscriber } from "@/lib/firestore"
+import { adminDb } from "@/lib/firebase-admin"
+import * as admin from "firebase-admin"
 
 export async function POST(request: Request) {
   try {
@@ -9,15 +10,32 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Email is required" }, { status: 400 })
     }
 
-    const success = await saveSubscriber(email, source || "unknown")
-
-    if (success) {
-      return NextResponse.json({ ok: true })
-    } else {
-      return NextResponse.json({ error: "Failed to subscribe" }, { status: 500 })
+    if (!adminDb) {
+      console.error("Firebase Admin DB not initialized. Check your environment variables.")
+      return NextResponse.json({ error: "Subscription service unavailable. Admin configuration missing." }, { status: 503 })
     }
-  } catch (error) {
-    console.error("Subscription error:", error)
-    return NextResponse.json({ error: "Internal server error" }, { status: 500 })
+
+    const subscribersRef = adminDb.collection('subscribers')
+    
+    // Check if duplicate
+    const snapshot = await subscribersRef.where('email', '==', email).get()
+    
+    if (!snapshot.empty) {
+      return NextResponse.json({ ok: true, message: "Already subscribed" })
+    }
+
+    await subscribersRef.add({
+      email,
+      source: source || "unknown",
+      createdAt: admin.firestore.FieldValue.serverTimestamp(),
+    })
+
+    return NextResponse.json({ ok: true })
+  } catch (error: any) {
+    console.error("Subscription API Error:", error)
+    return NextResponse.json({ 
+      error: error.message || "Internal server error",
+      stack: process.env.NODE_ENV !== "production" ? error.stack : undefined
+    }, { status: 500 })
   }
 }

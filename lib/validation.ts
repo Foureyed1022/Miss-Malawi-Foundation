@@ -26,7 +26,7 @@ export const personalInfoSchema = z.object({
       const today = new Date();
       const minAgeDate = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
       return dobDate <= minAgeDate;
-  }, "You must be at least 18 years old"),
+    }, "You must be at least 18 years old"),
   age: z.coerce.number()
     .int("Age must be a whole number")
     .min(18, "You must be at least 18 years old")
@@ -54,6 +54,7 @@ export const experienceSchema = z.object({
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
 const MAX_DOC_SIZE = 2 * 1024 * 1024; // 2MB
+const MAX_VIDEO_SIZE = 100 * 1024 * 1024; // 100MB
 
 const imageFileSchema = fileSchema
   .refine(file => file.size <= MAX_FILE_SIZE, "File size must be less than 5MB")
@@ -61,23 +62,27 @@ const imageFileSchema = fileSchema
 
 const documentFileSchema = fileSchema
   .refine(file => file.size <= MAX_DOC_SIZE, "File size must be less than 2MB")
-  .refine(file => 
-    file.type.startsWith("image/") || 
+  .refine(file =>
+    file.type.startsWith("image/") ||
     file.type === "application/pdf",
     "Only PDF or image files are allowed"
   );
+
+const videoFileSchema = fileSchema
+  .refine(file => file.size <= MAX_VIDEO_SIZE, "Video size must be less than 100MB")
+  .refine(file => file.type.startsWith("video/"), "Only video files are allowed");
 
 export const documentsSchema = z.object({
   headshotPhoto: imageFileSchema.optional(),
   fullLengthPhoto: imageFileSchema.optional(),
   consentletter: documentFileSchema.optional(),
+  introVideo: videoFileSchema.optional(),
   idProof: documentFileSchema.optional(),
   termsAccepted: z.boolean().optional(),
 });
 
 export const paymentSchema = z.object({
-  paymentMethod: z.enum(["Paychangu"], {
-  }),
+  paymentMethod: z.enum(["Paychangu"]),
 });
 
 export const applicationSchema = personalInfoSchema
@@ -92,6 +97,7 @@ export const finalApplicationSchema = personalInfoSchema
     headshotPhoto: imageFileSchema,
     fullLengthPhoto: imageFileSchema,
     consentletter: documentFileSchema,
+    introVideo: videoFileSchema,
     idProof: documentFileSchema,
     termsAccepted: z.literal(true, {
       errorMap: () => ({ message: "You must accept the terms and conditions" }),

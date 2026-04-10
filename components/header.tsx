@@ -36,15 +36,14 @@ export default function Header() {
 
   return (
     <header
-      className={`absolute top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-white shadow-md py-2" : "bg-transparent py-4"
-      }`}
+      className={`absolute top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-white shadow-md py-2" : "bg-transparent py-4"
+        }`}
     >
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center">
-            <Image 
-              src="/logo.png" 
+            <Image
+              src="/logo.png"
               alt="Miss Malawi Logo"
               width={56}
               height={18}
@@ -53,9 +52,8 @@ export default function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-6">
+          <nav className="hidden lg:flex items-center space-x-6">
             <NavLink href="/" label="Home" isScrolled={isScrolled} />
-            <NavLink href="/events" label="Events" isScrolled={isScrolled} />
 
             {/* About Dropdown */}
             <DesktopDropdown
@@ -81,7 +79,6 @@ export default function Header() {
               isScrolled={isScrolled}
               items={[
                 { href: "/pageant", label: "Pageant Info" },
-                { href: "/pageant/register", label: "Registration" },
               ]}
             />
 
@@ -95,23 +92,29 @@ export default function Header() {
               ]}
             />
 
+            <NavLink href="/events" label="Events" isScrolled={isScrolled} />
             <NavLink href="/contact" label="Contact" isScrolled={isScrolled} />
           </nav>
 
-          <div className="hidden md:flex items-center gap-3">
-            <Link href="/dashboard">
+          <div className="hidden lg:flex items-center gap-4">
+            <Link href="/login">
               <Button
                 variant="ghost"
                 size="icon"
                 className={isScrolled ? "text-[#212224] hover:bg-gray-100" : "text-white hover:bg-white/10"}
-                aria-label="Dashboard"
+                aria-label="Login"
               >
                 <User className="h-4 w-4" />
               </Button>
             </Link>
-            <Link href="/donate">
-              <Button className="bg-purple hover:bg-purple/90 text-black">Donate</Button>
-            </Link>
+            <div className="flex items-center gap-2">
+              <Link href="/pageant/register">
+                <Button className="bg-purple hover:bg-purple/90 text-white font-bold px-6">Apply Now</Button>
+              </Link>
+              <Link href="/donate">
+                <Button className="bg-[#4B2C5E] hover:bg-[#3A2249] text-white px-6">Donate</Button>
+              </Link>
+            </div>
           </div>
 
           {/* Mobile Menu Trigger */}
@@ -120,7 +123,7 @@ export default function Header() {
               <Button
                 variant="ghost"
                 size="icon"
-                className={`md:hidden ${isScrolled ? "text-[#212224]" : "text-white"}`}
+                className={`lg:hidden ${isScrolled ? "text-[#212224]" : "text-white"}`}
               >
                 <Menu className="h-6 w-6" />
                 <span className="sr-only">Toggle menu</span>
@@ -129,8 +132,8 @@ export default function Header() {
             <SheetContent side="right" className="w-[300px] sm:w-[350px] bg-white">
               <div className="flex flex-col h-full">
                 <div className="flex items-center justify-between py-4 border-b">
-                  <Image 
-                    src="/logo.png" 
+                  <Image
+                    src="/logo.png"
                     alt="Miss Malawi Logo"
                     width={64}
                     height={22}
@@ -143,8 +146,7 @@ export default function Header() {
                 </div>
                 <nav className="flex flex-col py-6">
                   <MobileNavLink href="/" label="Home" setIsOpen={setIsMobileMenuOpen} />
-                  <MobileNavLink href="/events" label="Events" setIsOpen={setIsMobileMenuOpen} />
-                  <MobileNavLink href="/dashboard" label="Dashboard" setIsOpen={setIsMobileMenuOpen} />
+                  <MobileNavLink href="/login" label="Login" setIsOpen={setIsMobileMenuOpen} />
 
                   {/* Mobile Dropdowns */}
                   <MobileDropdown
@@ -171,7 +173,6 @@ export default function Header() {
                     setActive={() => setActiveDropdown(activeDropdown === "pageant" ? null : "pageant")}
                     items={[
                       { href: "/pageant", label: "Pageant Info", setIsOpen: setIsMobileMenuOpen },
-                      { href: "/pageant/register", label: "Registration", setIsOpen: setIsMobileMenuOpen },
                     ]}
                   />
 
@@ -185,11 +186,15 @@ export default function Header() {
                     ]}
                   />
 
+                  <MobileNavLink href="/events" label="Events" setIsOpen={setIsMobileMenuOpen} />
                   <MobileNavLink href="/contact" label="Contact" setIsOpen={setIsMobileMenuOpen} />
                 </nav>
-                <div className="mt-auto py-6 border-t">
+                <div className="mt-auto py-6 border-t flex flex-col gap-3">
+                  <Link href="/pageant/register" onClick={() => setIsMobileMenuOpen(false)}>
+                    <Button className="w-full bg-purple hover:bg-purple/90 text-white font-bold py-6 text-lg">Apply Now</Button>
+                  </Link>
                   <Link href="/donate" onClick={() => setIsMobileMenuOpen(false)}>
-                    <Button className="w-full bg-purple hover:bg-purple/90 text-black">Donate</Button>
+                    <Button className="w-full bg-[#4B2C5E] hover:bg-[#3A2249] text-white py-6 text-lg">Donate</Button>
                   </Link>
                 </div>
               </div>

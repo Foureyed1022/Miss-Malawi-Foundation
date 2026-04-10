@@ -12,7 +12,7 @@ import {
   Users,
 } from "lucide-react"
 import ParallaxSection from "@/components/parallax-section"
-import CounterSection, { Counter } from "@/components/counter-section"
+import CounterSection from "@/components/counter-section"
 import TestimonialCarousel from "@/components/testimonial-carousel"
 import ParallaxText from "@/components/parallax-text"
 import NewsletterForm from "@/components/newsletter-form"
@@ -141,7 +141,6 @@ export default function Home() {
 
       {/* Impact Counter Section */}
       <CounterSection />
-      <Counter icon={<Calendar className="h-10 w-10 text-purple" />} label="Years of Legacy" endValue={27} />
 
       {/* Testimonials */}
       <TestimonialCarousel />

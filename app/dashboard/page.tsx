@@ -6,10 +6,10 @@ import { useEffect, useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ArrowUpRight, Users, HeartHandshake, Newspaper, Mail, Loader2 } from "lucide-react"
 import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, Tooltip, BarChart, Bar, CartesianGrid } from "recharts"
-import { 
-  getStatistics, 
-  getRecentActivity, 
-  getDailyVisits, 
+import {
+  getStatistics,
+  getRecentActivity,
+  getDailyVisits,
   getMonthlyDonations,
   ActivityItem
 } from "@/lib/firestore"
@@ -20,7 +20,7 @@ export default function DashboardPage() {
   const [news, setNews] = useState<any | null>(null)
   const [isSavingGallery, setIsSavingGallery] = useState(false)
   const [isSavingNews, setIsSavingNews] = useState(false)
-  
+
   const [stats, setStats] = useState<any>(null)
   const [activity, setActivity] = useState<ActivityItem[]>([])
   const [traffic, setTraffic] = useState<any[]>([])
@@ -29,24 +29,39 @@ export default function DashboardPage() {
 
   useEffect(() => {
     const load = async () => {
+      setIsLoading(true)
       try {
-        const [gRes, nRes, sData, aData, tData, dData] = await Promise.all([
-          fetch("/api/gallery"), 
-          fetch("/api/news"),
-          getStatistics(),
-          getRecentActivity(5),
-          getDailyVisits(7),
-          getMonthlyDonations()
+        // Fetch static JSON data
+        const loadJson = async (url: string) => {
+          try {
+            const res = await fetch(url)
+            if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`)
+            return await res.json()
+          } catch (e) {
+            console.error(`Failed to load ${url}:`, e)
+            return null
+          }
+        }
+
+        // Parallel data loading
+        const [gData, nData, sData, aData, tData, dData] = await Promise.all([
+          loadJson("/api/gallery"),
+          loadJson("/api/news"),
+          getStatistics().catch(e => { console.error("Stats fail:", e); return null }),
+          getRecentActivity(5).catch(e => { console.error("Activity fail:", e); return null }),
+          getDailyVisits(7).catch(e => { console.error("Traffic fail:", e); return null }),
+          getMonthlyDonations().catch(e => { console.error("Donations fail:", e); return null })
         ])
-        
-        setGallery(await gRes.json())
-        setNews(await nRes.json())
-        setStats(sData)
-        setActivity(aData)
-        setTraffic(tData)
-        setDonations(dData)
+
+        if (gData) setGallery(gData)
+        if (nData) setNews(nData)
+        if (sData) setStats(sData)
+        if (aData) setActivity(aData)
+        if (tData) setTraffic(tData)
+        if (dData) setDonations(dData)
+
       } catch (error) {
-        console.error("Failed to load dashboard data:", error)
+        console.error("Critical dashboard load error:", error)
       } finally {
         setIsLoading(false)
       }

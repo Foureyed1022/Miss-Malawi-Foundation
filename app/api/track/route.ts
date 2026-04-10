@@ -17,7 +17,7 @@ export async function POST(request: Request) {
       name: body.name,
       source: body.source,
       path: body.path || "/",
-      metadata: body.metadata
+      metadata: body.metadata || {}
     })
 
     console.log("[analytics] event saved", {

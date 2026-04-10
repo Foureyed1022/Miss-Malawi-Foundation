@@ -38,6 +38,7 @@ export interface Applicant {
   fullLengthPhoto: string;
   idProof: string;
   consentletter: string;
+  introVideo?: string;
   paymentProof: string;
   applicationStatus: 'pending' | 'approved' | 'rejected';
   createdAt: Date;
@@ -155,4 +156,26 @@ export interface AnalyticsEvent {
   path: string;
   metadata?: Record<string, any>;
   timestamp: Date;
-}
+}
+
+// User & Role Types
+export type UserRole = 'superadmin' | 'admin' | 'editor' | 'reviewer' | 'viewer';
+
+export interface UserProfile {
+  uid: string;
+  email: string;
+  displayName: string;
+  role: UserRole;
+  photoURL?: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface SiteStats {
+  contestants: number;
+  queensCrowned: number;
+  yearsOfLegacy: number;
+  livesImpacted: number;
+  updatedAt?: Date;
+}
+

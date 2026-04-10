@@ -3,27 +3,53 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { onAuthStateChange } from '@/lib/auth';
+import { getUserProfile } from '@/lib/firestore';
+import { UserRole, UserProfile } from '@/types';
 import { User } from 'firebase/auth';
 
-export default function ProtectedRoute({ children }: { children: React.ReactNode }) {
+interface ProtectedRouteProps {
+  children: React.ReactNode;
+  allowedRoles?: UserRole[];
+}
+
+export default function ProtectedRoute({ children, allowedRoles }: ProtectedRouteProps) {
   const [user, setUser] = useState<User | null>(null);
+  const [profile, setProfile] = useState<UserProfile | null>(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChange((user) => {
-      if (!user) {
-        // In a real app, you might redirect to /admin/login
-        // For now, let's redirect to home if not auth
-        router.push('/');
-      } else {
-        setUser(user);
+    const unsubscribe = onAuthStateChange(async (firebaseUser) => {
+      if (!firebaseUser) {
+        router.push('/login');
+        setLoading(false);
+        return;
       }
+
+      const userProfile = await getUserProfile(firebaseUser.uid);
+
+      if (!userProfile) {
+        // If profile doesn't exist, user is strictly not authorized for the dashboard
+        router.push('/login');
+        setLoading(false);
+        return;
+      }
+
+
+      if (allowedRoles && !allowedRoles.includes(userProfile.role)) {
+        // Redirect if role is not allowed
+        router.push('/dashboard'); // Or an access-denied page
+        setLoading(false);
+        return;
+      }
+
+      setUser(firebaseUser);
+      setProfile(userProfile);
       setLoading(false);
     });
 
     return () => unsubscribe();
-  }, [router]);
+  }, [router, allowedRoles]);
 
   if (loading) {
     return (
@@ -33,9 +59,10 @@ export default function ProtectedRoute({ children }: { children: React.ReactNode
     );
   }
 
-  if (!user) {
+  if (!user || !profile) {
     return null;
   }
 
   return <>{children}</>;
 }
+

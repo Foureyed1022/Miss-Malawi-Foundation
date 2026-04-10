@@ -19,6 +19,7 @@ export async function POST(request: Request) {
 
     // 2. Handle file uploads locally
     const saveFile = async (file: File, prefix: string) => {
+      if (!file || !(file instanceof File)) return null;
       const buffer = Buffer.from(await file.arrayBuffer());
       const filename = `${prefix}-${uuidv4()}-${file.name.replace(/\s+/g, "-")}`;
       const filePath = join(uploadDir, filename);
@@ -32,6 +33,7 @@ export async function POST(request: Request) {
       fullLengthPhoto: formData.get("fullLengthPhoto") as File,
       consentletter: formData.get("consentletter") as File,
       idProof: formData.get("idProof") as File,
+      introVideo: formData.get("introVideo") as File,
     };
 
     const [
@@ -39,11 +41,13 @@ export async function POST(request: Request) {
       fullLengthPath,
       consentPath,
       idProofPath,
+      introVideoPath,
     ] = await Promise.all([
       saveFile(files.headshotPhoto, "headshot"),
       saveFile(files.fullLengthPhoto, "full-length"),
       saveFile(files.consentletter, "consent"),
       saveFile(files.idProof, "id-proof"),
+      saveFile(files.introVideo, "intro-video"),
     ]);
 
     // 4. Prepare and validate form data
@@ -60,6 +64,7 @@ export async function POST(request: Request) {
       fullLengthPhoto: true,
       consentletter: true,
       idProof: true,
+      introVideo: true,
     }).parse(preparedData);
 
     // 5. Save to Firestore
@@ -71,6 +76,7 @@ export async function POST(request: Request) {
       fullLengthPhoto: fullLengthPath,
       consentletter: consentPath,
       idProof: idProofPath,
+      introVideo: introVideoPath,
       applicationStatus: "pending",
       createdAt: serverTimestamp(),
       updatedAt: serverTimestamp(),

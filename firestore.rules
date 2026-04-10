@@ -1,0 +1,189 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Admin-specific collections
+    match /admin/{document=**} {
+      allow read, write: if request.auth != null;
+    }
+    
+    // Collection: applicants (for pageant applications)
+    match /applicant/{applicantId} {
+      // Allow creation for public (e.g., from a public application form)
+      allow create: if (
+        // Required fields (non-null)
+        request.resource.data.firstName != null &&
+        request.resource.data.lastName != null &&
+        request.resource.data.email != null &&
+        request.resource.data.phone != null &&
+        request.resource.data.termsAccepted == true &&
+        
+        // Optional fields (can be null or have value)
+        (request.resource.data.previousPageants == null || 
+         request.resource.data.previousPageants is string) &&
+        (request.resource.data.talents == null || 
+         request.resource.data.talents is string) &&
+        (request.resource.data.communityService == null || 
+         request.resource.data.communityService is string)
+      );
+
+      // Allow read access for everyone (for public website display)
+      // and for authenticated admin users (for admin dashboard)
+      allow read: if true;
+
+      // Allow update for specific fields (applicationStatus, updatedAt) from server API
+      // and delete only for authenticated admin users
+      allow update: if request.auth != null || 
+        (request.resource.data.diff(resource.data).affectedKeys().hasOnly(["applicationStatus", "updatedAt"]) &&
+         request.resource.data.applicationStatus is string);
+      allow delete: if request.auth != null;
+    }
+
+    // Collection: messages (for contact form submissions)
+    match /contact_messages/{messageId} {
+      // Allow creation for public (e.g., from a public contact form)
+      allow create: if request != null;
+
+      // Allow read, update, and delete only for authenticated admin users
+      allow read, update, delete: if request.auth != null;
+    }
+
+    // Collection: articles (for news management)
+    match /articles/{articleId} {
+      // Allow read access for everyone (for public website display)
+      allow read: if true;
+
+      // Allow create, update, and delete only for authenticated admin users
+      allow write: if request.auth != null; // 'write' covers create, update, delete
+    }
+
+    // Collection: categories (for news category management)
+    match /categories/{categoryId} {
+      // Allow read access for everyone (for public website display)
+      allow read: if true;
+
+      // Allow create, update, and delete only for authenticated admin users
+      allow write: if request.auth != null;
+    }
+
+    // Collection: statistics (for dashboard metrics)
+    match /statistics/{statId} {
+      // Allow read and write only for authenticated admin users
+      allow read, write: if request.auth != null;
+    }
+
+    // VOTING SYSTEM COLLECTIONS
+    
+    // Collection: contestants (for contestant data and vote counts)
+    match /contestants/{contestantId} {
+      // Allow public read access for contestant profiles and leaderboard
+      allow read: if true;
+      
+      // Allow creation and updates for voting system (no auth required for voting)
+      allow create, update: if true;
+      
+      // Allow admin users to manage contestants
+      allow delete: if request.auth != null;
+    }
+    
+    // Collection: votes (for storing individual vote records)
+    match /votes/{voteId} {
+      // Allow public read access for vote tracking and analytics
+      allow read: if true;
+      
+      // Allow vote creation without authentication (for public voting)
+      allow create: if true;
+      
+      // Allow admin users to manage votes
+      allow update, delete: if request.auth != null;
+    }
+
+    // Collection: transactions (for payment tracking)
+    match /transactions/{transactionId} {
+      // Allow creation without authentication (for payment processing)
+      allow create: if true;
+       
+      // Allow read access for public (needed for vote count calculations)
+      allow read: if true;
+      
+      // Restrict update/delete to authenticated users only
+      allow update, delete: if request.auth != null;
+    }
+    
+    // Collection: freeVotes (for free voting system)
+    match /freeVotes/{voteId} {
+      // Allow public read access for vote tracking
+      allow read: if true;
+      
+      // Allow vote creation through public API
+      allow create: if request != null;
+      
+      // Allow admin users to manage votes
+      allow update, delete: if request.auth != null;
+    }
+
+    // Collection: users (for role-based profiles)
+    match /users/{userId} {
+      // Allow personal profile reading
+      allow read: if request.auth != null && request.auth.uid == userId;
+      
+      // Allow superadmins to manage all profiles
+      allow read, write: if request.auth != null && 
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'superadmin';
+    }
+
+    // DASHBOARD COLLECTIONS
+    
+    // Programs, Events, Gallery, Team, Strategy (General Admin Access)
+    match /programs/{docId} { allow read: if true; allow write: if request.auth != null; }
+    match /events/{docId} { allow read: if true; allow write: if request.auth != null; }
+    match /gallery/{docId} { allow read: if true; allow write: if request.auth != null; }
+    match /team/{docId} { allow read: if true; allow write: if request.auth != null; }
+    match /strategy/{docId} { allow read: if true; allow write: if request.auth != null; }
+
+    // Finances (Strictly Superadmin only)
+    match /finances/{docId} {
+      allow read, write: if request.auth != null && 
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'superadmin';
+    }
+
+    // ANALYTICS & DASHBOARD DATA
+    
+    // Collection: analytics_events
+    match /analytics_events/{eventId} {
+      // Allow public creation for tracking
+      allow create: if true;
+      // Allow authenticated admins to read and manage
+      allow read, write: if request.auth != null;
+    }
+
+    // Collection: donations
+    match /donations/{donationId} {
+      // Allow public creation for new donations
+      allow create: if true;
+      // Allow authenticated admins to read and manage
+      allow read, write: if request.auth != null;
+    }
+
+    // Collection: subscribers
+    match /subscribers/{subscriberId} {
+      // Allow public creation for newsletter signups
+      allow create: if true;
+      // Allow authenticated admins to read and manage
+      allow read, write: if request.auth != null;
+    }
+
+    // Collection: settings (site-wide configuration, e.g. impact statistics)
+    match /settings/{docId} {
+      // Allow public read so the homepage can display stats without requiring login
+      allow read: if true;
+      // Allow authenticated admin users to create/update settings documents
+      allow write: if request.auth != null;
+    }
+
+    // Default deny rule for all other documents not explicitly matched above
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
