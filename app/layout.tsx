@@ -19,6 +19,10 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: "Miss Malawi",
   description: "Cultural and empowerment platform supporting young Malawian women",
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png",
+  },
 }
 
 export default function RootLayout({

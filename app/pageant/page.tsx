@@ -1,4 +1,7 @@
+"use client"
+
 import Image from "next/image"
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Calendar, MapPin, Trophy } from "lucide-react"
 import PageHeader from "@/components/page-header"
@@ -7,6 +10,12 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import Link from "next/link"
 
 export default function PageantPage() {
+  const [selectedImage, setSelectedImage] = useState<{ image: string; name: string; year: string } | null>(null)
+
+  const handleImageClick = (image: string, name: string, year: string) => {
+    setSelectedImage({ image, name, year })
+  }
+
   return (
     <div className="flex flex-col w-full">
       <PageHeader
@@ -20,7 +29,7 @@ export default function PageantPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <div className="inline-block bg-emerald-50 text-emerald-800 px-4 py-1 rounded-full text-sm font-medium mb-6">
-                Miss Malawi 2025
+                Miss Malawi 2026
               </div>
               <h2 className="font-playfair text-[#7C3AED]xl md:text-4xl font-bold text-emerald-800 mb-6">
                 The Search for the Next Queen
@@ -46,7 +55,7 @@ export default function PageantPage() {
                   <MapPin className="h-5 w-5 text-purple mr-3 mt-0.5" />
                   <div>
                     <h3 className="font-bold text-gray-900">Venue</h3>
-                    <p className="text-gray-700">Bingu International Convention Centre, Lilongwe</p>
+                    <p className="text-gray-700">Griffin Saenda Sports Complex, Lilongwe</p>
                   </div>
                 </div>
 
@@ -71,8 +80,8 @@ export default function PageantPage() {
 
             <div className="relative h-[500px] rounded-lg overflow-hidden shadow-xl">
               <Image
-                src="/placeholder.svg?height=1000&width=800"
-                alt="Miss Malawi 2025"
+                src="/misi.png?height=1000&width=800"
+                alt="Miss Malawi 2026"
                 fill
                 className="object-cover"
               />
@@ -85,7 +94,7 @@ export default function PageantPage() {
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 md:px-6">
           <Tabs defaultValue="eligibility" className="max-w-4xl mx-auto">
-            <div className="text-[#7C3AED]enter mb-8">
+            <div className="text-center mb-8">
               <TabsList className="inline-flex">
                 <TabsTrigger value="eligibility">Eligibility Criteria</TabsTrigger>
                 <TabsTrigger value="process">Selection Process</TabsTrigger>
@@ -253,8 +262,8 @@ export default function PageantPage() {
       {/* Past Queens */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="text-[#7C3AED]enter mb-12">
-            <h2 className="font-playfair text-[#7C3AED]xl md:text-4xl font-bold text-emerald-800 mb-4">Past Queens</h2>
+          <div className="text-center mb-12">
+            <h2 className="font-playfair text-3xl md:text-4xl font-bold text-emerald-800 mb-4">Past Queens</h2>
             <p className="text-gray-600 max-w-3xl mx-auto">
               Celebrating the legacy of exceptional women who have worn the Miss Malawi crown and their contributions to
               our nation.
@@ -264,47 +273,55 @@ export default function PageantPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <QueenCard
-              image="/placeholder.svg?height=600&width=400"
+              image="/queens/tiwonge.jpg?height=600&width=400"
               name="Tiwonge Munthali"
               year="2018"
               achievement="Miss Malawi"
+              onImageClick={handleImageClick}
             />
             <QueenCard
-              image="/placeholder.svg?height=600&width=400"
+              image="/queens/cecelia.jpg?height=600&width=400"
               name="Cecelia Khofi"
               year="2017"
               achievement="Miss Malawi"
+              onImageClick={handleImageClick}
             />
             <QueenCard
-              image="/placeholder.svg?height=600&width=400"
+              image="/queens/jesca.jpeg?height=600&width=400"
               name="Jescar Mponda"
               year="2022"
               achievement="Miss Malawi"
+              onImageClick={handleImageClick}
             />
             <QueenCard
-              image="/placeholder.svg?height=600&width=400"
+              image="/queens/faith.jpeg?height=600&width=400"
               name="Faith Chibale"
               year="2012"
               achievement="Miss Malawi"
+              onImageClick={handleImageClick}
             />
             <QueenCard
-              image="/placeholder.svg?height=600&width=400"
+              image="/queens/ella.png?height=600&width=400"
               name="Ella Kabambe"
               year="2012"
               achievement="Miss Malawi"
+              onImageClick={handleImageClick}
             />
             <QueenCard
-              image="/placeholder.svg?height=600&width=400"
+              image="/queens/Susan.png?height=600&width=400"
               name="Susan Mtegha"
               year="2011"
               achievement="Miss Malawi"
+              onImageClick={handleImageClick}
             />
           </div>
 
-          <div className="text-[#7C3AED]enter mt-12">
-            <Button variant="outline" className="border-emerald-800 text-emerald-800 hover:bg-emerald-50">
-              View All Past Queens
-            </Button>
+          <div className="text-center mt-12">
+            <Link href="/timeline">
+              <Button variant="outline" className="border-emerald-800 text-emerald-800 hover:bg-emerald-50">
+                View All Past Queens
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
@@ -312,8 +329,8 @@ export default function PageantPage() {
       {/* Miss World Participation */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="text-[#7C3AED]enter mb-12">
-            <h2 className="font-playfair text-[#7C3AED]xl md:text-4xl font-bold text-emerald-800 mb-4">Malawi at Miss World</h2>
+          <div className="text-center mb-12">
+            <h2 className="font-playfair text-3xl md:text-4xl font-bold text-emerald-800 mb-4">Malawi at Miss World</h2>
             <p className="text-gray-600 max-w-3xl mx-auto">
               Miss Malawi has fronted some of its winners to shape a lasting legacy by representing Malawi at the Miss
               World beauty pageant.
@@ -323,8 +340,30 @@ export default function PageantPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
-              <div className="relative h-64 mb-4 overflow-hidden rounded-lg">
-                <Image src="/placeholder.svg?height=600&width=400" alt="Elizabeth Pulu" fill className="object-cover" />
+              <div 
+                className="relative h-64 mb-4 overflow-hidden rounded-lg cursor-pointer group"
+                onClick={() => handleImageClick("/queens/elizabeth.jpeg?height=600&width=400", "Elizabeth Pulu", "2001")}
+              >
+                <Image src="/queens/elizabeth.jpeg?height=600&width=400" alt="Elizabeth Pulu" fill className="object-cover transition-transform duration-300 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="48"
+                    height="48"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="white"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  >
+                    <circle cx="11" cy="11" r="8" />
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                    <line x1="11" y1="8" x2="11" y2="14" />
+                    <line x1="8" y1="11" x2="14" y2="11" />
+                  </svg>
+                </div>
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-1">Elizabeth Pulu</h3>
               <p className="text-purple font-medium mb-3">Miss Malawi 2001</p>
@@ -335,8 +374,30 @@ export default function PageantPage() {
             </div>
 
             <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
-              <div className="relative h-64 mb-4 overflow-hidden rounded-lg">
-                <Image src="/placeholder.svg?height=600&width=400" alt="Susan Mtegha" fill className="object-cover" />
+              <div 
+                className="relative h-64 mb-4 overflow-hidden rounded-lg cursor-pointer group"
+                onClick={() => handleImageClick("/queens/Susan.png?height=600&width=400", "Susan Mtegha", "2011")}
+              >
+                <Image src="/queens/Susan.png?height=600&width=400" alt="Susan Mtegha" fill className="object-cover transition-transform duration-300 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="48"
+                    height="48"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="white"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  >
+                    <circle cx="11" cy="11" r="8" />
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                    <line x1="11" y1="8" x2="11" y2="14" />
+                    <line x1="8" y1="11" x2="14" y2="11" />
+                  </svg>
+                </div>
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-1">Susan Mtegha</h3>
               <p className="text-purple font-medium mb-3">Miss Malawi 2011</p>
@@ -348,11 +409,33 @@ export default function PageantPage() {
             </div>
 
             <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
-              <div className="relative h-64 mb-4 overflow-hidden rounded-lg">
-                <Image src="/placeholder.svg?height=600&width=400" alt="Ella Kabambe" fill className="object-cover" />
+              <div 
+                className="relative h-64 mb-4 overflow-hidden rounded-lg cursor-pointer group"
+                onClick={() => handleImageClick("/queens/rachel.png?height=600&width=400", "Rachel Landosn", "2007")}
+              >
+                <Image src="/queens/rachel.png?height=600&width=400" alt="Rachel Landosn" fill className="object-cover transition-transform duration-300 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="48"
+                    height="48"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="white"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  >
+                    <circle cx="11" cy="11" r="8" />
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                    <line x1="11" y1="8" x2="11" y2="14" />
+                    <line x1="8" y1="11" x2="14" y2="11" />
+                  </svg>
+                </div>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-1">Ella Kabambe</h3>
-              <p className="text-purple font-medium mb-3">Miss Malawi 2012</p>
+              <h3 className="text-xl font-bold text-gray-900 mb-1">Rachel Landosn</h3>
+              <p className="text-purple font-medium mb-3">Miss Malawi 2007</p>
               <p className="text-gray-700">
                 Followed in Elizabeth Pulu's footsteps by representing Malawi at the Miss World pageant, bringing
                 international recognition to the country's beauty industry.
@@ -365,8 +448,8 @@ export default function PageantPage() {
       {/* FAQ Section */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="text-[#7C3AED]enter mb-12">
-            <h2 className="font-playfair text-[#7C3AED]xl md:text-4xl font-bold text-emerald-800 mb-4">
+          <div className="text-center mb-12">
+            <h2 className="font-playfair text-3xl md:text-4xl font-bold text-emerald-800 mb-4">
               Frequently Asked Questions
             </h2>
             <div className="w-24 h-1 bg-purple mx-auto"></div>
@@ -420,13 +503,60 @@ export default function PageantPage() {
               </AccordionItem>
             </Accordion>
 
-            <div className="text-[#7C3AED]enter mt-8">
+            <div className="text-center mt-8">
               <p className="text-gray-600 mb-4">Still have questions? Contact our team for more information.</p>
               <Button className="bg-emerald-800 hover:bg-emerald-700">Contact Us</Button>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Image Modal */}
+      {selectedImage && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
+          onClick={() => setSelectedImage(null)}
+        >
+          <div
+            className="relative max-w-4xl max-h-[90vh] w-full"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setSelectedImage(null)}
+              className="absolute top-4 right-4 z-10 bg-white rounded-full p-2 hover:bg-gray-100 transition-colors"
+              aria-label="Close image"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="text-gray-900"
+              >
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </button>
+            <div className="relative w-full h-[80vh]">
+              <Image
+                src={selectedImage.image || "/placeholder.svg"}
+                alt={`Miss Malawi ${selectedImage.year} - ${selectedImage.name}`}
+                fill
+                className="object-contain"
+              />
+            </div>
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 rounded-b-lg">
+              <h3 className="text-2xl font-bold text-white">{selectedImage.name}</h3>
+              <p className="text-lg text-purple-200">Miss Malawi {selectedImage.year}</p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
@@ -436,25 +566,48 @@ interface QueenCardProps {
   name: string
   year: string
   achievement: string
+  onImageClick: (image: string, name: string, year: string) => void
 }
 
-function QueenCard({ image, name, year, achievement }: QueenCardProps) {
+function QueenCard({ image, name, year, achievement, onImageClick }: QueenCardProps) {
   return (
     <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 group">
-      <div className="relative h-80">
+      <div 
+        className="relative h-80 cursor-pointer"
+        onClick={() => onImageClick(image, name, year)}
+      >
         <Image
           src={image || "/placeholder.svg"}
           alt={`Miss Malawi ${year} - ${name}`}
           fill
           className="object-cover group-hover:scale-105 transition-transform duration-300"
         />
+        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="48"
+            height="48"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="white"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          >
+            <circle cx="11" cy="11" r="8" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            <line x1="11" y1="8" x2="11" y2="14" />
+            <line x1="8" y1="11" x2="14" y2="11" />
+          </svg>
+        </div>
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
           <div className="p-4 text-white">
             <p className="font-medium">{achievement}</p>
           </div>
         </div>
       </div>
-      <div className="p-4 text-[#7C3AED]enter">
+      <div className="p-4 text-center">
         <h3 className="text-xl font-bold text-gray-900">{name}</h3>
         <p className="text-purple font-medium">Miss Malawi {year}</p>
       </div>

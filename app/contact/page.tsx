@@ -78,7 +78,7 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
             <div>
-              <h2 className="font-playfair text-[#7C3AED]xl font-bold text-emerald-800 mb-6">Send Us a Message</h2>
+              <h2 className="font-playfair text-3xl font-bold text-emerald-800 mb-6">Send Us a Message</h2>
               <p className="text-gray-700 mb-8">
                 Have questions, suggestions, or want to get involved with Miss Malawi Foundation? Fill out the form
                 below, and our team will get back to you as soon as possible.
@@ -170,9 +170,16 @@ export default function ContactPage() {
               <h2 className="font-playfair text-[#7C3AED] font-bold text-emerald-800 mb-6">Find Us</h2>
               <div className="bg-white p-2 rounded-lg shadow-sm h-[400px]">
                 {/* This would be replaced with an actual map component */}
-                <div className="w-full h-full bg-gray-200 rounded flex items-center justify-center">
-                  <p className="text-gray-500">Interactive Map Would Be Displayed Here</p>
-                </div>
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d173.65100088019176!2d33.789898331581114!3d-13.920577196882421!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2smw!4v1776172427996!5m2!1sen!2smw"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0, borderRadius: "0.5rem" }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Miss Malawi Organization Location"
+                ></iframe>
               </div>
 
               <div className="mt-8">
@@ -200,8 +207,8 @@ export default function ContactPage() {
       {/* FAQ Section */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="text-[#7C3AED]enter mb-12">
-            <h2 className="font-playfair text-[#7C3AED]xl md:text-4xl font-bold text-emerald-800 mb-4">
+          <div className="text-center mb-12">
+            <h2 className="font-playfair text-3xl md:text-4xl font-bold text-emerald-800 mb-4">
               Frequently Asked Questions
             </h2>
             <p className="text-gray-600 max-w-3xl mx-auto">
@@ -217,16 +224,12 @@ export default function ContactPage() {
                 answer="To apply for the Miss Malawi pageant, you can fill out the application form on our website during the application period, or visit one of our designated application centers in major cities. For more details, please visit the Pageant page or contact us directly."
               />
               <FAQ
-                question="I want to volunteer with Miss Malawi Foundation. How do I get involved?"
-                answer="We welcome volunteers who are passionate about our mission! Please fill out the contact form above, specifying your interest in volunteering, or email us at volunteers@missmalawi.com. We'll get back to you with information about current volunteer opportunities."
-              />
-              <FAQ
-                question="How can my organization partner with Miss Malawi Foundation?"
-                answer="We're always open to partnerships that align with our mission and values. Please send us a detailed proposal through the contact form or email partnerships@missmalawi.com. Our team will review your proposal and contact you to discuss potential collaboration opportunities."
+                question="How can my organization partner with Miss Malawi Organization?"
+                answer="We're always open to partnerships that align with our mission and values. Please send us a detailed proposal through the contact form or email partnerships@missmw.org. Our team will review your proposal and contact you to discuss potential collaboration opportunities."
               />
               <FAQ
                 question="I'm a journalist/media professional. How can I arrange an interview or press coverage?"
-                answer="For media inquiries, interviews, or press coverage, please contact our Communications Director at media@missmalawi.com or call +265 996 263 843. Please provide details about your media outlet and the specific information or interview you're requesting."
+                answer="For media inquiries, interviews, or press coverage, please contact our Public Relations Officer at pr@missmw.org . Please provide details about your media outlet and the specific information or interview you're requesting."
               />
               <FAQ
                 question="How can I make a donation to support Miss Malawi Foundation's programs?"
@@ -248,7 +251,7 @@ interface ContactCardProps {
 
 function ContactCard({ icon, title, details }: ContactCardProps) {
   return (
-    <div className="bg-white p-8 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300 text-[#7C3AED]enter">
+    <div className="bg-white p-8 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300 text-center">
       <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-emerald-50 mb-6">{icon}</div>
       <h3 className="text-xl font-bold mb-4 text-gray-900">{title}</h3>
       <div className="space-y-2">

@@ -9,6 +9,8 @@ import TeamMember from "@/components/team-member"
 import ParallaxSection from "@/components/parallax-section"
 import ParallaxText from "@/components/parallax-text"
 import ParallaxImage from "@/components/parallax-image"
+import SponsorCarousel from "@/components/sponsor-carousel"
+import sponsorData from "@/data/sponsors.json"
 
 type TeamMemberData = {
   id: number
@@ -20,8 +22,17 @@ type TeamMemberData = {
   hierarchy: number
 }
 
+type Sponsor = {
+  id: number
+  name: string
+  logo: string
+  website: string
+  tier?: string
+}
+
 export default function AboutPage() {
   const [team, setTeam] = useState<TeamMemberData[]>([])
+  const [partners, setPartners] = useState<Sponsor[]>([])
 
   useEffect(() => {
     const fetchTeam = async () => {
@@ -30,6 +41,7 @@ export default function AboutPage() {
       setTeam(data)
     }
     fetchTeam()
+    setPartners(sponsorData.partners)
   }, [])
 
   return (
@@ -58,12 +70,11 @@ export default function AboutPage() {
             </div>
 
             <div className="relative h-[500px] rounded-lg overflow-hidden shadow-xl">
-              <ParallaxImage
-                src="/placeholder.svg?height=1000&width=800"
+              <Image
+                src="/Misi.png"
                 alt="Miss Malawi contestants"
-                className="h-[500px] w-full"
-                width={800}
-                height={1000}
+                fill
+                className="object-cover"
               />
             </div>
           </div>
@@ -73,7 +84,7 @@ export default function AboutPage() {
       {/* History */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 md:px-6">
-          <ParallaxText className="text-[#7C3AED]enter mb-12">
+          <ParallaxText className="text-center mb-12">
             <h2 className="font-playfair text-[#7C3AED]xl md:text-4xl font-bold text-emerald-800 mb-4">Our History</h2>
             <div className="w-24 h-1 bg-purple mx-auto"></div>
           </ParallaxText>
@@ -118,7 +129,7 @@ export default function AboutPage() {
               </div>
             </div>
 
-            <div className="text-[#7C3AED]enter mt-12">
+            <div className="text-center mt-12">
               <Button className="bg-emerald-800 hover:bg-emerald-700">
                 Explore Our Legacy <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
@@ -129,7 +140,7 @@ export default function AboutPage() {
 
       {/* Parallax Quote Section */}
       <ParallaxSection
-        imageUrl="/placeholder.svg?height=800&width=1920"
+        imageUrl="/nyauziyambo.png"
         height="400px"
         overlayColor="bg-emerald-900/70"
       >
@@ -137,14 +148,14 @@ export default function AboutPage() {
           <p className="text-2xl md:text-[#7C3AED]xl font-playfair italic">
             "Beauty with a purpose is about using your platform to create positive change in society."
           </p>
-          <p className="mt-4 text-purple font-medium">Miss Malawi Foundation</p>
+          <p className="mt-4 text-white font-medium">Miss Malawi Organization</p>
         </div>
       </ParallaxSection>
 
       {/* Team Section */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4 md:px-6">
-          <ParallaxText className="text-[#7C3AED]enter mb-12">
+          <ParallaxText className="text-center mb-12">
             <h2 className="font-playfair text-[#7C3AED]xl md:text-4xl font-bold text-emerald-800 mb-4">Meet Our Team</h2>
             <p className="text-gray-600 max-w-3xl mx-auto">
               The dedicated individuals who work tirelessly to uphold our mission and create opportunities for young
@@ -174,7 +185,7 @@ export default function AboutPage() {
       {/* Partners */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 md:px-6">
-          <ParallaxText className="text-[#7C3AED]enter mb-12">
+          <ParallaxText className="text-center mb-12">
             <h2 className="font-playfair text-[#7C3AED]xl md:text-4xl font-bold text-emerald-800 mb-4">Our Partners</h2>
             <p className="text-gray-600 max-w-3xl mx-auto">
               We collaborate with organizations that share our vision for empowering Malawian women and promoting
@@ -183,19 +194,13 @@ export default function AboutPage() {
             <div className="w-24 h-1 bg-purple mx-auto mt-4"></div>
           </ParallaxText>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
-            {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-              <div key={i} className="bg-white p-6 rounded-lg shadow-sm flex items-center justify-center h-32">
-                <Image
-                  src="/placeholder-logo.svg"
-                  alt={`Partner ${i}`}
-                  width={120}
-                  height={60}
-                  className="opacity-80 hover:opacity-100 transition-opacity duration-300"
-                />
-              </div>
-            ))}
-          </div>
+          <SponsorCarousel
+            sponsors={partners}
+            height="h-32"
+            logoWidth={120}
+            logoHeight={60}
+            interval={60000}
+          />
         </div>
       </section>
     </div>

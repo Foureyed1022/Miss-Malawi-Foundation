@@ -46,64 +46,64 @@ export default function GalleryPage() {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4 md:px-6">
           {!galleryData ? (
-            <p className="text-[#7C3AED]enter text-gray-500">Loading gallery...</p>
+            <p className="text-center text-gray-500">Loading gallery...</p>
           ) : (
-          <Tabs defaultValue="all" className="w-full">
-            <div className="text-[#7C3AED]enter mb-8">
-              <TabsList className="inline-flex">
-                <TabsTrigger value="all">All Photos</TabsTrigger>
-                <TabsTrigger value="events">Events</TabsTrigger>
-                <TabsTrigger value="queens">Queens</TabsTrigger>
-                <TabsTrigger value="programs">Programs</TabsTrigger>
-                <TabsTrigger value="international">International</TabsTrigger>
-              </TabsList>
-            </div>
+            <Tabs defaultValue="all" className="w-full">
+              <div className="text-center mb-8">
+                <TabsList className="inline-flex">
+                  <TabsTrigger value="all">All Photos</TabsTrigger>
+                  <TabsTrigger value="events">Events</TabsTrigger>
+                  <TabsTrigger value="queens">Queens</TabsTrigger>
+                  <TabsTrigger value="programs">Programs</TabsTrigger>
+                  <TabsTrigger value="international">International</TabsTrigger>
+                </TabsList>
+              </div>
 
-            <TabsContent value="all">
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                {[...galleryData.events, ...galleryData.queens, ...galleryData.programs, ...galleryData.international]
-                  .slice(0, 16)
-                  .map((image) => (
+              <TabsContent value="all">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                  {[...galleryData.events, ...galleryData.queens, ...galleryData.programs, ...galleryData.international]
+                    .slice(0, 16)
+                    .map((image) => (
+                      <GalleryItem key={image.id} image={image} onClick={() => openLightbox(image)} />
+                    ))}
+                </div>
+              </TabsContent>
+
+              <TabsContent value="events">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                  {galleryData.events.map((image) => (
                     <GalleryItem key={image.id} image={image} onClick={() => openLightbox(image)} />
                   ))}
-              </div>
-            </TabsContent>
+                </div>
+              </TabsContent>
 
-            <TabsContent value="events">
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                {galleryData.events.map((image) => (
-                  <GalleryItem key={image.id} image={image} onClick={() => openLightbox(image)} />
-                ))}
-              </div>
-            </TabsContent>
+              <TabsContent value="queens">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                  {galleryData.queens.map((image) => (
+                    <GalleryItem key={image.id} image={image} onClick={() => openLightbox(image)} />
+                  ))}
+                </div>
+              </TabsContent>
 
-            <TabsContent value="queens">
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                {galleryData.queens.map((image) => (
-                  <GalleryItem key={image.id} image={image} onClick={() => openLightbox(image)} />
-                ))}
-              </div>
-            </TabsContent>
+              <TabsContent value="programs">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                  {galleryData.programs.map((image) => (
+                    <GalleryItem key={image.id} image={image} onClick={() => openLightbox(image)} />
+                  ))}
+                </div>
+              </TabsContent>
 
-            <TabsContent value="programs">
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                {galleryData.programs.map((image) => (
-                  <GalleryItem key={image.id} image={image} onClick={() => openLightbox(image)} />
-                ))}
-              </div>
-            </TabsContent>
-
-            <TabsContent value="international">
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                {galleryData.international.map((image) => (
-                  <GalleryItem key={image.id} image={image} onClick={() => openLightbox(image)} />
-                ))}
-              </div>
-            </TabsContent>
-          </Tabs>
+              <TabsContent value="international">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                  {galleryData.international.map((image) => (
+                    <GalleryItem key={image.id} image={image} onClick={() => openLightbox(image)} />
+                  ))}
+                </div>
+              </TabsContent>
+            </Tabs>
           )}
 
-          <div className="text-[#7C3AED]enter mt-12">
+          <div className="text-center mt-12">
             <Button className="bg-emerald-800 hover:bg-emerald-700">Load More Photos</Button>
           </div>
         </div>
@@ -112,8 +112,8 @@ export default function GalleryPage() {
       {/* Video Gallery */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="text-[#7C3AED]enter mb-12">
-            <h2 className="font-playfair text-[#7C3AED]xl md:text-4xl font-bold text-emerald-800 mb-4">Video Gallery</h2>
+          <div className="text-center mb-12">
+            <h2 className="font-playfair text-3xl md:text-4xl font-bold text-emerald-800 mb-4">Video Gallery</h2>
             <p className="text-gray-600 max-w-3xl mx-auto">
               Watch highlights from our pageants, programs, and special events
             </p>
@@ -122,39 +122,37 @@ export default function GalleryPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <VideoItem
-              title="Miss Malawi 2022 Grand Finale Highlights"
-              thumbnail="/placeholder.svg?height=400&width=600"
-              duration="5:24"
+              title="Miss Malawi 2025 Top Finalists Arrival at Kalipano Hotel"
+              videoLink="https://youtu.be/sWwrNIIsMmw?si=o-OK4TDy8gX1xv2k"
             />
             <VideoItem
-              title="Behind the Scenes: Boot Camp Training"
-              thumbnail="/placeholder.svg?height=400&width=600"
-              duration="3:47"
+              title="MISS MALAWI 2025 PRELIMINARIES OFFICIAL HIGHLIGHT"
+              videoLink="https://youtu.be/gU5mxfDGpMM?si=c5_GabW9xa7vGVYk"
             />
             <VideoItem
-              title="Girls Education Initiative Documentary"
-              thumbnail="/placeholder.svg?height=400&width=600"
-              duration="8:12"
+              title="Miss Malawi 2025 | Lilongwe Auditions Highlight"
+              videoLink="https://youtu.be/Cu0Y2wKCZTc?si=T3syQ572mbXC7aFS"
             />
             <VideoItem
-              title="Interview with Jescar Mponda - Miss Malawi 2022"
-              thumbnail="/placeholder.svg?height=400&width=600"
-              duration="4:35"
+              title="Miss Malawi 2025 | Blantyre Audition Highlight"
+              videoLink="https://youtu.be/3j7MkNrwkMk?si=QOvA1eXx_yrWOv4R"
             />
             <VideoItem
-              title="Cultural Heritage Showcase"
-              thumbnail="/placeholder.svg?height=400&width=600"
-              duration="6:18"
+              title=""
+              videoLink=""
             />
             <VideoItem
               title="Miss Malawi at Miss World 2012"
-              thumbnail="/placeholder.svg?height=400&width=600"
-              duration="7:02"
+              videoLink=""
             />
           </div>
 
-          <div className="text-[#7C3AED]enter mt-12">
-            <Button className="bg-emerald-800 hover:bg-emerald-700">View All Videos</Button>
+          <div className="text-center mt-12">
+            <Button asChild className="bg-emerald-800 hover:bg-emerald-700">
+              <a href="https://www.youtube.com/@MissMalawiOfficial" target="_blank" rel="noopener noreferrer">
+                View All Videos
+              </a>
+            </Button>
           </div>
         </div>
       </section>
@@ -181,7 +179,7 @@ export default function GalleryPage() {
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
               />
             </div>
-            <div className="bg-white p-4 text-[#7C3AED]enter">
+            <div className="bg-white p-4 text-center">
               <h3 className="text-xl font-bold text-gray-900">{selectedImage.title}</h3>
             </div>
           </div>
@@ -231,23 +229,45 @@ function GalleryItem({ image, onClick }: GalleryItemProps) {
 
 interface VideoItemProps {
   title: string
-  thumbnail: string
-  duration: string
+  videoLink: string
 }
 
-function VideoItem({ title, thumbnail, duration }: VideoItemProps) {
+function getYouTubeEmbedUrl(url: string) {
+  if (!url) return ""
+  if (url.includes("youtube.com/embed/")) return url
+
+  let videoId = ""
+  try {
+    if (url.includes("youtu.be/")) {
+      videoId = url.split("youtu.be/")[1]?.split("?")[0]
+    } else if (url.includes("youtube.com/watch")) {
+      const urlObj = new URL(url)
+      videoId = urlObj.searchParams.get("v") || ""
+    }
+  } catch (e) {
+    // Return original url if parsing fails
+  }
+
+  return videoId ? `https://www.youtube.com/embed/${videoId}` : url
+}
+
+function VideoItem({ title, videoLink }: VideoItemProps) {
+  const embedUrl = getYouTubeEmbedUrl(videoLink)
+
   return (
-    <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 group cursor-pointer">
-      <div className="relative h-48">
-        <Image src={thumbnail || "/placeholder.svg"} alt={title} fill className="object-cover" />
-        <div className="absolute inset-0 bg-black/30 flex items-center justify-center group-hover:bg-black/50 transition-all duration-300">
-          <div className="h-16 w-16 rounded-full bg-white/30 flex items-center justify-center">
-            <div className="h-12 w-12 rounded-full bg-purple flex items-center justify-center">
-              <div className="w-0 h-0 border-y-8 border-y-transparent border-l-12 border-l-white ml-1"></div>
-            </div>
-          </div>
-        </div>
-        <div className="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">{duration}</div>
+    <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 group">
+      <div className="relative aspect-video w-full bg-gray-100 flex items-center justify-center">
+        {embedUrl ? (
+          <iframe
+            src={embedUrl}
+            title={title}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            className="absolute inset-0 w-full h-full border-0"
+          ></iframe>
+        ) : (
+          <span className="text-gray-400 font-medium">Add YouTube Link</span>
+        )}
       </div>
       <div className="p-4">
         <h3 className="text-lg font-bold text-gray-900 line-clamp-2">{title}</h3>

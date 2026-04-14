@@ -115,7 +115,7 @@ export default function Home() {
             <ValueCard
               icon={ArrowUpRight}
               title="Empowerment"
-              description="Miss Malawi is more than a title—it is a platform that uplifts and inspires young women to embrace their potential as leaders and change-makers. That break barriers, challenge societal norms, and drive progress in their communities and beyond."
+              description="Miss Malawi is more than a title it is a platform that uplifts and inspires young women to embrace their potential as leaders and change-makers. That break barriers, challenge societal norms, and drive progress in their communities and beyond."
             />
             <ValueCard
               icon={ShieldCheck}
