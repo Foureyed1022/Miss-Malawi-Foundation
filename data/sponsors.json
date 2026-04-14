@@ -1,0 +1,352 @@
+{
+  "partners": [
+    {
+      "id": 1,
+      "name": "Partner 1",
+      "logo": "/sponsors/goshen.jpg",
+      "website": "https://example.com",
+      "tier": "platinum"
+    },
+    {
+      "id": 2,
+      "name": "Partner 2",
+      "logo": "/sponsors/pcclogo.png",
+      "website": "https://web.facebook.com/pearlconventioncentre/?_rdc=1&_rdr#",
+      "tier": "platinum"
+    },
+    {
+      "id": 3,
+      "name": "Partner 3",
+      "logo": "/sponsors/ep.png",
+      "website": "https://example.com",
+      "tier": "gold"
+    },
+    {
+      "id": 4,
+      "name": "Partner 4",
+      "logo": "/sponsors/malawian.png",
+      "website": "https://www.malawian-airlines.com/aa",
+      "tier": "gold"
+    },
+    {
+      "id": 5,
+      "name": "Partner 5",
+      "logo": "/sponsors/HOB.png",
+      "website": "https://example.com",
+      "tier": "gold"
+    },
+    {
+      "id": 6,
+      "name": "Partner 6",
+      "logo": "/sponsors/luex.png",
+      "website": "https://example.com",
+      "tier": "silver"
+    },
+    {
+      "id": 7,
+      "name": "Partner 7",
+      "logo": "/sponsors/rayen.jpg",
+      "website": "https://example.com",
+      "tier": "silver"
+    },
+    {
+      "id": 8,
+      "name": "Partner 8",
+      "logo": "/sponsors/senlain.png",
+      "website": "https://senlainsystems.com",
+      "tier": "silver"
+    },
+    {
+      "id": 9,
+      "name": "Partner 9",
+      "logo": "/sponsors/vivietta.jpeg",
+      "website": "https://continentalairlines.com",
+      "tier": "silver"
+    },
+    {
+      "id": 10,
+      "name": "Partner 10",
+      "logo": "/sponsors/adona.png",
+      "website": "https://adonafoundation.org/",
+      "tier": "silver"
+    },
+    {
+      "id": 11,
+      "name": "Partner 11",
+      "logo": "/sponsors/7arts.jpg",
+      "website": "https://www.instagram.com/7arts_studio24?igsh=MTJtcDI4MWFpbnAxaA==",
+      "tier": "silver"
+    },
+    {
+      "id": 12,
+      "name": "Partner 12",
+      "logo": "/sponsors/adamant.jpg",
+      "website": "https://web.facebook.com/adamantfurn/?_rdc=1&_rdr#",
+      "tier": "silver"
+    },
+    {
+      "id": 13,
+      "name": "Partner 13",
+      "logo": "/sponsors/akali.jpeg",
+      "website": "https://www.instagram.com/akali_jewelry?igsh=Mjlkb29pcjkzemVm",
+      "tier": "silver"
+    },
+    {
+      "id": 14,
+      "name": "Partner 14",
+      "logo": "/sponsors/amaryllis.jpeg",
+      "website": "https://amaryllishotels.com/",
+      "tier": "silver"
+    },
+    {
+      "id": 15,
+      "name": "Partner 15",
+      "logo": "/sponsors/angozo.jpeg",
+      "website": "https://www.angozocar.com/",
+      "tier": "silver"
+    },
+    {
+      "id": 16,
+      "name": "Partner 16",
+      "logo": "/sponsors/arkane.jpg",
+      "website": "https://www.instagram.com/arkanecreations?igsh=MWFxc2c5N2Zhcmpkcw==",
+      "tier": "silver"
+    },
+    {
+      "id": 17,
+      "name": "Partner 17",
+      "logo": "/sponsors/barefoot.jpeg",
+      "website": "https://barefootlodge.africa/",
+      "tier": "silver"
+    },
+    {
+      "id": 18,
+      "name": "Partner 18",
+      "logo": "/sponsors/diamond.jpeg",
+      "website": "",
+      "tier": "silver"
+    },
+    {
+      "id": 19,
+      "name": "Partner 19",
+      "logo": "/sponsors/grand.png",
+      "website": "https://thegrandpalacemalawi.com/",
+      "tier": "silver"
+    },
+    {
+      "id": 20,
+      "name": "Partner 20",
+      "logo": "/sponsors/hisandhers.png",
+      "website": "",
+      "tier": "silver"
+    },
+    {
+      "id": 21,
+      "name": "Partner 21",
+      "logo": "/sponsors/kalipano.jpg",
+      "website": "https://tsogolo.org/",
+      "tier": "silver"
+    },
+    {
+      "id": 22,
+      "name": "Partner 22",
+      "logo": "/sponsors/HOD.jpeg",
+      "website": "",
+      "tier": "silver"
+    },
+    {
+      "id": 23,
+      "name": "Partner 23",
+      "logo": "/sponsors/lolos.jpg",
+      "website": "https://loloscloset.com/",
+      "tier": "silver"
+    },
+    {
+      "id": 24,
+      "name": "Partner 24",
+      "logo": "/sponsors/lusso.jpeg",
+      "website": "",
+      "tier": "silver"
+    },
+    {
+      "id": 25,
+      "name": "Partner 25",
+      "logo": "/sponsors/mg.jpeg",
+      "website": "",
+      "tier": "silver"
+    },
+    {
+      "id": 26,
+      "name": "Partner 26",
+      "logo": "/sponsors/premierbet.jpg",
+      "website": "",
+      "tier": "silver"
+    },
+    {
+      "id": 27,
+      "name": "Partner 27",
+      "logo": "/sponsors/protelligent.png",
+      "website": "",
+      "tier": "silver"
+    },
+    {
+      "id": 28,
+      "name": "Partner 28",
+      "logo": "/sponsors/satguru.png",
+      "website": "",
+      "tier": "silver"
+    },
+    {
+      "id": 29,
+      "name": "Partner 29",
+      "logo": "/sponsors/zodiak.jpg",
+      "website": "",
+      "tier": "silver"
+    },
+    {
+      "id": 30,
+      "name": "Partner 30",
+      "logo": "/sponsors/weafrica.jpeg",
+      "website": "",
+      "tier": "silver"
+    }
+  ],
+  "platinumDonors": [
+    {
+      "id": 1,
+      "name": "Platinum Donor 1",
+      "logo": "/sponsors/platinum1.png",
+      "website": "https://example.com"
+    },
+    {
+      "id": 2,
+      "name": "Platinum Donor 2",
+      "logo": "/sponsors/platinum2.png",
+      "website": "https://example.com"
+    },
+    {
+      "id": 3,
+      "name": "Platinum Donor 3",
+      "logo": "/sponsors/platinum3.png",
+      "website": "https://example.com"
+    },
+    {
+      "id": 4,
+      "name": "Platinum Donor 4",
+      "logo": "/sponsors/platinum4.png",
+      "website": "https://example.com"
+    }
+  ],
+  "goldDonors": [
+    {
+      "id": 1,
+      "name": "Gold Donor 1",
+      "logo": "/sponsors/gold1.png",
+      "website": "https://example.com"
+    },
+    {
+      "id": 2,
+      "name": "Gold Donor 2",
+      "logo": "/sponsors/gold2.png",
+      "website": "https://example.com"
+    },
+    {
+      "id": 3,
+      "name": "Gold Donor 3",
+      "logo": "/sponsors/gold3.png",
+      "website": "https://example.com"
+    },
+    {
+      "id": 4,
+      "name": "Gold Donor 4",
+      "logo": "/sponsors/gold4.png",
+      "website": "https://example.com"
+    },
+    {
+      "id": 5,
+      "name": "Gold Donor 5",
+      "logo": "/sponsors/gold5.png",
+      "website": "https://example.com"
+    },
+    {
+      "id": 6,
+      "name": "Gold Donor 6",
+      "logo": "/sponsors/gold6.png",
+      "website": "https://example.com"
+    }
+  ],
+  "silverDonors": [
+    {
+      "id": 1,
+      "name": "Silver Donor 1",
+      "logo": "/sponsors/silver1.png",
+      "website": "https://example.com"
+    },
+    {
+      "id": 2,
+      "name": "Silver Donor 2",
+      "logo": "/sponsors/silver2.png",
+      "website": "https://example.com"
+    },
+    {
+      "id": 3,
+      "name": "Silver Donor 3",
+      "logo": "/sponsors/silver3.png",
+      "website": "https://example.com"
+    },
+    {
+      "id": 4,
+      "name": "Silver Donor 4",
+      "logo": "/sponsors/silver4.png",
+      "website": "https://example.com"
+    },
+    {
+      "id": 5,
+      "name": "Silver Donor 5",
+      "logo": "/sponsors/silver5.png",
+      "website": "https://example.com"
+    },
+    {
+      "id": 6,
+      "name": "Silver Donor 6",
+      "logo": "/sponsors/silver6.png",
+      "website": "https://example.com"
+    },
+    {
+      "id": 7,
+      "name": "Silver Donor 7",
+      "logo": "/sponsors/silver7.png",
+      "website": "https://example.com"
+    },
+    {
+      "id": 8,
+      "name": "Silver Donor 8",
+      "logo": "/sponsors/silver8.png",
+      "website": "https://example.com"
+    },
+    {
+      "id": 9,
+      "name": "Silver Donor 9",
+      "logo": "/sponsors/silver9.png",
+      "website": "https://example.com"
+    },
+    {
+      "id": 10,
+      "name": "Silver Donor 10",
+      "logo": "/sponsors/silver10.png",
+      "website": "https://example.com"
+    },
+    {
+      "id": 11,
+      "name": "Silver Donor 11",
+      "logo": "/sponsors/silver11.png",
+      "website": "https://example.com"
+    },
+    {
+      "id": 12,
+      "name": "Silver Donor 12",
+      "logo": "/sponsors/silver12.png",
+      "website": "https://example.com"
+    }
+  ]
+}

@@ -9,6 +9,8 @@ import TeamMember from "@/components/team-member"
 import ParallaxSection from "@/components/parallax-section"
 import ParallaxText from "@/components/parallax-text"
 import ParallaxImage from "@/components/parallax-image"
+import SponsorCarousel from "@/components/sponsor-carousel"
+import sponsorData from "@/data/sponsors.json"
 
 type TeamMemberData = {
   id: number
@@ -20,8 +22,17 @@ type TeamMemberData = {
   hierarchy: number
 }
 
+type Sponsor = {
+  id: number
+  name: string
+  logo: string
+  website: string
+  tier?: string
+}
+
 export default function AboutPage() {
   const [team, setTeam] = useState<TeamMemberData[]>([])
+  const [partners, setPartners] = useState<Sponsor[]>([])
 
   useEffect(() => {
     const fetchTeam = async () => {
@@ -30,6 +41,7 @@ export default function AboutPage() {
       setTeam(data)
     }
     fetchTeam()
+    setPartners(sponsorData.partners)
   }, [])
 
   return (
@@ -182,19 +194,13 @@ export default function AboutPage() {
             <div className="w-24 h-1 bg-purple mx-auto mt-4"></div>
           </ParallaxText>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
-            {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-              <div key={i} className="bg-white p-6 rounded-lg shadow-sm flex items-center justify-center h-32">
-                <Image
-                  src="/placeholder-logo.svg"
-                  alt={`Partner ${i}`}
-                  width={120}
-                  height={60}
-                  className="opacity-80 hover:opacity-100 transition-opacity duration-300"
-                />
-              </div>
-            ))}
-          </div>
+          <SponsorCarousel
+            sponsors={partners}
+            height="h-32"
+            logoWidth={120}
+            logoHeight={60}
+            interval={60000}
+          />
         </div>
       </section>
     </div>

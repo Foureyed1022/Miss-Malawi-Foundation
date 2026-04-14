@@ -12,7 +12,7 @@
     "id": 1,
     "name": "Bernadette Mweso",
     "role": "Chief Executive Officer (CEO)",
-    "photo": "/placeholder.svg?height=400&width=400",
+    "photo": "/team/berna.jpeg?height=400&width=400",
     "bio": "Oversees the entire Miss Malawi organization, sets strategic direction, ensures all departments align with the pageant’s vision, and represents the brand at national and international platforms.",
     "department": "Leadership",
     "hierarchy": 1
@@ -21,7 +21,7 @@
     "id": 2,
     "name": "Godfrey Kambewa",
     "role": "Chief Operating Officer (COO)",
-    "photo": "/placeholder.svg?height=400&width=400",
+    "photo": "/team/godfrey.jpg?height=700&width=700",
     "bio": "Manages day-to-day operations, coordinates between departments, ensures smooth execution of pageant activities, and implements organizational policies.",
     "department": "Operations",
     "hierarchy": 2
@@ -57,7 +57,7 @@
     "id": 6,
     "name": "Calista Kachulu",
     "role": "Contestants Manager",
-    "photo": "/placeholder.svg?height=400&width=400",
+    "photo": "/team/calista.jpeg?height=400&width=400",
     "bio": "Serves as the main point of contact for contestants, manages schedules, supports their needs, and ensures their well-being during training and events.",
     "department": "Contestants",
     "hierarchy": 2
@@ -66,17 +66,16 @@
     "id": 7,
     "name": "Stephan Mdala",
     "role": "Public Relations Officer (PRO",
-    "photo": "/placeholder.svg?height=400&width=400",
+    "photo": "/team/steph.jpg?height=400&width=400",
     "bio": "Handles media relations, manages press coverage, crafts official communications, and promotes the pageant across traditional and digital media channels.",
     "department": "Finance",
     "hierarchy": 2
   },
-  
   {
     "id": 9,
     "name": "Gilbert Kamaliza",
     "role": "Business Development Officer",
-    "photo": "/placeholder.svg?height=400&width=400",
+    "photo": "/team/gilbert.jpeg?height=400&width=400",
     "bio": "Oversees the entire Miss Malawi organization, sets strategic direction, ensures all departments align with the pageant’s vision, and represents the brand at national and international platforms.",
     "department": "Business Development",
     "hierarchy": 2
@@ -85,7 +84,7 @@
     "id": 10,
     "name": "Macpherson Gondwe",
     "role": "Marketing Officer",
-    "photo": "/placeholder.svg?height=400&width=400",
+    "photo": "/team/mac.jpeg?height=400&width=400",
     "bio": "Develops marketing campaigns, manages social media and digital outreach, and ensures maximum visibility and engagement for Miss Malawi 2026",
     "department": "Marketing",
     "hierarchy": 2

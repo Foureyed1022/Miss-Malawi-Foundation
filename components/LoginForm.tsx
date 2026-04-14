@@ -68,7 +68,7 @@ export default function LoginForm() {
 
       <div className="max-w-md w-full">
         <div className="bg-white rounded-2xl shadow-2xl p-8">
-          <div className="text-[#7C3AED]enter mb-8">
+          <div className="flex flex-col items-center mb-8">
             <div className="inline-flex items-center justify-center mb-4">
               <Image
                 src={logo}
@@ -79,7 +79,7 @@ export default function LoginForm() {
                 priority
               />
             </div>
-            <p className="text-xl font-bold" style={{ color: '#3D3B48' }}>Admin Portal</p>
+            <p className="text-xl font-bold text-center" style={{ color: '#3D3B48' }}>Admin Portal</p>
           </div>
 
           <form onSubmit={handleLogin} className="space-y-6">
