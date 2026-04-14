@@ -11,15 +11,15 @@ const testimonials = [
       "Being Miss Malawi opened doors I never imagined possible. The platform allowed me to advocate for girls' education across the country and make a real difference in my community.",
     name: "Tionge Munthali",
     title: "Miss Malawi 2018",
-    image: "/placeholder.svg?height=400&width=400",
+    image: "/queens/tiwonge.jpg?height=400&width=400",
   },
   {
     id: 2,
     quote:
-      "The Miss Malawi Foundation doesn't just crown queens; it builds leaders. The skills and confidence I gained during my reign continue to shape my career in public service.",
+      "The Miss Malawi Organization doesn't just crown queens; it builds leaders. The skills and confidence I gained during my reign continue to shape my career in public service.",
     name: "Cecelia Khofi",
     title: "Miss Malawi 2017",
-    image: "/placeholder.svg?height=400&width=400",
+    image: "/queens/cecelia.jpg?height=400&width=400",
   },
   {
     id: 3,
@@ -27,7 +27,7 @@ const testimonials = [
       "Representing Malawi on the international stage was the highlight of my reign. I'm proud to have showcased our beautiful culture and traditions to the world.",
     name: "Faith Chibale",
     title: "Miss Malawi 2010",
-    image: "/placeholder.svg?height=400&width=400",
+    image: "/queens/faith.jpeg?height=400&width=400",
   },
 ]
 

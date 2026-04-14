@@ -1,5 +1,14 @@
 [
   {
+    "id": 0,
+    "name": "Prophetess Mary Bushiri",
+    "role": "Board Chair",
+    "photo": "/team/prophetess.jpeg?height=400&width=400",
+    "bio": "Mary Bushiri is the Board Chair of the Miss Malawi Organization, a Malawian chartered accountant, entrepreneur, and philanthropist known for her leadership and commitment to community development. She works alongside Prophet Shepherd Bushiri and leads initiatives that support vulnerable communities, while championing women’s empowerment and driving the pageant’s vision for purpose, leadership, and national impact.",
+    "department": "Pageant",
+    "hierarchy": 0
+  },
+  {
     "id": 1,
     "name": "Bernadette Mweso",
     "role": "Chief Executive Officer (CEO)",
@@ -21,7 +30,7 @@
     "id": 3,
     "name": "James Mathews Banda",
     "role": "Finance Lead",
-    "photo": "/placeholder.svg?height=400&width=400",
+    "photo": "/team/james.jpeg?height=400&width=400",
     "bio": "Oversees budgeting, financial planning, and expenditure tracking; ensures transparency and accountability in all financial transactions.",
     "department": "Finance",
     "hierarchy": 2
@@ -30,7 +39,7 @@
     "id": 4,
     "name": "Monalisa Mkumba",
     "role": "Chief of Protocol & Chaperone",
-    "photo": "/placeholder.svg?height=400&width=400",
+    "photo": "/team/mona.png?height=400&width=400",
     "bio": "Ensures contestants follow proper etiquette, manages protocol during events, and provides guidance and supervision to contestants throughout the pageant",
     "department": "Protocol",
     "hierarchy": 2
@@ -39,7 +48,7 @@
     "id": 5,
     "name": "Zikani Chiumia",
     "role": "Events and Production Manager",
-    "photo": "/placeholder.svg?height=400&width=400",
+    "photo": "/team/ziki.jpeg?height=400&width=400",
     "bio": "Plans, coordinates, and executes all events and productions, including rehearsals, photoshoots, and the grand finale, ensuring a seamless show experience.",
     "department": "Events and Production",
     "hierarchy": 2
@@ -62,15 +71,7 @@
     "department": "Finance",
     "hierarchy": 2
   },
-  {
-    "id": 8,
-    "name": "Joshua Mwendo",
-    "role": "Business Development Officer",
-    "photo": "/placeholder.svg?height=400&width=400",
-    "bio": "Oversees the entire Miss Malawi organization, sets strategic direction, ensures all departments align with the pageant’s vision, and represents the brand at national and international platforms.",
-    "department": "Business Development",
-    "hierarchy": 2
-  },
+  
   {
     "id": 9,
     "name": "Gilbert Kamaliza",

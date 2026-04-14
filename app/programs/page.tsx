@@ -118,12 +118,11 @@ export default function ProgramsPage() {
               </div>
 
               <div className="relative h-[500px] rounded-lg overflow-hidden shadow-xl">
-                <ParallaxImage
-                  src="/placeholder.svg?height=1000&width=800"
+                <Image
+                  src="/misi.png"
                   alt="Miss Malawi community program"
-                  className="h-[500px] w-full"
-                  width={800}
-                  height={1000}
+                  fill
+                  className="object-cover"
                 />
               </div>
             </div>
@@ -133,16 +132,16 @@ export default function ProgramsPage() {
 
       {/* Parallax Quote Section */}
       <ParallaxSection
-        imageUrl="/placeholder.svg?height=800&width=1920"
+        imageUrl="/nyauziyambo.png?height=800&width=1920"
         height="400px"
         overlayColor="bg-purple-900/70"
       >
         <div className="max-w-3xl mx-auto">
-          <p className="text-2xl text-[#7C3AED] font-playfair italic">
+          <p className="text-2xl text-[white] font-playfair italic">
             "Our programs are designed to create lasting impact and empower the next generation of Malawian women
             leaders."
           </p>
-          <p className="mt-4 text-purple-200 font-medium">Miss Malawi Foundation</p>
+          <p className="mt-4 text-purple-200 font-medium">Miss Malawi Organization</p>
         </div>
       </ParallaxSection>
 
@@ -252,7 +251,7 @@ export default function ProgramsPage() {
       {/* Impact Stories */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 md:px-6">
-          <ParallaxText className="text-[#7C3AED] mb-12">
+          <ParallaxText className="text-[#7C3AED] mb-12 text-center">
             <h2 className="font-playfair text-[#7C3AED] text-4xl md:text-5xl font-bold text-emerald-800 mb-4">Impact Stories</h2>
             <p className="text-gray-600 max-w-3xl mx-auto">
               Real stories of transformation and empowerment through our programs
@@ -262,8 +261,8 @@ export default function ProgramsPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <ImpactStory
-              image="/placeholder.svg?height=400&width=400"
-              name="Chimwemwe Banda"
+              image="/impact/ruth.jpg?height=400&width=400"
+              name="Ruth Chiwaula"
               title="Scholarship Recipient"
               story="Thanks to the Miss Malawi Scholarship Fund, I was able to complete my degree in Environmental Science. Now I'm working on conservation projects in my community and mentoring other young women."
             />
