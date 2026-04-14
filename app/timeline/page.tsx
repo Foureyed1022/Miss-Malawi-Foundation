@@ -26,7 +26,7 @@ export default function TimelinePage() {
               <TimelineItem
                 year="1999"
                 name="Irene Nkhwazi"
-                image="/misi.png?height=500&width=400"
+                image="/Misi.png?height=500&width=400"
                 isLeft={true}
                 onImageClick={handleImageClick}
               />
@@ -42,7 +42,7 @@ export default function TimelinePage() {
               <TimelineItem
                 year="2001"
                 name="Linda Longwe"
-                image="/misi.png?height=500&width=400"
+                image="/Misi.png?height=500&width=400"
                 isLeft={true}
                 onImageClick={handleImageClick}
               />
@@ -58,7 +58,7 @@ export default function TimelinePage() {
               <TimelineItem
                 year="2003"
                 name="Florence Zeka"
-                image="/misi.png?height=500&width=400"
+                image="/Misi.png?height=500&width=400"
                 isLeft={true}
                 onImageClick={handleImageClick}
               />
@@ -74,7 +74,7 @@ export default function TimelinePage() {
               <TimelineItem
                 year="2005"
                 name="Mable Pulu"
-                image="/misi.png?height=500&width=400"
+                image="/Misi.png?height=500&width=400"
                 isLeft={true}
                 onImageClick={handleImageClick}
               />
