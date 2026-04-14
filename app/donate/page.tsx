@@ -1,4 +1,6 @@
-import type React from "react"
+"use client"
+
+import React, { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
@@ -8,12 +10,60 @@ import { ArrowRight, Book, CheckCircle, GraduationCap, Heart, Stethoscope, Steth
 import PageHeader from "@/components/page-header"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Label } from "@/components/ui/label"
-import { submitDonation } from "./payment-action"
 import SponsorCarousel from "@/components/sponsor-carousel"
 import sponsorData from "@/data/sponsors.json"
+import { saveDonation } from "@/lib/firestore"
 
 export default function DonatePage() {
   const { platinumDonors, goldDonors, silverDonors } = sponsorData
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submissionError, setSubmissionError] = useState<string | null>(null)
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    setSubmissionError(null)
+
+    const formData = new FormData(event.currentTarget)
+    const allocation = formData.get('allocation')?.toString() || 'general'
+    const amount = 0
+
+    let firstName = formData.get('firstName')?.toString().trim() || ''
+    let lastName = formData.get('lastName')?.toString().trim() || ''
+
+    if (!firstName || !lastName) {
+      firstName = 'Anonymous'
+      lastName = ''
+    }
+
+    const email = formData.get('email')?.toString().trim() || ''
+    const phone = formData.get('phone')?.toString().trim() || ''
+    const comments = formData.get('comments')?.toString().trim() || ''
+
+    const donation = {
+      amount,
+      allocation,
+      firstName,
+      lastName,
+      email,
+      phone,
+      paymentMethod: 'PayChangu',
+      comments,
+      isMonthly: false,
+      status: 'pending' as const,
+    }
+
+    setIsSubmitting(true)
+    const savedId = await saveDonation(donation)
+    setIsSubmitting(false)
+
+    if (!savedId) {
+      setSubmissionError('Unable to save donation. Please try again.')
+      return
+    }
+
+    window.location.href = 'https://pay.paychangu.com/SC-IFVXJP'
+  }
+
   return (
     <div className="flex flex-col w-full">
       <PageHeader
@@ -64,7 +114,7 @@ export default function DonatePage() {
               <div className="p-8">
                 <h2 className="font-playfair text-3xl font-bold text-[#212224] mb-6 text-center">Make a Donation</h2>
 
-                <form action={submitDonation} className="space-y-6">
+                <form className="space-y-6" onSubmit={handleSubmit}>
                   {/* Donation Allocation */}
                   <div>
                     <h3 className="text-lg font-bold text-gray-900 mb-4">Allocate Your Donation</h3>
@@ -104,27 +154,30 @@ export default function DonatePage() {
                     </RadioGroup>
                   </div>
 
+                  
+
                   {/* Personal Information */}
                   <div>
                     <h3 className="text-lg font-bold text-gray-900 mb-4">Your Information</h3>
+                    <p className="text-sm text-gray-500 mb-4">This section is optional. Leave blank to donate anonymously.</p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
                         <Label htmlFor="first-name" className="block text-sm font-medium text-gray-700 mb-1">
-                          First Name <span className="text-red-500">*</span>
+                          First Name
                         </Label>
-                        <Input id="first-name" name="firstName" required className="w-full" />
+                        <Input id="first-name" name="firstName" className="w-full" />
                       </div>
                       <div>
                         <Label htmlFor="last-name" className="block text-sm font-medium text-gray-700 mb-1">
-                          Last Name <span className="text-red-500">*</span>
+                          Last Name
                         </Label>
-                        <Input id="last-name" name="lastName" required className="w-full" />
+                        <Input id="last-name" name="lastName" className="w-full" />
                       </div>
                       <div>
                         <Label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                          Email Address <span className="text-red-500">*</span>
+                          Email Address
                         </Label>
-                        <Input id="email" name="email" type="email" required className="w-full" />
+                        <Input id="email" name="email" type="email" className="w-full" />
                       </div>
                       <div>
                         <Label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
@@ -143,15 +196,25 @@ export default function DonatePage() {
                     <Textarea
                       id="comments"
                       name="comments"
-                      placeholder="Share why you're supporting Miss Malawi Foundation"
+                      placeholder="Share any message you'd like to include with your donation"
                       className="w-full"
                     />
                   </div>
 
+                  {submissionError ? (
+                    <div className="rounded-md bg-red-50 p-4 text-sm text-red-700">
+                      {submissionError}
+                    </div>
+                  ) : null}
+
                   {/* Submit */}
                   <div className="pt-4 flex flex-col items-center">
-                    <Button type="submit" className="bg-purple hover:bg-purple/90 text-white text-lg px-8 py-6 w-auto min-w-[200px]">
-                      Donate Now
+                    <Button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="bg-purple hover:bg-purple/90 text-white text-lg px-8 py-6 w-auto min-w-[200px] disabled:cursor-not-allowed disabled:opacity-60"
+                    >
+                      {isSubmitting ? 'Processing...' : 'Donate Now'}
                     </Button>
                   </div>
                 </form>

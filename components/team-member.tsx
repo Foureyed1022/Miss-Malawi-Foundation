@@ -13,15 +13,7 @@ export default function TeamMember({ image, name, position }: TeamMemberProps) {
   return (
     <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 group">
       <div className="relative h-80">
-        <Image src={image || "/placeholder.svg"} alt={name} fill className="object-cover" />
-        <div className="absolute inset-0 bg-[#212224]/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-          <div className="flex space-x-3">
-            <SocialIcon href="#" icon={<Facebook className="h-4 w-4" />} />
-            <SocialIcon href="#" icon={<Twitter className="h-4 w-4" />} />
-            <SocialIcon href="#" icon={<Instagram className="h-4 w-4" />} />
-            <SocialIcon href="#" icon={<Linkedin className="h-4 w-4" />} />
-          </div>
-        </div>
+        <Image src={image || "/placeholder.svg"} alt={name} fill className="object-contain" />
       </div>
       <div className="p-4 text-[#7C3AED]enter">
         <h3 className="text-xl font-bold text-gray-900">{name}</h3>

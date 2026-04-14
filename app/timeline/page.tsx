@@ -216,10 +216,20 @@ interface TimelineItemProps {
 function TimelineItem({ year, name, image, isLeft, onImageClick }: TimelineItemProps) {
   return (
     <div className="relative z-10 mb-12">
-      <div className={`flex items-center justify-center ${isLeft ? "flex-row-reverse" : "flex-row"}`}>
-        <div className={`w-5/12 ${isLeft ? "text-right pr-8" : "text-left pl-8"}`}>
+      <div className={`flex flex-col items-center justify-center md:flex-row ${isLeft ? "md:flex-row-reverse" : "md:flex-row"}`}>
+        <div className={`w-full md:w-5/12 ${isLeft ? "md:text-right md:pr-8" : "md:text-left md:pl-8"}`}>
+          <div className="bg-emerald-50 p-4 rounded-lg mb-4 md:mb-0 w-full">
+            <span className="text-2xl font-bold text-emerald-800">{year}</span>
+          </div>
+        </div>
+
+        <div className="w-full flex items-center justify-center my-4 md:absolute md:left-1/2 md:top-0 md:transform md:-translate-x-1/2 md:h-full md:my-0">
+          <div className="h-8 w-8 rounded-full bg-purple border-4 border-white shadow"></div>
+        </div>
+
+        <div className={`w-full md:w-5/12 ${isLeft ? "md:text-left md:pl-8" : "md:text-right md:pr-8"}`}>
           <div className="bg-white p-4 rounded-lg shadow-md border border-gray-100 hover:shadow-lg transition-shadow duration-300">
-            <div 
+            <div
               className="relative h-80 mb-4 overflow-hidden rounded-lg cursor-pointer group"
               onClick={() => onImageClick(image, name, year)}
             >
@@ -227,7 +237,7 @@ function TimelineItem({ year, name, image, isLeft, onImageClick }: TimelineItemP
                 src={image || "/placeholder.svg"}
                 alt={`Miss Malawi ${year} - ${name}`}
                 fill
-                className="object-cover transition-transform duration-300 group-hover:scale-105"
+                className="object-contain transition-transform duration-300 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
                 <svg
@@ -251,16 +261,6 @@ function TimelineItem({ year, name, image, isLeft, onImageClick }: TimelineItemP
             </div>
             <h3 className="text-xl font-bold text-gray-900">{name}</h3>
             <p className="text-purple font-medium">Miss Malawi {year}</p>
-          </div>
-        </div>
-
-        <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center">
-          <div className="h-8 w-8 rounded-full bg-purple border-4 border-white shadow"></div>
-        </div>
-
-        <div className={`w-5/12 ${isLeft ? "text-left pl-8" : "text-right pr-8"}`}>
-          <div className="bg-emerald-50 p-4 rounded-lg">
-            <span className="text-2xl font-bold text-emerald-800">{year}</span>
           </div>
         </div>
       </div>

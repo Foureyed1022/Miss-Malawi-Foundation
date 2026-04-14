@@ -24,7 +24,7 @@ export default function DashboardPage() {
   const [stats, setStats] = useState<any>(null)
   const [activity, setActivity] = useState<ActivityItem[]>([])
   const [traffic, setTraffic] = useState<any[]>([])
-  const [donations, setDonations] = useState<any[]>([])
+  const [monthlyDonations, setMonthlyDonations] = useState<any[]>([])
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
@@ -44,13 +44,13 @@ export default function DashboardPage() {
         }
 
         // Parallel data loading
-        const [gData, nData, sData, aData, tData, dData] = await Promise.all([
+        const [gData, nData, sData, aData, tData, mData] = await Promise.all([
           loadJson("/api/gallery"),
           loadJson("/api/news"),
           getStatistics().catch(e => { console.error("Stats fail:", e); return null }),
           getRecentActivity(5).catch(e => { console.error("Activity fail:", e); return null }),
           getDailyVisits(7).catch(e => { console.error("Traffic fail:", e); return null }),
-          getMonthlyDonations().catch(e => { console.error("Donations fail:", e); return null })
+          getMonthlyDonations().catch(e => { console.error("Monthly donations fail:", e); return null }),
         ])
 
         if (gData) setGallery(gData)
@@ -58,7 +58,7 @@ export default function DashboardPage() {
         if (sData) setStats(sData)
         if (aData) setActivity(aData)
         if (tData) setTraffic(tData)
-        if (dData) setDonations(dData)
+        if (mData) setMonthlyDonations(mData)
 
       } catch (error) {
         console.error("Critical dashboard load error:", error)
@@ -84,7 +84,7 @@ export default function DashboardPage() {
     <div className="p-6 md:p-8 space-y-8">
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
-          <h1 className="font-playfair text-[#7C3AED]xl md:text-4xl font-bold text-[#212224]">Foundation Dashboard</h1>
+          <h1 className="font-playfair text-[#7C3AED] xl md:text-4xl font-bold text-[#212224]">Foundation Dashboard</h1>
           <p className="text-gray-600 mt-2 max-w-2xl">
             Real-time view of how visitors are engaging with the Miss Malawi Foundation website, programs, and campaigns.
           </p>
@@ -173,7 +173,7 @@ export default function DashboardPage() {
                   </div>
                 ))
               ) : (
-                <p className="text-sm text-gray-500 text-[#7C3AED]enter py-4">No recent activity detected</p>
+                <p className="text-sm text-gray-500 py-4">No recent activity detected</p>
               )}
             </div>
           </CardContent>
@@ -190,7 +190,7 @@ export default function DashboardPage() {
           </CardHeader>
           <CardContent className="h-[260px]">
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={donations}>
+              <BarChart data={monthlyDonations}>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f3f4f6" />
                 <XAxis dataKey="label" tickLine={false} axisLine={false} tick={{ fill: "#6b7280", fontSize: 12 }} />
                 <YAxis tickLine={false} axisLine={false} tick={{ fill: "#6b7280", fontSize: 12 }} />

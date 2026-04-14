@@ -16,7 +16,7 @@ import {
   QuerySnapshot
 } from 'firebase/firestore';
 import { auth, db } from './firebase';
-import { NewsArticle, Applicant, ContactMessage, Donation, Subscriber, AnalyticsEvent, UserProfile, SiteStats } from '@/types';
+import { NewsArticle, Applicant, ContactMessage, Donation, FinanceTransaction, Subscriber, AnalyticsEvent, UserProfile, SiteStats } from '@/types';
 import toast from 'react-hot-toast';
 
 // Categories Management
@@ -259,14 +259,31 @@ export const deleteContactMessage = async (id: string): Promise<boolean> => {
 export const saveDonation = async (donation: Omit<Donation, 'id' | 'createdAt'>): Promise<string | null> => {
   try {
     const donationsRef = collection(db, 'donations');
-    const docRef = await addDoc(donationsRef, {
+    const donationRef = doc(donationsRef);
+    await setDoc(donationRef, {
       ...donation,
+      transactionId: donationRef.id,
       createdAt: Timestamp.now(),
+      updatedAt: Timestamp.now(),
     });
-    return docRef.id;
+    return donationRef.id;
   } catch (error) {
     console.error('Error saving donation:', error);
     return null;
+  }
+};
+
+export const updateDonation = async (id: string, updates: Partial<Donation>): Promise<boolean> => {
+  try {
+    const donationRef = doc(db, 'donations', id);
+    await updateDoc(donationRef, {
+      ...updates,
+      updatedAt: Timestamp.now(),
+    });
+    return true;
+  } catch (error) {
+    console.error('Error updating donation:', error);
+    return false;
   }
 };
 
@@ -283,6 +300,53 @@ export const getDonations = async (): Promise<Donation[]> => {
     })) as Donation[];
   } catch (error) {
     console.error('Error fetching donations:', error);
+    return [];
+  }
+};
+
+export const saveFinanceTransaction = async (transaction: Omit<FinanceTransaction, 'id' | 'createdAt'>): Promise<string | null> => {
+  try {
+    const transactionsRef = collection(db, 'finance_transactions');
+    const txRef = doc(transactionsRef);
+    await setDoc(txRef, {
+      ...transaction,
+      createdAt: Timestamp.now(),
+      updatedAt: Timestamp.now(),
+    });
+    return txRef.id;
+  } catch (error) {
+    console.error('Error saving finance transaction:', error);
+    return null;
+  }
+};
+
+export const updateFinanceTransaction = async (id: string, updates: Partial<FinanceTransaction>): Promise<boolean> => {
+  try {
+    const txRef = doc(db, 'finance_transactions', id);
+    await updateDoc(txRef, {
+      ...updates,
+      updatedAt: Timestamp.now(),
+    });
+    return true;
+  } catch (error) {
+    console.error('Error updating finance transaction:', error);
+    return false;
+  }
+};
+
+export const getFinanceTransactions = async (): Promise<FinanceTransaction[]> => {
+  try {
+    const transactionsRef = collection(db, 'finance_transactions');
+    const q = query(transactionsRef, orderBy('createdAt', 'desc'));
+    const snapshot = await getDocs(q);
+
+    return snapshot.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data(),
+      createdAt: doc.data().createdAt?.toDate() || new Date(),
+    })) as FinanceTransaction[];
+  } catch (error) {
+    console.error('Error fetching finance transactions:', error);
     return [];
   }
 };

@@ -101,6 +101,17 @@ export interface Transaction {
   updatedAt: Date;
 }
 
+export interface FinanceTransaction {
+  id: string;
+  type: 'Donation' | 'Other';
+  amount: number;
+  source: string;
+  note?: string;
+  donationId?: string;
+  createdAt: Date;
+  updatedAt?: Date;
+}
+
 export interface VoteBundle {
   votes: number;
   price: number;
@@ -144,16 +155,17 @@ export interface Donation {
   id: string;
   amount: number;
   allocation: string;
-  firstName: string;
-  lastName: string;
-  email: string;
+  firstName?: string;
+  lastName?: string;
+  email?: string;
   phone?: string;
   paymentMethod: string;
   comments?: string;
   isMonthly: boolean;
-  status: 'pending' | 'success' | 'failed';
+  status: 'pending' | 'approved' | 'rejected' | 'success' | 'failed';
   transactionId?: string;
   createdAt: Date;
+  updatedAt?: Date;
 }
 
 export interface Subscriber {

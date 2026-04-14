@@ -156,6 +156,12 @@ service cloud.firestore {
       allow read, write: if request.auth != null;
     }
 
+    // Collection: finance_transactions
+    match /finance_transactions/{transactionId} {
+      // Only authenticated users can view and record finance transactions
+      allow read, write: if request.auth != null;
+    }
+
     // Collection: donations
     match /donations/{donationId} {
       // Allow public creation for new donations
