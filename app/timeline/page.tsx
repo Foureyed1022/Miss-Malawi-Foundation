@@ -146,7 +146,7 @@ export default function TimelinePage() {
               <TimelineItem
                 year="2025"
                 name="Thandie Chisi"
-                image="/queens/thandie.png?height=500&width=400"
+                image="/queens/thandie.jpeg?height=500&width=400"
                 isLeft={false}
                 onImageClick={handleImageClick}
               />
@@ -219,7 +219,7 @@ function TimelineItem({ year, name, image, isLeft, onImageClick }: TimelineItemP
       <div className={`flex items-center justify-center ${isLeft ? "flex-row-reverse" : "flex-row"}`}>
         <div className={`w-5/12 ${isLeft ? "text-right pr-8" : "text-left pl-8"}`}>
           <div className="bg-white p-4 rounded-lg shadow-md border border-gray-100 hover:shadow-lg transition-shadow duration-300">
-            <div 
+            <div
               className="relative h-80 mb-4 overflow-hidden rounded-lg cursor-pointer group"
               onClick={() => onImageClick(image, name, year)}
             >
