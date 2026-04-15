@@ -8,9 +8,9 @@ import PageHeader from "@/components/page-header"
 import TeamMember from "@/components/team-member"
 import ParallaxSection from "@/components/parallax-section"
 import ParallaxText from "@/components/parallax-text"
-import ParallaxImage from "@/components/parallax-image"
 import SponsorCarousel from "@/components/sponsor-carousel"
 import sponsorData from "@/data/sponsors.json"
+import Link from "next/link"
 
 type TeamMemberData = {
   id: number
@@ -48,7 +48,7 @@ export default function AboutPage() {
     <div className="flex flex-col w-full">
       <PageHeader
         title="About Us"
-        description="Learn about our mission, vision, and the team behind Miss Malawi Foundation"
+        description="Learn about our mission, vision, and the team behind Miss Malawi."
       />
 
       {/* Mission & Vision */}
@@ -122,7 +122,7 @@ export default function AboutPage() {
               <div className="bg-white p-8 rounded-lg shadow-sm">
                 <h3 className="text-xl font-bold mb-3 text-purple">Present Day</h3>
                 <p className="text-gray-700">
-                  Today, the Miss Malawi Organization stands as a premier organization for female empowerment in the
+                  Today, the Miss Malawi Foundation stands as a premier organization for female empowerment in the
                   country. Beyond the annual pageant, we run educational programs, health initiatives, and cultural
                   preservation projects that impact thousands of lives across Malawi.
                 </p>
@@ -131,7 +131,9 @@ export default function AboutPage() {
 
             <div className="text-center mt-12">
               <Button className="bg-emerald-800 hover:bg-emerald-700">
-                Explore Our Legacy <ArrowRight className="ml-2 h-4 w-4" />
+                <Link href="/timeline" className="flex items-center">
+                  Explore Our Legacy <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
               </Button>
             </div>
           </div>

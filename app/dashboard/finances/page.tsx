@@ -239,7 +239,7 @@ export default function FinancesManagementPage() {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold text-[#7C3AED]">{currencyLabel} {totalOtherFunds.toLocaleString()}</div>
-            <p className="text-xs text-gray-500 mt-1">External contributions and gifts</p>
+            <p className="text-xs text-gray-500 mt-1">External received funds</p>
           </CardContent>
         </Card>
         <Card>

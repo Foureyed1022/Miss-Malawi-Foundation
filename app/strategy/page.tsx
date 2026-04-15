@@ -2,6 +2,8 @@ import type React from "react"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Award, BarChart3, Briefcase, Coins } from "lucide-react"
 import PageHeader from "@/components/page-header"
+import ParallaxSection from "@/components/parallax-section"
+import Link from "next/link"
 
 export default function StrategyPage() {
   return (
@@ -56,7 +58,7 @@ export default function StrategyPage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <StrategyCard
-              number="1"
+              number="1."
               title="Strategic Leadership"
               icon={<Award className="h-8 w-8 text-emerald-800" />}
               description="Establishing a visionary leadership approach that fosters innovation, accountability, strengthening governance structures, and sustainable growth."
@@ -68,7 +70,7 @@ export default function StrategyPage() {
             />
 
             <StrategyCard
-              number="2"
+              number="2."
               title="Policy"
               icon={<BarChart3 className="h-8 w-8 text-emerald-800" />}
               description="Developing and implementing policies that align with industry standards, legal requirements, and organizational objectives to enhance internal controls, efficiency and compliance."
@@ -81,7 +83,7 @@ export default function StrategyPage() {
             />
 
             <StrategyCard
-              number="3"
+              number="3."
               title="Financial Management"
               icon={<Coins className="h-8 w-8 text-emerald-800" />}
               description="Ensuring prudent financial planning, revenue diversification, resource allocation, risk management, and reporting to maintain fiscal stability and drive growth."
@@ -94,7 +96,7 @@ export default function StrategyPage() {
             />
 
             <StrategyCard
-              number="4"
+              number="4."
               title="Branding"
               icon={<Briefcase className="h-8 w-8 text-emerald-800" />}
               description="Building a strong, recognizable brand identity that resonates with target audiences, enhance visibility, engagement and fosters fan base loyalty."
@@ -109,36 +111,26 @@ export default function StrategyPage() {
         </div>
       </section>
 
-      {/* Call to Action */}
-      <section className="py-16 bg-emerald-900 text-white">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="font-playfair text-[#7C3AED]xl md:text-4xl font-bold mb-6">A Legacy of Greatness</h2>
-            <p className="text-lg mb-8">
-              Join us in shaping the future of Miss Malawi and empowering the next generation of Malawian women leaders.
-            </p>
-            <Button className="bg-purple hover:bg-purple/90 text-black">
-              Get Involved <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
+      {/* Parallax Call to Action */}
+      <ParallaxSection
+        imageUrl="/nyauziyambo.png"
+        height="400px"
+        overlayColor="bg-emerald-900/70"
+      >
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="max-w-3xl mx-auto text-center">
+              <h2 className="font-playfair text-[#7C3AED]xl md:text-4xl font-bold mb-6">A Legacy of Greatness</h2>
+              <p className="text-lg mb-8">
+                Join us in shaping the future of Miss Malawi and empowering the next generation of Malawian women leaders.
+              </p>
+              <Button className="bg-purple hover:bg-purple/90 text-white">
+                <Link href="/donate" className="flex items-center">
+                  Get Involved <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+            </div>
           </div>
-        </div>
-      </section>
-
-      {/* Contact Information */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="max-w-xl mx-auto text-center">
-            <h3 className="font-playfair text-2xl font-bold text-emerald-800 mb-6">Contact Us</h3>
-            <address className="not-italic text-gray-700 space-y-2">
-              <p>Miss Malawi crown office</p>
-              <p>P.O Box X407,</p>
-              <p>Crossroads, Lilongwe</p>
-              <p className="pt-2">+265 996 263 843 / +265 882 922 062</p>
-              <p>info@missmalawi.com</p>
-            </address>
-          </div>
-        </div>
-      </section>
+      </ParallaxSection>
     </div>
   )
 }
@@ -155,9 +147,11 @@ function StrategyCard({ number, title, icon, description, points }: StrategyCard
   return (
     <div className="bg-white p-8 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300">
       <div className="flex items-center mb-4">
-        <div className="h-12 w-12 rounded-full bg-emerald-50 flex items-center justify-center mr-4">{icon}</div>
-        <div>
-          <div className="text-purple font-bold text-lg">{number}</div>
+        <div className="h-12 w-12 rounded-full bg-emerald-50 flex items-center justify-center mr-4">
+          {icon}
+        </div>
+        <div className="flex items-baseline gap-2">
+          <span className="text-purple font-bold text-lg">{number}</span>
           <h3 className="text-xl font-bold text-gray-900">{title}</h3>
         </div>
       </div>

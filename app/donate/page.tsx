@@ -1,7 +1,6 @@
 "use client"
 
 import React, { useState } from "react"
-import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -10,12 +9,9 @@ import { ArrowRight, Book, CheckCircle, GraduationCap, Heart, Stethoscope, Steth
 import PageHeader from "@/components/page-header"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Label } from "@/components/ui/label"
-import SponsorCarousel from "@/components/sponsor-carousel"
-import sponsorData from "@/data/sponsors.json"
 import { saveDonation } from "@/lib/firestore"
 
 export default function DonatePage() {
-  const { platinumDonors, goldDonors, silverDonors } = sponsorData
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submissionError, setSubmissionError] = useState<string | null>(null)
 
@@ -384,12 +380,8 @@ export default function DonatePage() {
                 answer="Your donation directly supports our programs in education, health, leadership development, and cultural preservation. We maintain transparency in our financial reporting, and you can specify which program you'd like your donation to support."
               />
               <FAQ
-                question="Can I make a donation in honor or memory of someone?"
-                answer="Yes, you can make a tribute donation in honor or memory of a loved one. During the donation process, you'll have the option to provide the name of the person you're honoring and, if desired, contact information for a notification card."
-              />
-              <FAQ
                 question="What payment methods do you accept?"
-                answer="We accept various payment methods including credit/debit cards, bank transfers, and mobile money services like TNM Mpamba and Airtel Money. For corporate donations or other arrangements, please contact our office directly."
+                answer="We accept various payment methods including credit/debit cards, bank transfers, and mobile money services like TNM Mpamba and Airtel Money through Paychangu. For corporate donations or other arrangements, please contact our office directly."
               />
             </div>
           </div>
