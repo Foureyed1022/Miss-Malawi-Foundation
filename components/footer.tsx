@@ -145,7 +145,7 @@ export default function Footer() {
             <address className="not-italic text-white/80 space-y-3">
               <p>HewKam House, Area 43, Plot 43/1314</p>
               <p>Miss Malawi, P.O Box 143</p>
-              <p>Capital City, Malawi</p>
+              <p>Lilongwe, Malawi</p>
               <p className="pt-2">Phone: +265 996 263 843 / +265 882 922 062</p>
               <p>Email: info@missmw.org</p>
             </address>

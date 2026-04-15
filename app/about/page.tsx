@@ -201,7 +201,6 @@ export default function AboutPage() {
             height="h-32"
             logoWidth={120}
             logoHeight={60}
-            interval={60000}
           />
         </div>
       </section>
