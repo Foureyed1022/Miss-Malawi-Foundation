@@ -71,10 +71,10 @@ export default function Footer() {
               className="h-auto mb-4"
             />
             <p className="text-white/80 mb-6">
-              Empowering young Malawian women through beauty, intelligence, and advocacy since 1968.
+              Empowering young Malawian women through beauty, intelligence, and advocacy since 1970.
             </p>
             <div className="flex space-x-4">
-              <SocialLink href="https://web.facebook.com/mismalawi" icon={<Facebook className="h-5 w-5" />} />
+              <SocialLink href="https://web.facebook.com/missmworg" icon={<Facebook className="h-5 w-5" />} />
               <SocialLink href="https://www.instagram.com/miss_malawi_org/" icon={<Instagram className="h-5 w-5" />} />
               <SocialLink
                 href="https://x.com/MissMwOrg"
