@@ -248,8 +248,8 @@ export default function EventsPage() {
                   <span className="text-gray-700">Miss Malawi Masterclass Series</span>
                 </div>
                 <div className="flex justify-between border-b border-gray-200 pb-2">
-                  <span className="font-bold text-purple">Last Week November</span>
-                  <span className="text-gray-700">Intensive Bootcamp</span>
+                  <span className="font-bold text-purple">November 30th-December 4th</span>
+                  <span className="text-gray-700">Final Bootcamp</span>
                 </div>
                 <div className="flex justify-between border-b border-gray-200 pb-2">
                   <span className="font-bold text-purple">December</span>

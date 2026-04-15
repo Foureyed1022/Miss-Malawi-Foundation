@@ -111,7 +111,7 @@ export default function AboutPage() {
               </div>
 
               <div className="bg-white p-8 rounded-lg shadow-sm">
-                <h3 className="text-xl font-bold mb-3 text-purple">Growth (2010)</h3>
+                <h3 className="text-xl font-bold mb-3 text-purple">Growth (2010s)</h3>
                 <p className="text-gray-700">
                   In 2010, the Miss Malawi Organization had grown to oversee the pageant and expand its
                   impact through various community programs and initiatives. This marked a significant shift toward
@@ -122,7 +122,7 @@ export default function AboutPage() {
               <div className="bg-white p-8 rounded-lg shadow-sm">
                 <h3 className="text-xl font-bold mb-3 text-purple">Present Day</h3>
                 <p className="text-gray-700">
-                  Today, the Miss Malawi Foundation stands as a premier organization for female empowerment in the
+                  Today, the Miss Malawi Organization stands as a premier organization for female empowerment in the
                   country. Beyond the annual pageant, we run educational programs, health initiatives, and cultural
                   preservation projects that impact thousands of lives across Malawi.
                 </p>
