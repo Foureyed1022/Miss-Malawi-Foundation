@@ -119,7 +119,7 @@ export default function ProgramsPage() {
 
               <div className="relative h-[500px] rounded-lg overflow-hidden shadow-xl">
                 <Image
-                  src="/misi.png"
+                  src="/Misi.png"
                   alt="Miss Malawi community program"
                   fill
                   className="object-cover"
