@@ -224,12 +224,12 @@ export default function EventsPage() {
               <h2 className="font-playfair text-2xl font-bold text-emerald-800 mb-6 uppercase">Key Dates</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="flex justify-between border-b border-gray-200 pb-2">
+                  <div className="flex justify-between border-b border-gray-200 pb-2">
+                    <span className="font-bold text-purple">Mid-May</span>
+                    <span className="text-gray-700">Fundraising Brunch Gala</span>
+                  </div>
                   <span className="font-bold text-purple">May 30</span>
                   <span className="text-gray-700">Applications & Registrations Close</span>
-                </div>
-                <div className="flex justify-between border-b border-gray-200 pb-2">
-                  <span className="font-bold text-purple">Mid-May</span>
-                  <span className="text-gray-700">Fundraising Brunch Gala</span>
                 </div>
                 <div className="flex justify-between border-b border-gray-200 pb-2">
                   <span className="font-bold text-purple">June</span>
