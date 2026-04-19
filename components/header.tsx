@@ -61,6 +61,7 @@ export default function Header() {
               isScrolled={isScrolled}
               items={[
                 { href: "/about", label: "About Us" },
+                { href: "/about/the-queen", label: "The Queen" },
                 { href: "/timeline", label: "Timeline" },
                 { href: "/strategy", label: "Strategy" },
               ]}
@@ -155,6 +156,7 @@ export default function Header() {
                     setActive={() => setActiveDropdown(activeDropdown === "about" ? null : "about")}
                     items={[
                       { href: "/about", label: "About Us", setIsOpen: setIsMobileMenuOpen },
+                      { href: "/about/the-queen", label: "The Queen", setIsOpen: setIsMobileMenuOpen },
                       { href: "/timeline", label: "Timeline", setIsOpen: setIsMobileMenuOpen },
                       { href: "/strategy", label: "Strategy", setIsOpen: setIsMobileMenuOpen },
                     ]}
