@@ -6,10 +6,10 @@ import useEmblaCarousel from "embla-carousel-react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 
 const images = [
-  { src: "/queens/than.jpg", alt: "Thandie Chisi Miss Malawi 2025" },
-  { src: "/queens/Tha.jpg", alt: "Thandie Chisi Profile" },
-  { src: "/queens/queen.jpg", alt: "Thandie Chisi Initiatives" },
-  { src: "/queens/Thandiee.PNG", alt: "Thandie Chisi Crowned" },
+  { src: "/queens/thandie-focus.jpg", alt: "Thandie Chisi Miss Malawi 2025" },
+  { src: "/queens/thandie-profile.jpg", alt: "Thandie Chisi Profile" },
+  { src: "/queens/thandie-initiative.jpg", alt: "Thandie Chisi Initiatives" },
+  { src: "/queens/thandie-crowned.png", alt: "Thandie Chisi Crowned" },
 ]
 
 export function QueenCarousel() {
