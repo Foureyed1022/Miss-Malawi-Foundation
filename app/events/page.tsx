@@ -204,7 +204,7 @@ export default function EventsPage() {
                       <li className="relative pl-5 before:absolute before:left-0 before:top-2 before:w-2 before:h-2 before:bg-purple before:rounded-full before:shadow-[0_0_8px_rgba(131,41,183,0.5)]">
                         <span className="font-bold text-gray-900 block">December</span>
                         <span className="block font-medium text-purple mb-1">GRAND FINALE</span>
-                        <p className="text-sm text-gray-600 leading-relaxed">Griffin Sayenda, Blantyre — Black tie, national broadcast.</p>
+                        <p className="text-sm text-gray-600 leading-relaxed">Griffin Sayenda, national broadcast.</p>
                       </li>
                     </ul>
                     <ul className="space-y-4 list-none text-gray-700">
@@ -224,10 +224,6 @@ export default function EventsPage() {
               <h2 className="font-playfair text-2xl font-bold text-emerald-800 mb-6 uppercase">Key Dates</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="flex justify-between border-b border-gray-200 pb-2">
-                  <div className="flex justify-between border-b border-gray-200 pb-2">
-                    <span className="font-bold text-purple">Mid-May</span>
-                    <span className="text-gray-700">Fundraising Brunch Gala</span>
-                  </div>
                   <span className="font-bold text-purple">May 30</span>
                   <span className="text-gray-700">Applications & Registrations Close</span>
                 </div>
@@ -257,7 +253,7 @@ export default function EventsPage() {
                 </div>
                 <div className="flex justify-between border-b border-gray-200 pb-2">
                   <span className="font-bold text-purple">December 5th </span>
-                  <span className="text-gray-700">Grand Finale (Griffin Sayenda, Blantyre)</span>
+                  <span className="text-gray-700">Grand Finale (Griffin Sayenda, Lilongwe)</span>
                 </div>
               </div>
             </div>
